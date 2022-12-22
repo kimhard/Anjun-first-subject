@@ -8,5 +8,12 @@
 </head>
 <body>
 
+	<form action="login">
+		id : <input type="text" name="id"><br>
+		pw : <input type="password" name="pw"><br>
+		<input type="submit">
+			
+	</form>
+
 </body>
 </html>
