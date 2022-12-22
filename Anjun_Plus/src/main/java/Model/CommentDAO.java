@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class PostDAO {
+public class CommentDAO {
 
 	// DB 연결용 객체 생성
 	Connection conn = null;
@@ -43,37 +43,36 @@ public class PostDAO {
 		}
 	}
 
-	// 글쓰기용 post()
-	public int post(PostDTO dto) {
+	// 댓글쓰기용 comment()
+	public int comment(CommentDTO dto) {
 		getConn();
-		// 게시물 순번(post_seq)는 시퀀스 사용
-		// 게시물 작성일자(post_dt)는 CURRENT_DATE로 현재시각 입력
-		// 게시물 추천수(post_likes), 게시물 비추천수(post_dislikes)는 기본값 0을 부여
+		// 댓글 순번(cmt_seq)는 시퀀스 사용
+		// 댓글 작성일자(cmt_dt)는 CURRENT_DATE로 현재시각 입력
+		// 댓글 공감수(cmt_likes)는 기본값 0을 부여
 		try {
-			String sql = "INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, ?, CURRENT_DATE, ?, 0, 0, ?, ?, ?)";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, dto.getPost_content());
-			psmt.setString(2, dto.getUser_id());
-			psmt.setString(3, dto.getPost_hashtag());
-			psmt.setDouble(4, dto.getPost_lat());
-			psmt.setDouble(5, dto.getPost_lng());
-			cnt = psmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return cnt;
-	}
-
-	// 글삭제용 delete_post()
-	public int delete_post(PostDTO dto) {
-		getConn();
-		// 게시물 순번(post_seq)로 anjun_post테이블 조회 후 데이터 삭제
-		try {
-			String sql = "DELETE FROM anjun_post WHERE post_seq=?";
+			String sql = "INSERT INTO anjun_comment VALUES (ANJUN_COMMENT_SEQ.NEXTVAL, ?, ?, CURRENT_DATE, 0, ?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, dto.getPost_seq());
+			psmt.setString(2, dto.getCmt_content());
+			psmt.setString(3, dto.getUser_id());
+			cnt = psmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	// 댓글삭제용 delete_comment()
+	public int delete_comment(CommentDTO dto) {
+		getConn();
+		// 댓글 순번(cmt_seq)로 anjun_comment테이블 조회 후 데이터 삭제
+		try {
+			String sql = "DELETE FROM anjun_comment WHERE cmt_seq=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, dto.getCmt_seq());
 			cnt = psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,5 +81,4 @@ public class PostDAO {
 		}
 		return cnt;
 	}
-
 }

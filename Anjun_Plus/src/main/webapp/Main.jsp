@@ -11,7 +11,8 @@
 	<h1>예시</h1>
 	
 	<a href="join.jsp">회원가입</a><br>	
-	<a href="login.jsp">로그인</a>	
+	<a href="login.jsp">로그인</a>
+		
 
 	<script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
 	<script type="text/javascript"></script>
