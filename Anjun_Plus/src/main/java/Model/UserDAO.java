@@ -67,7 +67,7 @@ public class UserDAO {
 	}
 
 	// 로그인용 login()
-	public UserDTO name(UserDTO dto) {
+	public UserDTO login(UserDTO dto) {
 		try {
 			getConn();
 			// 실제로 존재하는 회원인지 DB에서 확인하는 SQL문

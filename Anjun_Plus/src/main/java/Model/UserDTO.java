@@ -11,6 +11,18 @@ public class UserDTO {
 	private String rrn; // 사용자 주민번호
 	private String grade; // 사용자 등급
 
+	// 기본 생성자
+	public UserDTO() {
+		super();
+	}
+	
+	// 생성자 메소드(로그인)
+	public UserDTO(String id, String pw) {
+		super();
+		this.id = id;
+		this.pw = pw;
+	}
+	
 	// 생성자 메소드(회원가입)
 	public UserDTO(String id, String pw, String nick, String name, String email, String rrn, String grade) {
 			super();
@@ -23,69 +35,58 @@ public class UserDTO {
 			this.grade = grade;
 		}
 
-	// 생성자 메소드(로그인)
-	public UserDTO(String id, String pw) {
-			super();
-			this.id = id;
-			this.pw = pw;
-		}
-
-	// 기본 생성자
-	public UserDTO() {
-			super();
-		}
-
-	// getter, setter
+	// getter
 	public String getId() {
 		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getPw() {
 		return pw;
 	}
 
-	public void setPw(String pw) {
-		this.pw = pw;
-	}
-
 	public String getNick() {
 		return nick;
-	}
-
-	public void setNick(String nick) {
-		this.nick = nick;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getEmail() {
 		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getRrn() {
 		return rrn;
 	}
 
-	public void setRrn(String rrn) {
-		this.rrn = rrn;
-	}
-
 	public String getGrade() {
 		return grade;
+	}
+
+	// setter
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setRrn(String rrn) {
+		this.rrn = rrn;
 	}
 
 	public void setGrade(String grade) {
