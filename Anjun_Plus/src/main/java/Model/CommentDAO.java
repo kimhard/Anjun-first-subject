@@ -81,4 +81,20 @@ public class CommentDAO {
 		}
 		return cnt;
 	}
+	
+	// 댓글공감용 like_comment()
+	public int like_comment(CommentDTO dto) {
+		getConn();
+		// 기본 생성자에서 setter를 이용해 cmt_seq, cmt_likes를 가져오기
+		try {
+			String sql = "UPDATE anjun_comment SET cmt_likes=? WHERE cmt_seq=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, dto.getCmt_likes());
+			psmt.setInt(2, dto.getCmt_seq());
+			cnt = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
 }

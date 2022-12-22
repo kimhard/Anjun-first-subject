@@ -83,4 +83,39 @@ public class PostDAO {
 		return cnt;
 	}
 
+	// 글추천용 like_post()
+	public int like_post(PostDTO dto) {
+		getConn();
+		// 기본 생성자에서 setter를 이용해 post_seq, post_likes를 가져오기
+		try {
+			String sql = "UPDATE anjun_post SET post_likes=? WHERE post_seq=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, dto.getPost_likes()+1);
+			psmt.setInt(2, dto.getPost_seq());
+			cnt = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	// 글비추천용 dislike_post()
+	public int dislike_post(PostDTO dto) {
+		getConn();
+		// 기본 생성자에서 setter를 이용해 post_seq, post_dislikes를 가져오기
+		try {
+			String sql = "UPDATE anjun_post SET post_dislikes=? WHERE post_seq=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, dto.getPost_dislikes()+1);
+			psmt.setInt(2, dto.getPost_seq());
+			cnt = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
 }
