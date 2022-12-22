@@ -43,5 +43,45 @@ public class PostDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	// 글쓰기용 post()
+	public int post(PostDTO dto) {
+		getConn();
+		// 게시물 순번(post_seq)는 시퀀스 사용
+		// 게시물 추천수(post_likes), 게시물 비추천수(post_dislikes)는 기본값 0을 부여
+		try {
+			String sql = "INSERT INTO anjun_post VALUES (anjun_post_seq.NEXTVAL, ?, ?, ?, 0, 0, ?, ?, ?)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getPost_content());
+			psmt.setString(2, dto.getPost_dt());
+			psmt.setString(3, dto.getUser_id());
+			psmt.setString(4, dto.getPost_hashtag());
+			psmt.setDouble(5, dto.getPost_lat());
+			psmt.setDouble(6, dto.getPost_lng());
+			cnt = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	// 글삭제용 delete_post()
+	public int delete_post(PostDTO dto) {
+		getConn();
+		// 게시물 순번으로 anjun_post테이블 조회 후 데이터 삭제
+		try {
+			String sql = "DELETE FROM anjun_post WHERE post_seq=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, dto.getPost_seq());
+			cnt = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
 
 }

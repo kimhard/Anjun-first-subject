@@ -1,0 +1,3 @@
+SELECT * FROM user_tables;
+
+SELECT * FROM ANJUN_POST;
