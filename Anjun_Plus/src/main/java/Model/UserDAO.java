@@ -12,7 +12,6 @@ public class UserDAO {
 	ResultSet rs = null;
 	UserDTO result = null;
 	int cnt = 0;
-
 	
 	// DB 연결용 getConn()
 	public void getConn() {
@@ -68,7 +67,71 @@ public class UserDAO {
 	}
 
 	// 로그인용 login()
-	public void name() {
-		
+	public UserDTO name(UserDTO dto) {
+		try {
+			getConn();
+			// 실제로 존재하는 회원인지 DB에서 확인하는 SQL문
+			String sql = "SELECT * FROM anjun_user WHERE user_id=? AND user_pw=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getId());
+			psmt.setString(2, dto.getPw());
+			rs = psmt.executeQuery();
+			// 만약 첫번째 행에 데이터가 있다면 각각의 컬럼의 데이터를 가져온 뒤
+			// 새로운 UserDTO타입의 변수 result에 담아 반환
+			if(rs.next()) { 
+				String id = rs.getString(1);
+				String pw = rs.getString(2);
+				String nick = rs.getString(3);
+				String name = rs.getString(4);
+				String email = rs.getString(5);
+				String rrn = rs.getString(6);
+				String grade = rs.getString(7);
+				result = new UserDTO(id, pw, nick, name, email, rrn, grade);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return result;
 	}
+	
+	// 사용자의 회원정보 수정용 update()
+	public int update(UserDTO dto) {
+		try {
+			getConn();
+			// ID가 dto.getID()인 사람의 행을 수정하는 SQL문
+			String sql = "UPDATE anjun_user SET pw=?, nick=?, email=? WHERE id=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getPw());
+			psmt.setString(2, dto.getNick());
+			psmt.setString(3, dto.getEmail());
+			psmt.setString(4, dto.getId());
+			cnt = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	// 관리자의 회원등급 수정용 changeGrade()
+	public int changeGrade(UserDTO dto) {
+		try {
+			getConn();
+			// 관리자가 사용자의 ID를 알고 사용자의 등급을 수정하는 SQL문
+			String sql = "UPDATE anjun_user SET grade=? WHERE id=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getGrade());
+			psmt.setString(2, dto.getId());
+			cnt = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
 }
