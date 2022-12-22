@@ -8,17 +8,9 @@
 </head>
 <body>
 
+	<h1>예시</h1>
 
-
-
-
-
-
-
-
-	<h1>환경셋팅 테스트</h1>
-	<h1>환경셋팅 테스트</h1>
-	<h1>환경셋팅 테스트</h1>
-
+	<script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
+	<script type="text/javascript"></script>
 </body>
 </html>
