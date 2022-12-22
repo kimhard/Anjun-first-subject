@@ -13,11 +13,12 @@ public class PostDTO {
 	private double post_lat; // 게시물 위도
 	private double post_lng; // 게시물 경도
 	
-	// 생성자
+	// 생성자(기본)
 	public PostDTO() {
 		
 	}
 	
+	// 생성자(모든 데이터)
 	public PostDTO(int post_seq, String post_content, String post_dt, String user_id, int post_likes, int post_dislikes,
 			String post_hashtag, double post_lat, double post_lng) {
 		super();
@@ -27,6 +28,18 @@ public class PostDTO {
 		this.user_id = user_id;
 		this.post_likes = post_likes;
 		this.post_dislikes = post_dislikes;
+		this.post_hashtag = post_hashtag;
+		this.post_lat = post_lat;
+		this.post_lng = post_lng;
+	}
+	
+	// 생성자(글쓰기)
+	public PostDTO(String post_content, String post_dt, String user_id, String post_hashtag, double post_lat,
+			double post_lng) {
+		super();
+		this.post_content = post_content;
+		this.post_dt = post_dt;
+		this.user_id = user_id;
 		this.post_hashtag = post_hashtag;
 		this.post_lat = post_lat;
 		this.post_lng = post_lng;
