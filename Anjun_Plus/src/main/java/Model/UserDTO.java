@@ -3,13 +3,13 @@ package Model;
 public class UserDTO {
 	// 사용자의 정보를 관리하기 위한 필드
 	// id, pw, nick, name, email, rrn, grade 순서(DB기준)
-	private String id;
-	private String pw;
-	private String nick;
-	private String name;
-	private String email;
-	private String rrn;
-	private String grade;
+	private String id; // 사용자 아이디
+	private String pw; // 사용자 비밀번호
+	private String nick; // 사용자 닉네임
+	private String name; // 사용자 이름
+	private String email; // 사용자 이메일
+	private String rrn; // 사용자 주민번호
+	private String grade; // 사용자 등급
 
 	// 생성자 메소드(회원가입)
 	public UserDTO(String id, String pw, String nick, String name, String email, String rrn, String grade) {
