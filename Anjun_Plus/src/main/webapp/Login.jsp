@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<form action="login">
+	<form action="LoginService">
 		id : <input type="text" name="id"><br>
 		pw : <input type="password" name="pw"><br>
 		<input type="submit">
