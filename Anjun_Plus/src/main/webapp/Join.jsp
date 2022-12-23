@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="join" method="post">
+	<form action="JoinService" method="post">
 		id : <input type="text" name="id"><br>
 		pw : <input type="password" name="pw"><br>
 		닉네임 : <input type="text" name="nick"><br>

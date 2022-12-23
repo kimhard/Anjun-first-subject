@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import Model.UserDAO;
 import Model.UserDTO;
 
-@WebServlet("/join")
-public class join extends HttpServlet {
+@WebServlet("/JoinService")
+public class JoinService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
