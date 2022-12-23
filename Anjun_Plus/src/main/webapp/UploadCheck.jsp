@@ -9,7 +9,7 @@
     String str, filename, original_filename;
     try{
     	MultipartRequest multiRequest = new MultipartRequest(request, path, size, "utf-8", new DefaultFileRenamePolicy());
-    	
+    	// multiRequest의 3번째 size는 20MB 사이즈까지 파일 업로드가능 , 5번째는 중복 파일 이름이 들어올 경우 파일명 뒤에 숫자가 붙게끔 해줌.
     	Enumeration files = multiRequest.getFileNames();
     	str = (String)files.nextElement();
     	filename = multiRequest.getFilesystemName(str);
