@@ -43,5 +43,23 @@ public class Post_reportDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	// 게시물 신고 메소드 reportPost()
+	public int reportPost(Post_reportDTO dto) {
+		try {
+			getConn();
+			String sql = "INSERT INTO anjun_post_report(post_seq, pr_reason, pr_dt, user_id) VALUES (?, ?, current_date, ?)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, dto.getPost_seq());
+			psmt.setString(2, dto.getPr_reason());
+			psmt.setString(3, dto.getUser_id());
+			cnt = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
 
 }
