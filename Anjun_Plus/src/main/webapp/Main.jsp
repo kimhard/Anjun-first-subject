@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +8,12 @@
 </head>
 <body>
 
-	<h1>예시</h1>
+	<button><a href="Join.jsp">회원가입</a></button>
+	<button><a href="Login.jsp">로그인</a></button>
 	
-	<a href="JoinService.jsp">회원가입</a><br>	
-	<a href="LoginService.jsp">로그인</a>
-		
+	
+
+
 
 	<script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
 	<script type="text/javascript"></script>
