@@ -44,8 +44,8 @@ public class Comment_reportDAO {
 		}
 	}
 
-	// 게시물 신고 메소드 reportPost()
-	public int reportPost(Comment_ReportDTO dto) {
+	// 댓글 신고 메소드 commentPost()
+	public int commentPost(Comment_ReportDTO dto) {
 			try {
 				getConn();
 				String sql = "INSERT INTO anjun_comment_report(cmt_seq, cr_reason, user_id) VALUES (?, ?, ?)";
