@@ -8,13 +8,12 @@
 </head>
 <body>
 
-	<h1>예시</h1>
-	
-	<a href="join.jsp">회원가입</a><br>	
-	<a href="login.jsp">로그인</a>
-		
+	<form action="login">
+		id : <input type="text" name="id"><br>
+		pw : <input type="password" name="pw"><br>
+		<input type="submit">
+			
+	</form>
 
-	<script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
-	<script type="text/javascript"></script>
 </body>
 </html>
