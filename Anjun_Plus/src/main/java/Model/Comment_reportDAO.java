@@ -44,16 +44,15 @@ public class Comment_reportDAO {
 		}
 	}
 
-	// 게시물 신고 메소드 reportPost()
-	public int reportPost(Comment_ReportDTO dto) {
+	// 댓글 신고 메소드 commentPost()
+	public int commentPost(Comment_ReportDTO dto) {
 			try {
 				getConn();
-				String sql = "INSERT INTO anjun_post_report(cr_seq, cmt_seq,cr_reason,user_id) VALUES (?, ?, ?, ?)";
+				String sql = "INSERT INTO anjun_comment_report(cmt_seq, cr_reason, user_id) VALUES (?, ?, ?)";
 				psmt = conn.prepareStatement(sql);
-				psmt.setInt(1, dto.getCr_seq());
-				psmt.setInt(2, dto.getCmt_seq());
-				psmt.setString(3, dto.getCr_reason());
-				psmt.setString(4, dto.getUser_id());
+				psmt.setInt(1, dto.getCmt_seq());
+				psmt.setString(2, dto.getCr_reason());
+				psmt.setString(3, dto.getUser_id());
 				cnt = psmt.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
