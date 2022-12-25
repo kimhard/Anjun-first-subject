@@ -16,11 +16,11 @@
 		try{
 		    Folder.mkdir(); // path 경로 폴더 생성
 		    System.out.println("폴더가 생성되었습니다.");
-	        } 
-	        catch(Exception e){
+        } 
+        catch(Exception e){
 		    e.getStackTrace();
 		}        
-	     }else {
+	}else {
 		System.out.println("이미 폴더가 생성되어 있습니다.");
 	}
 	
