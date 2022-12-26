@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class PostDAO {
 
@@ -64,6 +65,61 @@ public class PostDAO {
 			close();
 		}
 		return cnt;
+	}
+	public ArrayList<PostDTO> getBoardSearch(String keyWord, String searchWord) {
+		ArrayList<PostDTO> boards = new ArrayList<PostDTO>();
+		PostDTO board = null;
+		System.out.println(keyWord + "/" + searchWord);
+		try {
+			getConn();
+			String sql = "select * from anjun_post where " +keyWord+ " like ?"; 
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, "\'%"+searchWord+"%\'");
+			System.out.println(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				int seq = rs.getInt("post_seq");
+				String content = rs.getString("post_cntent");
+				String date = rs.getString("post_dt");
+				String id = rs.getString("user_id");
+				int likes = rs.getInt("post_likes");
+				int dislikes = rs.getInt("post_dislikes");
+				String hashtag = rs.getString("post_hashtag");
+				int lat = rs.getInt("post_lat");
+				int lng = rs.getInt("post_lng");
+				
+				board = new PostDTO(seq, content, date, id, likes, dislikes, hashtag, lat, lng);
+				boards.add(board);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			close();
+		}
+		return boards;
+	}
+	public int getCount(String keyWord, String searchWord) {
+		int count = 0;
+		
+		try {
+			getConn();
+			String sql = "select post_seq as count from anjun_post where " + keyWord + " like ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, "%" + searchWord + "%");
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt("count");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			close();
+		}
+		return count;
 	}
 
 	// 글삭제용 delete_post()
