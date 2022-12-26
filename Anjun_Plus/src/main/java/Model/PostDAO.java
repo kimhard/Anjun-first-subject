@@ -74,13 +74,13 @@ public class PostDAO {
 			getConn();
 			String sql = "select * from anjun_post where " +keyWord+ " like ?"; 
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, "\'%"+searchWord+"%\'");
+			psmt.setString(1, "%"+ searchWord +"%");
 			System.out.println(sql);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
 				int seq = rs.getInt("post_seq");
-				String content = rs.getString("post_cntent");
+				String content = rs.getString("post_content");
 				String date = rs.getString("post_dt");
 				String id = rs.getString("user_id");
 				int likes = rs.getInt("post_likes");
@@ -99,27 +99,6 @@ public class PostDAO {
 			close();
 		}
 		return boards;
-	}
-	public int getCount(String keyWord, String searchWord) {
-		int count = 0;
-		
-		try {
-			getConn();
-			String sql = "select post_seq as count from anjun_post where " + keyWord + " like ?";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, "%" + searchWord + "%");
-			rs = psmt.executeQuery();
-			
-			if(rs.next()) {
-				count = rs.getInt("count");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-			close();
-		}
-		return count;
 	}
 
 	// 글삭제용 delete_post()
