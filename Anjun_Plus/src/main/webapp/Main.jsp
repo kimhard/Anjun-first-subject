@@ -9,9 +9,9 @@
 <body>
 
 	<button><a href="Join.jsp">회원가입</a></button>
-	<button><a href="Login.jsp">로그인</a></button>
+	<button><a href="Login.jsp">로그인</a></button><br>
 	
-	
+	<iframe src="http://localhost:8081/Anjun_Plus/KakaoAPI.jsp" width="400px" height="400px"></iframe>
 
 
 
