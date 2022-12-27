@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="SearchCss.css">
 <body>
 
-
 	<div class="content">
 		<form action="SearchService">
 			<select name="keyWord">
