@@ -21,9 +21,7 @@ public class Comment_ReportDTO {
 		}
 
 		
-		// getter
-		
-		
+		// getter, setter
 		public int getCr_seq() {
 			return cr_seq;
 		}
@@ -35,10 +33,6 @@ public class Comment_ReportDTO {
 		public int getCmt_seq() {
 			return cmt_seq;
 		}
-
-		
-		// setter
-		
 		
 		public void setCmt_seq(int cmt_seq) {
 			this.cmt_seq = cmt_seq;
