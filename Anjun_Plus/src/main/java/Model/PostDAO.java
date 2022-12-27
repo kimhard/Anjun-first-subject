@@ -153,4 +153,8 @@ public class PostDAO {
 		}
 		return cnt;
 	}
+	
+	
+	// 
+	
 }
