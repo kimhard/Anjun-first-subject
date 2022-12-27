@@ -10,7 +10,6 @@
 <title>Document</title>
 </head>
 <style>
-/* <link rel="stylesheet" href=".css"> */
 .images {
 	overflow: hidden;
 	cursor: pointer;
