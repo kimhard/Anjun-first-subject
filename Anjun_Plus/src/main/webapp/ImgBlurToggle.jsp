@@ -12,6 +12,7 @@
 <style>
 .images {
 	overflow: hidden;
+	position: absolute;
 	cursor: pointer;
 }
 
@@ -23,24 +24,31 @@
 	filter: blur(10px);
 }
 
-.jbBox {
-	border: 1px solid #bcbcbc;
-	padding: 20px;
+#word {
+	color: red;
+	position: absolute;
+	z-index: 1;
+	left: 100px;
+	top: 100px;
 }
 </style>
 
 <body>
-	<img src='ImgSample.png' class='images blur'>
+	<table>
+		<tr>
+			<td class='hidden' id="word">민감한 이미지 입니다. <br>그래도 보시겠습니까?
+			<td>
+		</tr>
+	</table>
+	<img src='SampleImg.jpg' class='images blur hidden '>
 	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script>
 		$(function() {
 			$('.images').click(function() {
-				$(this).toggleClass('blur');
-				alert("activate");
+				$(this).toggleClass('blur hidden');
 			});
 		});
 	</script>
-	<h4>민감한 이미지 입니다. 그래도 보시겠습니까?</h4>
 </body>
 
 </html>
