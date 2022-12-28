@@ -13,6 +13,11 @@ body, html {
 </head>
 <body>
 	<div id="map" style="width: 100%; height: 100%;"></div>
+	<form method="post"
+		action="Main.jsp" id="gpsForm">
+		<input type="hidden" id="lat" name="latitude" value="">
+		<input type="hidden" id="lng" name="longitude" value="">
+	</form>
 
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca54d6e7a228681985539226b15919d4"></script>
@@ -39,7 +44,7 @@ body, html {
 
 				var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
 				message = '<div style="padding:4px;"></div>'; // 인포윈도우에 표시될 내용입니다
-
+				
 				// 마커와 인포윈도우를 표시합니다
 				displayMarker(locPosition, message);
 
@@ -76,6 +81,40 @@ body, html {
 			// 지도 중심좌표를 접속위치로 변경합니다
 			map.setCenter(locPosition);
 
+		}
+		
+		
+		// hidden 속성으로 위도 경도 넘기기
+		if (navigator.geolocation) {
+			// 위치정보 사용이 가능한 경우
+			function success(position) {
+				var lat = position.coords.latitude;
+				var lng = position.coords.longitude;
+				
+				console.log(lat);
+				console.log(lng);
+
+				document.getElementById('lat').value = lat;
+				document.getElementById('lng').value = lng;
+				
+				var gpsForm = document.getElementById("gpsForm");
+				gpsForm.submit();
+			};
+			function error() {
+				alert("사용자의 위치를 찾을 수 없습니다!");
+				document.getElementById('lat').value = "35.110604362352014";
+				document.getElementById('lng').value = "126.87725577541926";
+				var gpsForm = document.getElementById("gpsForm");
+				gpsForm.submit();
+			};
+			navigator.geolocation.getCurrentPosition(success, error);
+		} else {
+			// 위치정보 사용이 불가한 경우
+			alert("위치정보 사용이 불가합니다.");
+			document.getElementById('lat').value = "35.110604362352014";
+			document.getElementById('lng').value = "126.87725577541926";
+			var gpsForm = document.getElementById("gpsForm");
+			gpsForm.submit();
 		}
 	</script>
 
