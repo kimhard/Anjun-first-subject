@@ -269,10 +269,6 @@ footer a {
 </style>
 </head>
 <body>
-	<%
-	request.gets
-	
-	%>
 	<h2>로그인하고 다양한 서비스를 제공받으세요!</h2>
 	<div class="container" id="container">
 		<div class="form-container sign-up-container">
@@ -280,6 +276,7 @@ footer a {
 				<h2>회원가입하기!</h2>
 				<input type="text" placeholder="아이디" name="id" /> 
 				<input type="password" placeholder="패스워드" name="pw" />
+				<input type="text" placeholder = "닉네임" name = "nick">
 				<input type="text" placeholder = "이름" name = "name">
 				<input type="text" placeholder = "이메일" name = "email">
 				<table>

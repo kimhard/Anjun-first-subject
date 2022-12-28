@@ -1,6 +1,8 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +18,8 @@ public class JoinService extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter writer = response.getWriter();
 		request.setCharacterEncoding("UTF-8");
 
 		String id = request.getParameter("id");
@@ -31,17 +34,15 @@ public class JoinService extends HttpServlet {
 		UserDTO dto = new UserDTO(id, pw, nick, name, email, rrn, "C");
 		UserDAO dao = new UserDAO();
 
-		System.out.println(dto.getId());
-		System.out.println(dto.getPw());
-		System.out.println(dto.getNick());
-		System.out.println(dto.getName());
-		System.out.println(dto.getEmail());
-		System.out.println(dto.getRrn());
-
 		int cnt = dao.join(dto);
+		String PageUrl =  "Login.jsp";
+		if (cnt > 0) {
+			writer.println("<script>alert('회원가입을 성공하셨습니다.'); location.href='"+PageUrl+"';</script>"); 
 
-		response.setStatus(cnt);
-		response.sendRedirect("Login.jsp");
+		} else {
+			writer.println("<script>alert('회원가입을 실패하셨습니다..'); location.href='"+PageUrl+"';</script>"); 
+		}
+		writer.close();
 
 	}
 

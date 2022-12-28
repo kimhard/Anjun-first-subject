@@ -24,19 +24,23 @@
 	filter: blur(10px);
 }
 
-#word {
+.word {
 	color: red;
 	position: absolute;
 	z-index: 1;
 	left: 100px;
 	top: 100px;
 }
+
+.none {
+	display: none;	
+}
 </style>
 
 <body>
 	<table>
 		<tr>
-			<td class='hidden' id="word">민감한 이미지 입니다. <br>그래도 보시겠습니까?
+			<td class='word'>민감한 이미지 입니다. <br>그래도 보시겠습니까?
 			<td>
 		</tr>
 	</table>
@@ -45,7 +49,8 @@
 	<script>
 		$(function() {
 			$('.images').click(function() {
-				$(this).toggleClass('blur hidden');
+				$(this).toggleClass('blur ');
+				$('.word').toggleClass('none ');
 			});
 		});
 	</script>
