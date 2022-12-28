@@ -40,6 +40,7 @@
 
 	
 	<!-- Scripts -->
+	<script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
 	<!-- <script src="assets/js/jquery.scrollex.min.js"></script> -->
@@ -77,19 +78,12 @@
 		    navigator.geolocation.getCurrentPosition(success, error);
 		}
 		
-		function getWeather(lat, lon) {
-		    fetch(`https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}&units=metric`)
-		    .then(res => res.json())
-		    .then(data => {
-		        const temp = data.main.temp;
-		        const weathers = data.weather[data.weather.length -1];
-		        weatherIcon.src = `https://openweathermap.org/img/wn/${weathers.icon}@2x.png`;
-		        weatherSpan.innerHTML = `${temp}&#176;C ${weathers.main}`;
-		    })
+		function getWeather(lat, lng) {
+			fetch(`https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lng}&appid=b408d025daceb6920be202dc72f52ccc&units=metric`,)
+			.then(response => response.json())
+			.then(data => console.log(`온도 : ${data.main.temp}, 날씨 : ${data.weather[0].main}`));
 		}
 	</script>
 
-	<!-- <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
-	<script type="text/javascript"></script> -->
 </body>
 </html>
