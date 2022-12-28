@@ -13,6 +13,11 @@ body, html {
 </head>
 <body>
 	<div id="map" style="width: 100%; height: 100%;"></div>
+	<form method="post"
+		action="Main.jsp" id="gpsForm">
+		<input type="hidden" id="lat" name="latitude" value="">
+		<input type="hidden" id="lng" name="longitude" value="">
+	</form>
 
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca54d6e7a228681985539226b15919d4"></script>
@@ -39,7 +44,7 @@ body, html {
 
 				var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
 				message = '<div style="padding:4px;"></div>'; // 인포윈도우에 표시될 내용입니다
-
+				
 				// 마커와 인포윈도우를 표시합니다
 				displayMarker(locPosition, message);
 
@@ -77,6 +82,7 @@ body, html {
 			map.setCenter(locPosition);
 
 		}
+		
 	</script>
 
 </body>

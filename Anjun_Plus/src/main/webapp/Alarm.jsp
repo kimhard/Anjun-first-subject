@@ -30,8 +30,8 @@
 			} else {
 				var notification = new Notification(
 						'안전+에서 알립니다..',
-						{
-							icon : 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
+						{ 
+							icon : 'https://i.postimg.cc/j27n4qQh/removebg.png',
 							body : '광주 폭설...',
 						});
 
