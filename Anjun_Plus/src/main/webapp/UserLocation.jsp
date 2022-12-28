@@ -83,39 +83,6 @@ body, html {
 
 		}
 		
-		
-		// hidden 속성으로 위도 경도 넘기기
-		if (navigator.geolocation) {
-			// 위치정보 사용이 가능한 경우
-			function success(position) {
-				var lat = position.coords.latitude;
-				var lng = position.coords.longitude;
-				
-				console.log(lat);
-				console.log(lng);
-
-				document.getElementById('lat').value = lat;
-				document.getElementById('lng').value = lng;
-				
-				var gpsForm = document.getElementById("gpsForm");
-				gpsForm.submit();
-			};
-			function error() {
-				alert("사용자의 위치를 찾을 수 없습니다!");
-				document.getElementById('lat').value = "35.110604362352014";
-				document.getElementById('lng').value = "126.87725577541926";
-				var gpsForm = document.getElementById("gpsForm");
-				gpsForm.submit();
-			};
-			navigator.geolocation.getCurrentPosition(success, error);
-		} else {
-			// 위치정보 사용이 불가한 경우
-			alert("위치정보 사용이 불가합니다.");
-			document.getElementById('lat').value = "35.110604362352014";
-			document.getElementById('lng').value = "126.87725577541926";
-			var gpsForm = document.getElementById("gpsForm");
-			gpsForm.submit();
-		}
 	</script>
 
 </body>
