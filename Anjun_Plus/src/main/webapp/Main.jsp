@@ -4,24 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Main</title>
 <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body>
-	<% 
-		String lat = request.getParameter("lat");
-		String lng = request.getParameter("lng");
-	
-		System.out.println(lat);
-		System.out.println(lng);
-		
-		session.setAttribute("lat", lat); 
-		session.setAttribute("lng", lng);
-		
-		String userLat = (String)session.getAttribute("lat");
-		String userLng = (String)session.getAttribute("lng");
-		
-	%>
 	
 	<button onclick="location.href='Join.jsp'">
 		<a href="JoinService">회원가입</a>
@@ -31,10 +17,8 @@
 	</button>
 	<br>
 
-	<!-- 
-	 <iframe src="http://localhost:8083/Anjun_Plus/UserLocation.jsp"
-		width="400px" height="400px"></iframe>
-	 -->
+
+	 <iframe src="http://localhost:8083/Anjun_Plus/UserLocation.jsp" width="400px" height="400px"></iframe>
 
 
 	<!-- Menu -->
@@ -54,10 +38,6 @@
 		</div>
 	</nav>
 
-	<form method="post" action="http://localhost:8083/Anjun_Plus/tempmain.html" id="gpsForm">
-    	<input type="hidden" id="lat" name="latitude" value = "">
-    	<input type="hidden" id="lng" name="longitude" value = "">
-	</form>
 	
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
@@ -68,8 +48,45 @@
 	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 	<script src="assets/js/main.js"></script>
 	<script type="text/javascript">
-		console.log(sessionStorage.getItem("lat"));
-		console.log(sessionStorage.getItem("lng"));
+		navigator.geolocation.getCurrentPosition(success, error);
+		
+		function success(position) {
+			console.log(position);
+			    const latitude = position.coords.latitude;  // 경도  
+			    const longitude = position.coords.longitude;  // 위도
+			    const coordsObj = {
+			        latitude,
+			        longitude
+			    };
+			    saveCoords(latitude, longitude);
+			    getWeather(latitude, longitude);
+		}
+	
+		function error() {
+			console.log("위치 정보를 가져올 수 없습니다." + err);
+		}
+
+		function saveCoords(latitude, longitude) {
+			sessionStorage.setItem("userLat", latitude);
+			sessionStorage.setItem("userLng", longitude);
+			console.log(sessionStorage.getItem("userLat"));
+			console.log(sessionStorage.getItem("userLng"));
+		    }
+	
+		function requestCoords() {
+		    navigator.geolocation.getCurrentPosition(success, error);
+		}
+		
+		function getWeather(lat, lon) {
+		    fetch(`https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}&units=metric`)
+		    .then(res => res.json())
+		    .then(data => {
+		        const temp = data.main.temp;
+		        const weathers = data.weather[data.weather.length -1];
+		        weatherIcon.src = `https://openweathermap.org/img/wn/${weathers.icon}@2x.png`;
+		        weatherSpan.innerHTML = `${temp}&#176;C ${weathers.main}`;
+		    })
+		}
 	</script>
 
 	<!-- <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
