@@ -225,7 +225,7 @@ a {
 	for(int i=day; i<=nextweek; i++){%>
 		<td>
 		<%if(stampList.get(i-1)==1){%>
-			<div><img src="img/good80.jpg"></div>
+			<div class="good"><img src="img/good80.jpg"></div>
 		<%} %><%=i%></td><%
 		day++;
 		cnt++;
@@ -240,7 +240,7 @@ a {
 		}%>
 		<td>
 		<%if(stampList.get(i-1)==1){%>
-			<div><img src="img/good80.jpg"></div>
+			<div  class="good"><img src="img/good80.jpg"></div>
 		<%} %><%=i%></td><%
 		nextweek++; 
 	}
