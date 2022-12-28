@@ -27,14 +27,14 @@ public class LoginService extends HttpServlet {
 		
 		UserDTO result = dao.login(dto);
 		
-		String nextPage = "Main.jsp"; 
+		String nextPage = "tempmain2.html"; 
 		if(result != null) {
 			System.out.println("로그인 완료!");
 			HttpSession session = request.getSession();
 			session.setAttribute("info", result);
 		}else {
 			System.out.println("로그인 실패");
-			nextPage = "login.jsp";
+			nextPage = "Login.jsp";
 		}
 	
 		response.sendRedirect(nextPage);
