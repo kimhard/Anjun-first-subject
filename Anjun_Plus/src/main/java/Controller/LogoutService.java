@@ -22,8 +22,7 @@ public class LogoutService extends HttpServlet {
 		// 세션 삭제
 		session.removeAttribute("info");
 		// 메인으로 이동
-		RequestDispatcher rd = request.getRequestDispatcher("Main.jsp");
-		rd.forward(request, response);
+		response.sendRedirect("NewMain.jsp");
 
 	}
 
