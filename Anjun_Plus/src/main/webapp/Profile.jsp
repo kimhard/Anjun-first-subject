@@ -1,3 +1,8 @@
+<%@page import="Model.CommentDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.CommentDAO"%>
+<%@page import="Model.PostDAO"%>
+<%@page import="Model.PostDTO"%>
 <%@page import="Model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -104,17 +109,11 @@
 <%
 	UserDTO info = (UserDTO)session.getAttribute("info");
 
-	UserDTO dto = new UserDTO();
-
-	dto.setId("smhrd");
-	dto.setName("이창현");
-	dto.setRrn("123456-1234567");
-	dto.setGrade("C");
 	
-	String id = dto.getId();
-	String name = dto.getName();
-	String rrn = dto.getRrn();
-	String grade = dto.getGrade();
+	String id = info.getId();
+	String name = info.getName();
+	String rrn = info.getRrn();
+	String grade = info.getGrade();
 	
 	if(grade.equals("A")){
 		grade = "VIP";
@@ -127,16 +126,50 @@
 	}
 
 	session.setAttribute("id", id);
+	
+	/*UserDTO info = (UserDTO)session.getAttribute("info"); */
+
+	   /* int post_seq = Integer.parseInt(request.getParameter("post_seq")); */
+
+	   int post_seq = 22;
+	  
+	   PostDAO dao = new PostDAO();
+	   CommentDAO cmt = new CommentDAO();
+	  
+	   PostDTO result = dao.read(post_seq);
+	   
+	   ArrayList<CommentDTO> comments = cmt.read(post_seq);
+
+	   
+	   System.out.println(comments);
+	   
+	   /* String id = info.getId();
+	   String nick = info.getNick();
+	   String grade = info.getGrade();
+	   
+	   
+	   
+	   if(grade.equals("A")){
+	      grade = "VIP";
+	   }else if(grade.equals("B")){
+	      grade = "GOLD";
+	   }else if(grade.equals("C")){
+	      grade = "SILVER";
+	   }else {
+	      grade = "IRON";
+	   } */
+	
+	
+
+	
 %>
-
-
 
 
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="NewMain.jsp" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="https://i.postimg.cc/j27n4qQh/removebg.png" alt="">
         <h1>안전+</h1>
@@ -289,25 +322,34 @@
                   	<div class="box multiple-box-shadows">
 	                    
 	                    
-	                    <% if(info != null) { %>
-								
-							<div class="post-meta author"></div>
-							<div class="photo"><img src="assets/img/person-2.jpg" alt class="img-fluid"></div>
-							            <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
-							<h2 class="mb-2"><a href="#">smhrd</a></h2>
-							<h3 class="mb-2">smhrd</h3>
-							<button class="btn btn-primary btn-ghost btn-fill">
-							  내 게시글
-							</button>
-							
-							<a href="LogoutService">로그아웃</a>
-								
-							<a href="UpdateProfile.jsp">개인정보수정</a>
-								
-								
-						<% }else{ %>
-							<a href="Login.jsp">로그인</a>
-						<% } %>
+	                    <%
+                  		if(info != null){
+                  			grade = info.getGrade();
+                  			
+                  			if(grade.equals("A")){
+                  				grade = "VIP";
+                  			}else if(grade.equals("B")){
+                  				grade = "GOLD";
+                  			}else if(grade.equals("C")){
+                  				grade = "SILVER";
+                  			}else {
+                  				grade = "IRON";
+                  			}
+                  		%>
+	                    <div class="post-meta author"></div>
+		                  <div class="photo"><img src="assets/img/person-2.jpg" alt class="img-fluid"></div>
+		                  <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
+	                    <h2 class="mb-2"><a href="Profile.jsp"><%= info.getId() %></a></h2>
+	                    <h3 class="mb-2"><%= grade %></h3>
+	                    <button class="btn btn-primary btn-ghost btn-fill">
+						    내 게시글
+						</button>
+						<button class="custom-btn btn-10"><a href="MyBlog.jsp">내 게시물</a></button>
+						<button class="custom-btn btn-10"><a href="Profile.jsp">개인정보 수정</a></button>
+						<button class="custom-btn btn-10"><a href="LogoutService">로그아웃</a></button>
+                  	<%	}else { %>
+                  		<a href="Login.jsp">로그인</a>
+          			<%	}%>
 	                    
 					</div>
                   </div>

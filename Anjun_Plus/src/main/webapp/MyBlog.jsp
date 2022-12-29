@@ -1,3 +1,9 @@
+<%@page import="Model.UserDTO"%>
+<%@page import="Model.CommentDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.CommentDAO"%>
+<%@page import="Model.PostDAO"%>
+<%@page import="Model.PostDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -101,12 +107,53 @@
 
 
 <body>
+<%
+   /* UserDTO info = (UserDTO)session.getAttribute("info"); */
+
+   /* int post_seq = Integer.parseInt(request.getParameter("post_seq")); */
+
+   int post_seq = 22;
+   
+   PostDTO dto = new PostDTO();
+   PostDAO dao = new PostDAO();
+   CommentDAO cmt = new CommentDAO();
+   
+   PostDTO result = dao.read(post_seq);
+   
+   ArrayList<CommentDTO> comments = cmt.read(post_seq);
+   
+   
+   System.out.println(comments);
+   
+   /* String id = info.getId();
+   String nick = info.getNick();
+   String grade = info.getGrade();
+   
+   
+   
+   if(grade.equals("A")){
+      grade = "VIP";
+   }else if(grade.equals("B")){
+      grade = "GOLD";
+   }else if(grade.equals("C")){
+      grade = "SILVER";
+   }else {
+      grade = "IRON";
+   } */
+
+   
+   
+%>
+<%
+	UserDTO info = (UserDTO)session.getAttribute("info");
+
+%>
 
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="NewMain.jsp" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="https://i.postimg.cc/j27n4qQh/removebg.png" alt="">
         <h1>안전+</h1>
@@ -188,7 +235,7 @@
         <div class="row">
 
           <div class="col-md-9" data-aos="fade-up">
-            <h3 class="category-title">피드</h3>
+            <h3 class="category-title">My Blog</h3>
 
             <div class="d-md-flex post-entry-2 half">
               <a href="single-post.html" class="me-4 thumbnail">
@@ -219,11 +266,10 @@
               	<hr class="hr-5"> 
                 <!--  댓글 좋아요 싫어요 -->
                 <div class="like-dislike">   
-					댓글 2
-					<a href="#" class="button4"><i	class="fa-regular fa-heart"> 5</i></a> 
-					<a href="#" class="button5"><i class="fa-regular fa-thumbs-down"> 5</i></a>
-					
-					<input class="button" name="buttons" id="button1" />
+					댓글 <%=comments.size() %>
+					<a href="#" class="button4"><i	class="fa-regular fa-heart"> </i></a> 
+					<a href="#" class="button5"><i class="fa-regular fa-thumbs-down"> </i></a>
+				
 
                 </div>
               	
@@ -253,11 +299,34 @@
                 <div class="tab-pane fade show active" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
                   <div class="post-entry-1 border-bottom">
                   	<div class="box multiple-box-shadows">
+                  	<%
+                  		if(info != null){
+                  			String grade = info.getGrade();
+                  			
+                  			if(grade.equals("A")){
+                  				grade = "VIP";
+                  			}else if(grade.equals("B")){
+                  				grade = "GOLD";
+                  			}else if(grade.equals("C")){
+                  				grade = "SILVER";
+                  			}else {
+                  				grade = "IRON";
+                  			}
+                  		%>
 	                    <div class="post-meta author"></div>
 		                  <div class="photo"><img src="assets/img/person-2.jpg" alt class="img-fluid"></div>
 		                  <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
-	                    <h2 class="mb-2"><a href="Profile.jsp">smhrd</a></h2>
-	                    <h3 class="mb-2">smhrd</h3>
+	                    <h2 class="mb-2"><a href="Profile.jsp"><%= info.getId() %></a></h2>
+	                    <h3 class="mb-2"><%= grade %></h3>
+	                    <button class="btn btn-primary btn-ghost btn-fill">
+						    내 게시글
+						</button>
+						<button class="custom-btn btn-10"><a href="MyBlog.jsp">내 게시물</a></button>
+						<button class="custom-btn btn-10"><a href="Profile.jsp">개인정보 수정</a></button>
+						<button class="custom-btn btn-10"><a href="LogoutService">로그아웃</a></button>
+                  	<%	}else { %>
+                  		<a href="Login.jsp">로그인</a>
+          			<%	}%>
 	                    
 						
 	                   
