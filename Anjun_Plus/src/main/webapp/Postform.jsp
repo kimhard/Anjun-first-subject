@@ -30,12 +30,6 @@
   <link href="assets/css/variables.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: ZenBlog - v1.3.0
-  * Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
-  * Author: BootstrapMade.com
-  * License: https:///bootstrapmade.com/license/
-  ======================================================== -->
    <!-- 폰트어썸 script -->
    <script src="https://kit.fontawesome.com/10cd32872a.js" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
@@ -205,7 +199,7 @@
 
 <div class="col-lg-12 text-center mb-5">
 
-<form action="PostService" method="post" class="inputform">
+<form action="PostService" method="post" class="inputform" enctype="multipart/form-data">
             <div class="col-lg-12 text-center mb-5">
             </div>
             <div>
@@ -231,7 +225,9 @@ placeholder='  ▶ 안전+ 게시물 작성 가이드라인
             <div class="post-entry-1 border-bottom">
 			</div>
             <div class="text-center">
-              <i class="fa-sharp fa-solid fa-camera fa-2x"></i>　
+            <label for="input-file" class="fa-sharp fa-solid fa-camera fa-2x"></label>
+              <input type="file" name="file" id="input-file" style="display:none;" multiple="multiple">
+              <button type="submit" onclick="javascript: form.action='UploadCheck.jsp';return false;">추가</button>
               <i class="fa-sharp fa-solid fa-video fa-2x"></i>　
               <input type="submit" value="글쓰기">
             </div>
