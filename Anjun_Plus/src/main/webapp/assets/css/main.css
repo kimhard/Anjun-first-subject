@@ -1452,7 +1452,6 @@ textarea::placeholder {
  	  left:240px;
       top:20px;
 
-<<<<<<< HEAD
 }
 
 .button3 {
@@ -1462,16 +1461,17 @@ textarea::placeholder {
       
 }
 .button4 {
+	position:relative;	
+ 	left:250px;
 	font-size:20px; padding:10px 10px;
 	}
-=======
+.button5 {
+	position:relative;	
+ 	left:280px;
+	font-size:20px; padding:10px 10px;
+	color: red;
+	}
+	
 
-
-
-
-
-
-
-
-
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-AI1/TeamAnjun.git
+	
+	

@@ -216,12 +216,14 @@
                 <!-- 작성일자가 들어가는 곳 -->
                 <div class="post-meta"> <span>Jul 5th '22</span></div>
                 
-                <!--  좋아요 싫어요 -->
-                <div class="like-dislike">
-					<a href="#" class="button4"><i	class="fa-regular fa-heart"></i></a> 
-					<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i></a>
-                </div>
               	<hr class="hr-5"> 
+                <!--  댓글 좋아요 싫어요 -->
+                <div class="like-dislike">   
+					댓글 2
+					<a href="#" class="button4"><i	class="fa-regular fa-heart"> </i>5</a>
+					<a href="#" class="button5"><i class="fa-regular fa-thumbs-down" onclick=""> </i>5</a>
+
+                </div>
               	
               	
               	

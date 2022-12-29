@@ -188,7 +188,7 @@
         <div class="row">
 
           <div class="col-md-9" data-aos="fade-up">
-            <h3 class="category-title">My Blog</h3>
+            <h3 class="category-title">피드</h3>
 
             <div class="d-md-flex post-entry-2 half">
               <a href="single-post.html" class="me-4 thumbnail">
@@ -199,38 +199,39 @@
                 <div class="d-flex align-items-center author post-author">
                   <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
                   <div class="name">
+                
                   <!-- 게시자 아이디가 들어가는 곳 -->
                     <h3 class="m-0 p-0">Wade Warren</h3>
-                  </div>
+                    	
+                    
+                  </div><!--  대피소, 위치>--> 
+                  <div class="loc-dot">
+				<a href="#"class="button2"><i class="fa-solid fa-location-dot"fa-4x></i></a>
+				<a href="#"class="button3"><i class="fa-solid fa-person-running"fa-4x></i></a>
+				</div>
                 </div>
+                	<hr class="hr-5"> 
                 <!-- 내용이 들어가는 곳 -->
                 <h3><a href="single-post.html">What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</a></h3>
                 <!-- 작성일자가 들어가는 곳 -->
                 <div class="post-meta"> <span>Jul 5th '22</span></div>
+                
               	<hr class="hr-5"> 
-              </div>
-            </div>
-                <div class="d-md-flex post-entry-2 half">
-              <a href="single-post.html" class="me-4 thumbnail">
-              <!-- 게시물 이미지가 들어가는 곳 -->
-                <img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
-              </a>
-              <div>
-                <div class="d-flex align-items-center author post-author">
-                  <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
-                  <div class="name">
-                  <!-- 게시자 아이디가 들어가는 곳 -->
-                    <h3 class="m-0 p-0">Wade Warren</h3>
-                  </div>
+                <!--  댓글 좋아요 싫어요 -->
+                <div class="like-dislike">   
+					댓글 2
+					<a href="#" class="button4"><i	class="fa-regular fa-heart"> 5</i></a> 
+					<a href="#" class="button5"><i class="fa-regular fa-thumbs-down"> 5</i></a>
+					
+					<input class="button" name="buttons" id="button1" />
+
                 </div>
-                <!-- 내용이 들어가는 곳 -->
-                <h3><a href="single-post.html">What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</a></h3>
-                <!-- 작성일자가 들어가는 곳 -->
-                <div class="post-meta"> <span>Jul 5th '22</span></div>
-              	<hr class="hr-5"> 
+              	
+              	
+              	
+              	
               </div>
             </div>
-            
 
             
           </div>
@@ -363,9 +364,7 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   
-  
-
 
 </body>
 
-</html>l>
+</html>
