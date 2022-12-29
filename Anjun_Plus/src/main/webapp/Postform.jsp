@@ -5,6 +5,8 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
 <title>ZenBlog Bootstrap Template - Category</title>
 <meta content="" name="description">
@@ -98,13 +100,50 @@
          })
       }
    </script>
-<style type="text/css">
-position :absolute;
-.post-entry-1 border-bottom{
-position :absolute;
+<!-- 이미지 업로드 -->
+<script>
+	function getThumbnailPrivew(html, $target) {
+		if (html.files && html.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$target.css('display', '');
+				//$target.css('background-image', 'url(\"' + e.target.result + '\")'); // 배경으로 지정시
+				$target
+						.html('<img src="' + e.target.result + '" border="0" alt="" />');
+			}
+			reader.readAsDataURL(html.files[0]);
+		}
+	}
+</script>
+<style>
+.filebox label {
+	display: inline-block;
+	padding: .5em .75em;
+	color: #999;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #fdfdfd;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	width: 100%;
+	max-width: 100%;
+}
 
+.filebox input[type="file"] { /* 파일 필드 숨기기 */
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
 }
 </style>
+
 </head>
 
 <body>
@@ -241,17 +280,22 @@ position :absolute;
  - 안전+의 정책은 가이드라인을 위반하는 콘텐츠를 삭제하는 것입니다. 이미지 또는 관련 내용이 가이드라인을 따르지 않는 경우 게시물 전체가 삭제될 수 있습니다. 가이드라인을 위반하는 계정은 비활성화될 수 있습니다.'></textarea>
 								</div>
 								<div class="post-entry-1 border-bottom">
-									<input class="tag" placeholder="hash tags" name = "hashtag">
+									<input class="tag" placeholder="hash tags" name="hashtag">
 
 								</div>
 								<div class="text-center">
-									<label for="input-file"
-										class="fa-sharp fa-solid fa-camera fa-2x"
+									<label for="image" class="fa-sharp fa-solid fa-camera fa-2x"
 										style="cursor: pointer;"></label> <input type="file"
-										name="file" id="input-file" style="display: none;" />
-
+										name="file" id="image" style="display: none;" accept="image/*"
+										capture="camera"
+										onchange="getThumbnailPrivew(this,$('#cma_image'))" />
 									<button type="submit"
 										onclick="javascript: form.action='UploadCheck.jsp';return false;">추가</button>
+									<div id="image_container"></div>
+									<div id="cma_image"
+										style="width: 100%; max-width: 100%; border: 1px solid #000; display: none;"></div>
+
+
 									<i class="fa-sharp fa-solid fa-video fa-2x"></i> <input
 										type="submit" value="글쓰기">
 								</div>
@@ -415,9 +459,10 @@ position :absolute;
 
 
 	<script src="https://unpkg.com/@yaireo/tagify"></script>
-	<link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+	<link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css"
+		rel="stylesheet" type="text/css" />
 
-
+	<!-- Tag -->
 	<script>
 		var input = document.querySelector('.tag')
 		var tagify = new Tagify(input);
@@ -427,6 +472,20 @@ position :absolute;
 			console.log(tagify.value); // 입력된 태그 정보 객체
 		})
 	</script>
+	<!-- 이미지 업로드 -->
+	<script>
+      function setThumbnail(event) {
+        var reader = new FileReader();
+
+        reader.onload = function(event) {
+          var img = document.createElement("img");
+          img.setAttribute("src", event.target.result);
+          document.querySelector("div#image_container").appendChild(img);
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
+      }
+    </script>
 
 </body>
 
