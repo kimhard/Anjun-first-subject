@@ -27,7 +27,7 @@ public class LoginService extends HttpServlet {
 		
 		UserDTO result = dao.login(dto);
 		
-		String nextPage = "tempmain2.html"; 
+		String nextPage = "NewMain.jsp"; 
 		if(result != null) {
 			System.out.println("로그인 완료!");
 			HttpSession session = request.getSession();
