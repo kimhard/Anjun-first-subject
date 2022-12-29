@@ -36,67 +36,67 @@
   * Author: BootstrapMade.com
   * License: https:///bootstrapmade.com/license/
   ======================================================== -->
-	<!-- 폰트어썸 script -->
-	<script src="https://kit.fontawesome.com/10cd32872a.js" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
-	<script type="text/javascript">
-		navigator.geolocation.getCurrentPosition(success, error);
-		
-		function success(position) {
-			console.log(position);
-			    const latitude = position.coords.latitude;  // 경도  
-			    const longitude = position.coords.longitude;  // 위도
-			    const coordsObj = {
-			        latitude,
-			        longitude
-			    };
-			    saveCoords(latitude, longitude);
-			    getWeather(latitude, longitude);
-		}
-	
-		function error() {
-			console.log("위치 정보를 가져올 수 없습니다." + err);
-		}
+   <!-- 폰트어썸 script -->
+   <script src="https://kit.fontawesome.com/10cd32872a.js" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
+   <script type="text/javascript">
+      navigator.geolocation.getCurrentPosition(success, error);
+      
+      function success(position) {
+         console.log(position);
+             const latitude = position.coords.latitude;  // 경도  
+             const longitude = position.coords.longitude;  // 위도
+             const coordsObj = {
+                 latitude,
+                 longitude
+             };
+             saveCoords(latitude, longitude);
+             getWeather(latitude, longitude);
+      }
+   
+      function error() {
+         console.log("위치 정보를 가져올 수 없습니다." + err);
+      }
 
-		function saveCoords(latitude, longitude) {
-			sessionStorage.setItem("userLat", latitude);
-			sessionStorage.setItem("userLng", longitude);
-			console.log(sessionStorage.getItem("userLat"));
-			console.log(sessionStorage.getItem("userLng"));
-		}
-	
-		function requestCoords() {
-		    navigator.geolocation.getCurrentPosition(success, error);
-		}
-		
-		function getWeather(latitude, longitude) {
-			$.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=35.1074481&lon=126.8828409&appid=b408d025daceb6920be202dc72f52ccc&units=metric',function(data){
-				console.log(data.main.temp);
-				console.log(data.weather[0].main);
-				var $temp = data.main.temp;
-				var $weather = data.weather[0].main;
-				
-				$('.temp').prepend($temp);
-				if($weather=="Clouds"){
-					$('.weather').attr('class','weather fa-solid fa-cloud-sun');
-				}else if($weather=="Clear"){
-					$('.weather').attr('class','weather fa-solid fa-sun');
-				}else if($weather=="Thunderstorm"){
-					$('.weather').attr('class','weather fa-solid fa-cloud-bolt');
-				}else if($weather=="Drizzle"){
-					$('.weather').attr('class','weather fa-solid fa-cloud-rain');
-				}else if($weather=="Rain"){
-					$('.weather').attr('class','weather fa-solid fa-cloud-showers-heavy');
-				}else if($weather=="Snow"){
-					$('.weather').attr('class','weather fa-regular fa-snowflake');
-				}else if($weather=="Atmosphere"){
-					$('.weather').attr('class','weather fa-solid fa-smog');
-				}else{
-					$('.weather').attr('class','weather fa-solid fa-cloud');
-				}
-			})
-		}
-	</script>
+      function saveCoords(latitude, longitude) {
+         sessionStorage.setItem("userLat", latitude);
+         sessionStorage.setItem("userLng", longitude);
+         console.log(sessionStorage.getItem("userLat"));
+         console.log(sessionStorage.getItem("userLng"));
+          }
+   
+      function requestCoords() {
+          navigator.geolocation.getCurrentPosition(success, error);
+      }
+      
+      function getWeather(latitude, longitude) {
+         $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=35.1074481&lon=126.8828409&appid=b408d025daceb6920be202dc72f52ccc&units=metric',function(data){
+            console.log(data.main.temp);
+            console.log(data.weather[0].main);
+            var $temp = data.main.temp;
+            var $weather = data.weather[0].main;
+            
+            $('.temp').prepend($temp);
+            if($weather=="Clouds"){
+               $('.weather').attr('class','weather fa-solid fa-cloud-sun');
+            }else if($weather=="Clear"){
+               $('.weather').attr('class','weather fa-solid fa-sun');
+            }else if($weather=="Thunderstorm"){
+               $('.weather').attr('class','weather fa-solid fa-cloud-bolt');
+            }else if($weather=="Drizzle"){
+               $('.weather').attr('class','weather fa-solid fa-cloud-rain');
+            }else if($weather=="Rain"){
+               $('.weather').attr('class','weather fa-solid fa-cloud-showers-heavy');
+            }else if($weather=="Snow"){
+               $('.weather').attr('class','weather fa-regular fa-snowflake');
+            }else if($weather=="Atmosphere"){
+               $('.weather').attr('class','weather fa-solid fa-smog');
+            }else{
+               $('.weather').attr('class','weather fa-solid fa-cloud');
+            }
+         })
+      }
+   </script>
 </head>
 
 <body>
@@ -187,28 +187,76 @@
         <div class="row">
 
           <div class="col-md-9" data-aos="fade-up">
-            <h3 class="category-title">피드</h3>
 
-            <div class="d-md-flex post-entry-2 half">
-              <a href="single-post.html" class="me-4 thumbnail">
-              <!-- 게시물 이미지가 들어가는 곳 -->
-                <img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
-              </a>
-              <div>
-                <div class="d-flex align-items-center author post-author">
-                  <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
-                  <div class="name">
-                  <!-- 게시자 아이디가 들어가는 곳 -->
-                    <h3 class="m-0 p-0">Wade Warren</h3>
-                  </div>
-                </div>
-                <!-- 내용이 들어가는 곳 -->
-                <h3><a href="single-post.html">What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</a></h3>
-                <!-- 작성일자가 들어가는 곳 -->
-                <div class="post-meta"> <span>Jul 5th '22</span></div>
-              	<hr class="hr-5">  
-              </div>
+
+
+
+
+
+<!-- 여기에입력 --> 
+
+
+
+
+
+
+
+
+
+<div class="col-lg-12 text-center mb-5">
+
+<form action="PostService" method="post" class="inputform">
+            <div class="col-lg-12 text-center mb-5">
             </div>
+            <div>
+              <textarea rows="20" style="width:100%;" name="post_content"
+placeholder='  ▶ 안전+ 게시물 작성 가이드라인
+
+ *게시글 작성 이전에 꼭 확인해주세요!*
+
+ 폭력적 또는 혐오스러운 콘텐츠, 성적인 콘텐츠, 스팸 혹은 혼동을 야기하는 콘텐츠, 허위정보를 유포하는 콘텐츠, 증오 또는 학대하는 콘텐츠 등의 특정 위반 사항이 있는 경우 삭제 처리 될 수 있으며, 이용이 제한될 수 있습니다. 
+
+ 의도적으로 허위 정보를 게시하여 시민들에게 혼동을 가중시키거나 피해를 입힌 사실이 확인될 경우 법적인 조치가 이루어질 수 있으니 유의해주시길 바랍니다.
+
+  ▶ 안전+ 이용 안내 
+ - 폭력적 또는 혐오스러운 콘텐츠 : 안전+는 모두에게 적합한 환경을 유지하기 위해 폭력적인 이미지를 허용하지 않으며 과도하게 폭력적인 동영상 또는 이미지를 삭제할 수 있습니다. 재난으로 인한 인명, 물적피해에 공유되는 이미지는 허용할 수 있습니다.
+ - 성적인 콘텐츠 : 안전+는 나체 이미지를 허용하지 않습니다.
+ - 스팸 혹은 혼동을 야기하는 콘텐츠 : 안전+는 원치 않는 이메일, 댓글, 좋아요 또는 기타 상업적 또는 피해를 주는 콘텐츠를 만들거나 전송하는 행위를 허용하지 않습니다.
+ - 허위정보를 유포하는 콘텐츠 : 안전+는 일어나지도 않은 재난을 허위로 유포하는 행위를 허용하지 않습니다. 허위정보로 인해 혼동을 야기할 경우 게시글을 삭제할 수 있습니다.
+ - 증오 또는 학대하는 콘텐츠 : 안전+는 폭력 위협, 혐오 발언 및 개인을 공격 대상으로 삼는 콘텐츠를 삭제합니다. 인종, 민족, 국적, 성, 성별, 성 정체성, 성적 지향, 종교, 장애 또는 질병을 기반으로 타인을 공격하거나 학대하는 행위를 허용하지 않습니다.
+ 
+  ▶ 게시물 신고 사유를 위반하면 어떻게 되나요?
+ - 안전+의 정책은 가이드라인을 위반하는 콘텐츠를 삭제하는 것입니다. 이미지 또는 관련 내용이 가이드라인을 따르지 않는 경우 게시물 전체가 삭제될 수 있습니다. 가이드라인을 위반하는 계정은 비활성화될 수 있습니다.'></textarea>
+            </div>
+            <div class="post-entry-1 border-bottom">
+			</div>
+            <div class="text-center">
+              <i class="fa-sharp fa-solid fa-camera fa-2x"></i>　
+              <i class="fa-sharp fa-solid fa-video fa-2x"></i>　
+              <input type="submit" value="글쓰기">
+            </div>
+            
+          </form>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- 여기까지 -->
+
+
+
+
+
+
 
             
           </div>
@@ -222,20 +270,24 @@
                   <button class="nav-link active" id="pills-popular-tab" data-bs-toggle="pill" data-bs-target="#pills-popular" type="button" role="tab" aria-controls="pills-popular" aria-selected="true">내 정보</button>
                 </li>
               </ul>
+
               <div class="tab-content" id="pills-tabContent">
 
                 <!-- Popular -->
                 <div class="tab-pane fade show active" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
                   <div class="post-entry-1 border-bottom">
-                  	<div class="box multiple-box-shadows">
-	                    <div class="post-meta author"></div>
-		                  <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
-		                  <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
-	                    <h2 class="mb-2"><a href="#">smhrd</a></h2>
-	                    <h3 class="mb-2">smhrd</h3>
-	                    <button></button>
-					</div>
+                    <div class="post-meta"></div>
+                    <h2 class="mb-2"><a href="#">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
+                    <span class="author mb-3 d-block">Jenny Wilson</span>
+                    <span class="author mb-3 d-block">Jenny Wilson</span>
                   </div>
+
+                  <div class="post-entry-1 border-bottom">
+                    <div class="post-meta"></div>
+                    <h2 class="mb-2"><a href="#">17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</a></h2>
+                    <span class="author mb-3 d-block">Jenny Wilson</span>
+                  </div>
+
                 </div> <!-- End Popular -->
 
 
@@ -245,7 +297,7 @@
             <div class="aside-block">
               <h3 class="aside-title">내 위치</h3>
               <div class="video-post">
-              	<iframe src="http://localhost:8090/Anjun_Plus/UserLocation.jsp" scrolling="no"></iframe>
+                 <iframe src="http://localhost:8087/Anjun_Plus/UserLocation.jsp"></iframe>
               </div>
             </div><!-- End Video -->
 
@@ -262,11 +314,9 @@
                 <li><a href="category.html">Travel</a></li>
               </ul>
             </div><!-- End Tags -->
-		
+
           </div>
-			<div class="button_container">
-			  <button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button>
-			</div>
+
         </div>
       </div>
     </section>

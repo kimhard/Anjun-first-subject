@@ -216,7 +216,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-9" data-aos="fade-up">
-            <form action="UpdateProfile" method="post">
+            <form action="UpdateProfile" method="post" class="inputform">
             <div class="col-lg-12 text-center mb-5">
               <h1 class="page-title">내 정보</h1>
             </div>
