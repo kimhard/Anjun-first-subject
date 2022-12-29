@@ -101,7 +101,7 @@ public class UserDAO {
 		try {
 			getConn();
 			// ID가 dto.getID()인 사람의 행을 수정하는 SQL문
-			String sql = "UPDATE anjun_user SET pw=?, nick=?, email=? WHERE id=?";
+			String sql = "UPDATE anjun_user SET user_pw=?, user_nick=?, user_email=? WHERE user_id=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getPw());
 			psmt.setString(2, dto.getNick());
@@ -121,7 +121,7 @@ public class UserDAO {
 		try {
 			getConn();
 			// 관리자가 사용자의 ID를 알고 사용자의 등급을 수정하는 SQL문
-			String sql = "UPDATE anjun_user SET grade=? WHERE id=?";
+			String sql = "UPDATE anjun_user SET user_grade=? WHERE user_id=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getGrade());
 			psmt.setString(2, dto.getId());

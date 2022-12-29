@@ -14,3 +14,6 @@ SELECT * FROM anjun_attendance WHERE TO_CHAR(at_time, 'YYYY:MM:DD') = (SELECT TO
 INSERT INTO anjun_attendance (at_time, user_id) VALUES('2022-12-06', 'smhrd');
 
 INSERT INTO anjun_attendence (at_time, user_id) values (?, ?)
+
+UPDATE anjun_user SET pw='1', nick='1', email='1@1' WHERE id='smhrd'
+UPDATE anjun_user SET user_pw='1', user_nick='1', user_email='1' WHERE user_id='smhrd'
