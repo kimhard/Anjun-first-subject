@@ -58,7 +58,7 @@ body, html {
 		}
 
 		// 마커 이미지의 주소
-		var markerImageUrl = 'https://i.postimg.cc/xj3dRgxD/User-Location.png', 
+		var markerImageUrl = 'httpsh://i.postimg.cc/xj3dRgxD/User-Location.png', 
 		    markerImageSize = new kakao.maps.Size(40, 42), // 마커 이미지의 크기
 		    markerImageOptions = { 
 		        offset : new kakao.maps.Point(19, 41)// 마커 좌표에 일치시킬 이미지 안의 좌표
