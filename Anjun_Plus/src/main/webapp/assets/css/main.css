@@ -38,11 +38,6 @@ hr.hr-5 {
   box-shadow: -1px -1px 3px 1px #F24464, 1px 1px 3px 1px #F24171;
 }
 
-<<<<<<< HEAD
-
-.img-user {
-
-=======
 .btn {
   border: none;
   display: block;
@@ -85,7 +80,6 @@ hr.hr-5 {
 .btn:hover:after {
   -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
   transform: translateX(-9%) translateY(-25%) rotate(45deg);
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-AI1/TeamAnjun.git
 }
 
 :root {
@@ -1218,7 +1212,7 @@ section {
   }
 }
 
-.contact .php-email-form {
+#main .inputform {
   box-shadow: 0 0 30px rgba(var(--color-black-rgb), 0.1);
   padding: 30px;
   background: var(--color-white);
@@ -1434,7 +1428,23 @@ section {
   color: var(--color-white);
 }
 
+/*
+ Noto Serif Korean Regular 400
+*/ 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap');
 
+.position-relative a{
+	color: white;
+}
 
+textarea::placeholder {
+  color: #ff6868;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15;
+}
+
+.post_icon {
+	padding-right: 100px;
+}
 
 

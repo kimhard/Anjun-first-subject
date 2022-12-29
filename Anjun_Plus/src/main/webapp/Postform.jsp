@@ -1,14 +1,12 @@
-<%@page import="Model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>ZenBlog Bootstrap Template - Contact</title>
+  <title>ZenBlog Bootstrap Template - Category</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -38,98 +36,70 @@
   * Author: BootstrapMade.com
   * License: https:///bootstrapmade.com/license/
   ======================================================== -->
-	<!-- 폰트어썸 script -->
-	<script src="https://kit.fontawesome.com/10cd32872a.js" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
-	<script type="text/javascript">
-		navigator.geolocation.getCurrentPosition(success, error);
-		
-		function success(position) {
-			console.log(position);
-			    const latitude = position.coords.latitude;  // 경도  
-			    const longitude = position.coords.longitude;  // 위도
-			    const coordsObj = {
-			        latitude,
-			        longitude
-			    };
-			    saveCoords(latitude, longitude);
-			    getWeather(latitude, longitude);
-		}
-	
-		function error() {
-			console.log("위치 정보를 가져올 수 없습니다." + err);
-		}
+   <!-- 폰트어썸 script -->
+   <script src="https://kit.fontawesome.com/10cd32872a.js" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
+   <script type="text/javascript">
+      navigator.geolocation.getCurrentPosition(success, error);
+      
+      function success(position) {
+         console.log(position);
+             const latitude = position.coords.latitude;  // 경도  
+             const longitude = position.coords.longitude;  // 위도
+             const coordsObj = {
+                 latitude,
+                 longitude
+             };
+             saveCoords(latitude, longitude);
+             getWeather(latitude, longitude);
+      }
+   
+      function error() {
+         console.log("위치 정보를 가져올 수 없습니다." + err);
+      }
 
-		function saveCoords(latitude, longitude) {
-			sessionStorage.setItem("userLat", latitude);
-			sessionStorage.setItem("userLng", longitude);
-			console.log(sessionStorage.getItem("userLat"));
-			console.log(sessionStorage.getItem("userLng"));
-		    }
-	
-		function requestCoords() {
-		    navigator.geolocation.getCurrentPosition(success, error);
-		}
-		
-		function getWeather(latitude, longitude) {
-			$.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=35.1074481&lon=126.8828409&appid=b408d025daceb6920be202dc72f52ccc&units=metric',function(data){
-				console.log(data.main.temp);
-				console.log(data.weather[0].main);
-				var $temp = data.main.temp;
-				var $weather = data.weather[0].main;
-				
-				$('.temp').prepend($temp);
-				if($weather=="Clouds"){
-					$('.weather').attr('class','weather fa-solid fa-cloud-sun');
-				}else if($weather=="Clear"){
-					$('.weather').attr('class','weather fa-solid fa-sun');
-				}else if($weather=="Thunderstorm"){
-					$('.weather').attr('class','weather fa-solid fa-cloud-bolt');
-				}else if($weather=="Drizzle"){
-					$('.weather').attr('class','weather fa-solid fa-cloud-rain');
-				}else if($weather=="Rain"){
-					$('.weather').attr('class','weather fa-solid fa-cloud-showers-heavy');
-				}else if($weather=="Snow"){
-					$('.weather').attr('class','weather fa-regular fa-snowflake');
-				}else if($weather=="Atmosphere"){
-					$('.weather').attr('class','weather fa-solid fa-smog');
-				}else{
-					$('.weather').attr('class','weather fa-solid fa-cloud');
-				}
-			})
-		}
-	</script>
+      function saveCoords(latitude, longitude) {
+         sessionStorage.setItem("userLat", latitude);
+         sessionStorage.setItem("userLng", longitude);
+         console.log(sessionStorage.getItem("userLat"));
+         console.log(sessionStorage.getItem("userLng"));
+          }
+   
+      function requestCoords() {
+          navigator.geolocation.getCurrentPosition(success, error);
+      }
+      
+      function getWeather(latitude, longitude) {
+         $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=35.1074481&lon=126.8828409&appid=b408d025daceb6920be202dc72f52ccc&units=metric',function(data){
+            console.log(data.main.temp);
+            console.log(data.weather[0].main);
+            var $temp = data.main.temp;
+            var $weather = data.weather[0].main;
+            
+            $('.temp').prepend($temp);
+            if($weather=="Clouds"){
+               $('.weather').attr('class','weather fa-solid fa-cloud-sun');
+            }else if($weather=="Clear"){
+               $('.weather').attr('class','weather fa-solid fa-sun');
+            }else if($weather=="Thunderstorm"){
+               $('.weather').attr('class','weather fa-solid fa-cloud-bolt');
+            }else if($weather=="Drizzle"){
+               $('.weather').attr('class','weather fa-solid fa-cloud-rain');
+            }else if($weather=="Rain"){
+               $('.weather').attr('class','weather fa-solid fa-cloud-showers-heavy');
+            }else if($weather=="Snow"){
+               $('.weather').attr('class','weather fa-regular fa-snowflake');
+            }else if($weather=="Atmosphere"){
+               $('.weather').attr('class','weather fa-solid fa-smog');
+            }else{
+               $('.weather').attr('class','weather fa-solid fa-cloud');
+            }
+         })
+      }
+   </script>
 </head>
 
 <body>
-<%
-	UserDTO dto = new UserDTO();
-
-	dto.setId("smhrd");
-	dto.setName("이창현");
-	dto.setRrn("123456-1234567");
-	dto.setGrade("C");
-	
-	String id = dto.getId();
-	String name = dto.getName();
-	String rrn = dto.getRrn();
-	String grade = dto.getGrade();
-	
-	if(grade.equals("A")){
-		grade = "VIP";
-	}else if(grade.equals("B")){
-		grade = "GOLD";
-	}else if(grade.equals("C")){
-		grade = "SILVER";
-	}else {
-		grade = "IRON";
-	}
-
-	session.setAttribute("id", id);
-%>
-
-
-
 
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top">
@@ -210,61 +180,83 @@
     </div>
 
   </header><!-- End Header -->
-  
+
   <main id="main">
     <section>
       <div class="container">
         <div class="row">
+
           <div class="col-md-9" data-aos="fade-up">
-            <form action="UpdateProfile" method="post" class="inputform">
+
+
+
+
+
+
+<!-- 여기에입력 --> 
+
+
+
+
+
+
+
+
+
+<div class="col-lg-12 text-center mb-5">
+
+<form action="PostService" method="post" class="inputform">
             <div class="col-lg-12 text-center mb-5">
-              <h1 class="page-title">내 정보</h1>
             </div>
             <div>
-              <h3>ID</h3>
-              <div class="form-control" name="id" required>
-                <%=id%>
-              </div>
-            </div><br>
-            <div>
-              <h3>이름</h3>
-              <div class="form-control" name="name" required>
-                <%=name%>
-              </div>
-            </div><br>
-            <div>
-              <h3>주민등록번호</h3>
-              <div class="form-control" name="rrn" required>
-                <%=rrn%>
-              </div>
-            </div><br>
-            <div>
-                <h3>등급</h3>
-                <div class="form-control" name="grade" required>
-                  <%=grade%>등급
-                </div>
-              </div><br>
-            <div class="form-group">
-              <h3>닉네임</h3>
-              <input type="text" class="form-control" name="nick" id="nick" placeholder="Your Nickname">
-            </div><br>
-            <div class="form-group">
-              <h3>비밀번호</h3>
-              <input type="password" class="form-control" name="pw" id="pw" placeholder="Your Password">
-            </div><br>
-            <div class="form-group">
-              <h3>EMAIL</h3>
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
-            </div><br>
-            <br>
-            <!-- <div class="text-center">
-              <button type="submit" formmethod="post" onclick="nextPage()">정보수정</button>
-            </div> -->
+              <textarea rows="20" style="width:100%;" name="post_content"
+placeholder='  ▶ 안전+ 게시물 작성 가이드라인
+
+ *게시글 작성 이전에 꼭 확인해주세요!*
+
+ 폭력적 또는 혐오스러운 콘텐츠, 성적인 콘텐츠, 스팸 혹은 혼동을 야기하는 콘텐츠, 허위정보를 유포하는 콘텐츠, 증오 또는 학대하는 콘텐츠 등의 특정 위반 사항이 있는 경우 삭제 처리 될 수 있으며, 이용이 제한될 수 있습니다. 
+
+ 의도적으로 허위 정보를 게시하여 시민들에게 혼동을 가중시키거나 피해를 입힌 사실이 확인될 경우 법적인 조치가 이루어질 수 있으니 유의해주시길 바랍니다.
+
+  ▶ 안전+ 이용 안내 
+ - 폭력적 또는 혐오스러운 콘텐츠 : 안전+는 모두에게 적합한 환경을 유지하기 위해 폭력적인 이미지를 허용하지 않으며 과도하게 폭력적인 동영상 또는 이미지를 삭제할 수 있습니다. 재난으로 인한 인명, 물적피해에 공유되는 이미지는 허용할 수 있습니다.
+ - 성적인 콘텐츠 : 안전+는 나체 이미지를 허용하지 않습니다.
+ - 스팸 혹은 혼동을 야기하는 콘텐츠 : 안전+는 원치 않는 이메일, 댓글, 좋아요 또는 기타 상업적 또는 피해를 주는 콘텐츠를 만들거나 전송하는 행위를 허용하지 않습니다.
+ - 허위정보를 유포하는 콘텐츠 : 안전+는 일어나지도 않은 재난을 허위로 유포하는 행위를 허용하지 않습니다. 허위정보로 인해 혼동을 야기할 경우 게시글을 삭제할 수 있습니다.
+ - 증오 또는 학대하는 콘텐츠 : 안전+는 폭력 위협, 혐오 발언 및 개인을 공격 대상으로 삼는 콘텐츠를 삭제합니다. 인종, 민족, 국적, 성, 성별, 성 정체성, 성적 지향, 종교, 장애 또는 질병을 기반으로 타인을 공격하거나 학대하는 행위를 허용하지 않습니다.
+ 
+  ▶ 게시물 신고 사유를 위반하면 어떻게 되나요?
+ - 안전+의 정책은 가이드라인을 위반하는 콘텐츠를 삭제하는 것입니다. 이미지 또는 관련 내용이 가이드라인을 따르지 않는 경우 게시물 전체가 삭제될 수 있습니다. 가이드라인을 위반하는 계정은 비활성화될 수 있습니다.'></textarea>
+            </div>
+            <div class="post-entry-1 border-bottom">
+			</div>
             <div class="text-center">
-              <input type="submit" value="정보수정">
+              <i class="fa-sharp fa-solid fa-camera fa-2x"></i>　
+              <i class="fa-sharp fa-solid fa-video fa-2x"></i>　
+              <input type="submit" value="글쓰기">
             </div>
             
           </form>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- 여기까지 -->
+
+
+
+
+
+
 
             
           </div>
@@ -305,7 +297,7 @@
             <div class="aside-block">
               <h3 class="aside-title">내 위치</h3>
               <div class="video-post">
-              	<iframe src="http://localhost:8087/Anjun_Plus/UserLocation.jsp"></iframe>
+                 <iframe src="http://localhost:8087/Anjun_Plus/UserLocation.jsp"></iframe>
               </div>
             </div><!-- End Video -->
 
@@ -329,11 +321,11 @@
       </div>
     </section>
   </main><!-- End #main -->
-  
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
 
+    
 
     <div class="footer-legal">
       <div class="container">
@@ -383,13 +375,6 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script type="text/javascript">
-	function nextPage()  {
-		$(location).attr('href', 'UpdateProfile');
-		}
-  
-  
-  </script>
 
 </body>
 
