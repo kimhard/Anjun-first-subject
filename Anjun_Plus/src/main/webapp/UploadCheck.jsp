@@ -54,6 +54,5 @@
 <title>Insert title here</title>
 </head>
 <body>
-	SUCCESS!!! <a href = "Upload.jsp"  >돌아가기</a>
 </body>
 </html>

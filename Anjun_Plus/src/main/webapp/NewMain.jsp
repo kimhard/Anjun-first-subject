@@ -31,12 +31,6 @@
   <link href="assets/css/variables.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: ZenBlog - v1.3.0
-  * Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
-  * Author: BootstrapMade.com
-  * License: https:///bootstrapmade.com/license/
-  ======================================================== -->
 	<!-- 폰트어썸 script -->
 	<script src="https://kit.fontawesome.com/10cd32872a.js" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
