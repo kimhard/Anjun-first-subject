@@ -289,11 +289,12 @@
                 <div class="row">          
                   <div class="col-12 mb-3">
                     <label for="comment-message">Message</label>
-
+					<form>
                     <textarea class="form-control" id="comment-message" placeholder="Enter your name" cols="30" rows="10"></textarea>
                   </div>
                   <div class="col-12">
                     <input type="submit" class="btn btn-primary" value="Post comment">
+					</form>
                   </div>
                 </div>
               </div>
