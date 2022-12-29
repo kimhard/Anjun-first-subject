@@ -236,10 +236,8 @@
 		                  <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
 	                    <h2 class="mb-2"><a href="#">smhrd</a></h2>
 	                    <h3 class="mb-2">smhrd</h3>
-	                    <div class="wrap">
-  							<a href="#" class="button">내 게시물</a>
-
-						</div>
+	                    
+						
 	                   
 					</div>
                   </div>
