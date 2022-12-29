@@ -1447,4 +1447,19 @@ textarea::placeholder {
 	padding-right: 100px;
 }
 
+.button2 {
+ 	  position:relative;	
+ 	  left:240px;
+      top:20px;
 
+}
+
+.button3 {
+ 	  position:relative;	
+ 	  left:250px;
+      top:20px;
+      
+}
+.button4 {
+	font-size:20px; padding:10px 10px;
+	}
