@@ -102,6 +102,8 @@
 
 <body>
 <%
+	UserDTO info = (UserDTO)session.getAttribute("info");
+
 	UserDTO dto = new UserDTO();
 
 	dto.setId("smhrd");
@@ -285,14 +287,28 @@
                 <div class="tab-pane fade show active" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
                   <div class="post-entry-1 border-bottom">
                   	<div class="box multiple-box-shadows">
-	                    <div class="post-meta author"></div>
-		                  <div class="photo"><img src="assets/img/person-2.jpg" alt class="img-fluid"></div>
-		                  <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
-	                    <h2 class="mb-2"><a href="#">smhrd</a></h2>
-	                    <h3 class="mb-2">smhrd</h3>
-	                    <button class="btn btn-primary btn-ghost btn-fill">
-						    내 게시글
-						  </button>
+	                    
+	                    
+	                    <% if(info != null) { %>
+								
+							<div class="post-meta author"></div>
+							<div class="photo"><img src="assets/img/person-2.jpg" alt class="img-fluid"></div>
+							            <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
+							<h2 class="mb-2"><a href="#">smhrd</a></h2>
+							<h3 class="mb-2">smhrd</h3>
+							<button class="btn btn-primary btn-ghost btn-fill">
+							  내 게시글
+							</button>
+							
+							<a href="LogoutService">로그아웃</a>
+								
+							<a href="UpdateProfile.jsp">개인정보수정</a>
+								
+								
+						<% }else{ %>
+							<a href="Login.jsp">로그인</a>
+						<% } %>
+	                    
 					</div>
                   </div>
                 </div> <!-- End Popular -->
