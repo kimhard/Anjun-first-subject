@@ -1,3 +1,4 @@
+<%@page import="Model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -99,7 +100,12 @@
 	</script>
 </head>
 
+
 <body>
+<%
+	UserDTO info = (UserDTO)session.getAttribute("info");
+
+%>
 
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top">
@@ -154,7 +160,7 @@
             </ul>
           </li>
 
-          <li><a href="about.html">대피소</a></li>
+          <li><a href="ShelterLocation.jsp">대피소</a></li>
           <li><a href="contact.html">이벤트</a></li>
         </ul>
       </nav><!-- .navbar -->
@@ -181,22 +187,25 @@
 
   </header><!-- End Header -->
 
-<!--  여기에 맵넣었음 -->
-
   <main id="main">
     <section>
       <div class="container">
         <div class="row">
 
           <div class="col-md-9" data-aos="fade-up">
+            <h3 class="category-title">주변 대피소</h3>
+
+            	<iframe src="ShelterLocation.jsp" scrolling="no" width="100%" height="100%"></iframe>
+            <div class="d-md-flex post-entry-2 half">
+            </div>
+
             
-            	 <div class="video-post">
-              	<src="http://localhost:8011/Anjun_Plus/UserLocation2.jsp" scrolling="no">
-              </div>            
           </div>
 
           <div class="col-md-3">
             <!-- ======= Sidebar ======= -->
+  
+            
             <div class="aside-block">
 
               <ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab" role="tablist">
@@ -210,12 +219,33 @@
                 <div class="tab-pane fade show active" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
                   <div class="post-entry-1 border-bottom">
                   	<div class="box multiple-box-shadows">
+                  	<%
+                  		if(info != null){
+                  			String grade = info.getGrade();
+                  			
+                  			if(grade.equals("A")){
+                  				grade = "VIP";
+                  			}else if(grade.equals("B")){
+                  				grade = "GOLD";
+                  			}else if(grade.equals("C")){
+                  				grade = "SILVER";
+                  			}else {
+                  				grade = "IRON";
+                  			}
+                  		%>
 	                    <div class="post-meta author"></div>
-		                  <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
+		                  <div class="photo"><img src="assets/img/person-2.jpg" alt class="img-fluid"></div>
 		                  <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
-	                    <h2 class="mb-2"><a href="#">smhrd</a></h2>
-	                    <h3 class="mb-2">smhrd</h3>
-	                    <button></button>
+	                    <h2 class="mb-2"><a href="Profile.jsp"><%=info.getId() %></a></h2>
+	                    <h3 class="mb-2"><%=grade %></h3>
+	                    <button class="btn btn-primary btn-ghost btn-fill">
+						    내 게시글
+						</button>
+						<button class="custom-btn btn-10"><a href="UpdateProfile.jsp">개인정보 수정</a></button>
+						<button class="custom-btn btn-10"><a href="LogoutService">로그아웃</a></button>
+                  	<%	}else { %>
+                  		<a href="Login.jsp">로그인</a>
+          			<%	}%>
 					</div>
                   </div>
                 </div> <!-- End Popular -->
@@ -227,7 +257,7 @@
             <div class="aside-block">
               <h3 class="aside-title">내 위치</h3>
               <div class="video-post">
-              	<iframe src="http://localhost:8089/Anjun_Plus/UserLocation.jsp" scrolling="no"></iframe>
+              	<iframe src="UserLocation.jsp" scrolling="no"></iframe>
               </div>
             </div><!-- End Video -->
 
@@ -244,18 +274,26 @@
                 <li><a href="category.html">Travel</a></li>
               </ul>
             </div><!-- End Tags -->
-
+		
           </div>
-
+			<div class="button_container">
+			  <button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button>
+			</div>
         </div>
       </div>
     </section>
+  
   </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-
     
+ 
+  <!-- ======= Footer ======= -->
+  
+  
+  
+  <footer id="footer" class="footer">
+  
+
+
 
     <div class="footer-legal">
       <div class="container">
@@ -265,6 +303,8 @@
             <div class="copyright">
               © Copyright <strong><span>ZenBlog</span></strong>. All Rights Reserved
             </div>
+            
+              
 
             <div class="credits">
               <!-- All the links in the footer should remain intact. -->
@@ -284,6 +324,7 @@
               <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
               <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
+            
 
           </div>
 
@@ -291,9 +332,11 @@
 
       </div>
     </div>
-
+ 
+ 
   </footer>
 
+	
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
@@ -305,6 +348,9 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  
+  
+
 
 </body>
 

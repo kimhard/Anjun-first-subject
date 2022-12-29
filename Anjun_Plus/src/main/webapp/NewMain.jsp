@@ -1,3 +1,4 @@
+<%@page import="Model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -101,6 +102,10 @@
 
 
 <body>
+<%
+	UserDTO info = (UserDTO)session.getAttribute("info");
+
+%>
 
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top">
@@ -155,7 +160,7 @@
             </ul>
           </li>
 
-          <li><a href="about.html">대피소</a></li>
+          <li><a href="Shelter.jsp">대피소</a></li>
           <li><a href="contact.html">이벤트</a></li>
         </ul>
       </nav><!-- .navbar -->
@@ -231,14 +236,33 @@
                 <div class="tab-pane fade show active" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
                   <div class="post-entry-1 border-bottom">
                   	<div class="box multiple-box-shadows">
+                  	<%
+                  		if(info != null){
+                  			String grade = info.getGrade();
+                  			
+                  			if(grade.equals("A")){
+                  				grade = "VIP";
+                  			}else if(grade.equals("B")){
+                  				grade = "GOLD";
+                  			}else if(grade.equals("C")){
+                  				grade = "SILVER";
+                  			}else {
+                  				grade = "IRON";
+                  			}
+                  		%>
 	                    <div class="post-meta author"></div>
 		                  <div class="photo"><img src="assets/img/person-2.jpg" alt class="img-fluid"></div>
 		                  <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
-	                    <h2 class="mb-2"><a href="Profile.jsp">smhrd</a></h2>
-	                    <h3 class="mb-2">smhrd</h3>
+	                    <h2 class="mb-2"><a href="Profile.jsp"><%=info.getId() %></a></h2>
+	                    <h3 class="mb-2"><%=grade %></h3>
 	                    <button class="btn btn-primary btn-ghost btn-fill">
 						    내 게시글
-						  </button>
+						</button>
+						<button class="custom-btn btn-10"><a href="UpdateProfile.jsp">개인정보 수정</a></button>
+						<button class="custom-btn btn-10"><a href="LogoutService">로그아웃</a></button>
+                  	<%	}else { %>
+                  		<a href="Login.jsp">로그인</a>
+          			<%	}%>
 					</div>
                   </div>
                 </div> <!-- End Popular -->
