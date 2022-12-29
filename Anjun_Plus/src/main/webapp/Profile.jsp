@@ -1,14 +1,13 @@
 <%@page import="Model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>ZenBlog Bootstrap Template - Contact</title>
+  <title>ZenBlog Bootstrap Template - Category</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -65,7 +64,7 @@
 			sessionStorage.setItem("userLng", longitude);
 			console.log(sessionStorage.getItem("userLat"));
 			console.log(sessionStorage.getItem("userLng"));
-		    }
+		}
 	
 		function requestCoords() {
 		    navigator.geolocation.getCurrentPosition(success, error);
@@ -103,6 +102,8 @@
 
 <body>
 <%
+	UserDTO info = (UserDTO)session.getAttribute("info");
+
 	UserDTO dto = new UserDTO();
 
 	dto.setId("smhrd");
@@ -270,7 +271,9 @@
           </div>
 
           <div class="col-md-3">
-            <!-- ======= Sidebar ======= -->
+<!-- ======= Sidebar ======= -->
+  
+            
             <div class="aside-block">
 
               <ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab" role="tablist">
@@ -278,24 +281,36 @@
                   <button class="nav-link active" id="pills-popular-tab" data-bs-toggle="pill" data-bs-target="#pills-popular" type="button" role="tab" aria-controls="pills-popular" aria-selected="true">내 정보</button>
                 </li>
               </ul>
-
               <div class="tab-content" id="pills-tabContent">
 
                 <!-- Popular -->
                 <div class="tab-pane fade show active" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
                   <div class="post-entry-1 border-bottom">
-                    <div class="post-meta"></div>
-                    <h2 class="mb-2"><a href="#">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
-                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                    <span class="author mb-3 d-block">Jenny Wilson</span>
+                  	<div class="box multiple-box-shadows">
+	                    
+	                    
+	                    <% if(info != null) { %>
+								
+							<div class="post-meta author"></div>
+							<div class="photo"><img src="assets/img/person-2.jpg" alt class="img-fluid"></div>
+							            <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
+							<h2 class="mb-2"><a href="#">smhrd</a></h2>
+							<h3 class="mb-2">smhrd</h3>
+							<button class="btn btn-primary btn-ghost btn-fill">
+							  내 게시글
+							</button>
+							
+							<a href="LogoutService">로그아웃</a>
+								
+							<a href="UpdateProfile.jsp">개인정보수정</a>
+								
+								
+						<% }else{ %>
+							<a href="Login.jsp">로그인</a>
+						<% } %>
+	                    
+					</div>
                   </div>
-
-                  <div class="post-entry-1 border-bottom">
-                    <div class="post-meta"></div>
-                    <h2 class="mb-2"><a href="#">17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</a></h2>
-                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                  </div>
-
                 </div> <!-- End Popular -->
 
 
@@ -305,7 +320,7 @@
             <div class="aside-block">
               <h3 class="aside-title">내 위치</h3>
               <div class="video-post">
-              	<iframe src="http://localhost:8087/Anjun_Plus/UserLocation.jsp"></iframe>
+              	<iframe src="http://localhost:8090/Anjun_Plus/UserLocation.jsp" scrolling="no"></iframe>
               </div>
             </div><!-- End Video -->
 
@@ -322,12 +337,15 @@
                 <li><a href="category.html">Travel</a></li>
               </ul>
             </div><!-- End Tags -->
-
+		
           </div>
-
+			<div class="button_container">
+			  <button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button>
+			</div>
         </div>
       </div>
     </section>
+  
   </main><!-- End #main -->
   
 
