@@ -1213,9 +1213,14 @@ section {
   }
 }
 
+
+
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+
+
 .footer {
   overflow: hidden;
   background: rgba(var(--color-black-rgb), 0.9);
@@ -1319,3 +1324,8 @@ section {
 .footer .credits a {
   color: var(--color-white);
 }
+
+
+
+
+
