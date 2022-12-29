@@ -1,7 +1,7 @@
 package Model;
 
 public class PostDTO {
-	
+
 	// 필드
 	private int post_seq; // 게시물 순번
 	private String post_content; // 게시물 내용
@@ -12,11 +12,11 @@ public class PostDTO {
 	private String post_hashtag; // 게시물 해시태그
 	private double post_lat; // 게시물 위도
 	private double post_lng; // 게시물 경도
-	
+
 	// 기본 생성자
 	public PostDTO() {
 	}
-	
+
 	// 생성자
 	public PostDTO(int post_seq, String post_content, String post_dt, String user_id, int post_likes, int post_dislikes,
 			String post_hashtag, double post_lat, double post_lng) {
@@ -31,10 +31,9 @@ public class PostDTO {
 		this.post_lat = post_lat;
 		this.post_lng = post_lng;
 	}
-	
+
 	// 생성자(글쓰기)
-	public PostDTO(String post_content, String user_id, String post_hashtag, double post_lat,
-			double post_lng) {
+	public PostDTO(String post_content, String user_id, String post_hashtag, double post_lat, double post_lng) {
 		super();
 		this.post_content = post_content;
 		this.user_id = user_id;
@@ -42,11 +41,14 @@ public class PostDTO {
 		this.post_lat = post_lat;
 		this.post_lng = post_lng;
 	}
-	
+
 	// 생성자(글삭제)
 	public PostDTO(int post_seq) {
 		super();
 		this.post_seq = post_seq;
+	}
+
+	public PostDTO(String content, String hashtag) {
 	}
 
 	// getter
@@ -122,5 +124,5 @@ public class PostDTO {
 	public void setPost_lng(double post_lng) {
 		this.post_lng = post_lng;
 	}
-	
+
 }

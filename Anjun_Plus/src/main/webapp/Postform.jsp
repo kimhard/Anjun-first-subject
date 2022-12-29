@@ -153,7 +153,7 @@
 		<div
 			class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-			<a href="index.html" class="logo d-flex align-items-center"> <!-- Uncomment the line below if you also wish to use an image logo -->
+			<a href="NewMain.jsp" class="logo d-flex align-items-center"> <!-- Uncomment the line below if you also wish to use an image logo -->
 				<img src="https://i.postimg.cc/j27n4qQh/removebg.png" alt="">
 				<h1>안전+</h1>
 			</a>
@@ -280,17 +280,17 @@
  - 안전+의 정책은 가이드라인을 위반하는 콘텐츠를 삭제하는 것입니다. 이미지 또는 관련 내용이 가이드라인을 따르지 않는 경우 게시물 전체가 삭제될 수 있습니다. 가이드라인을 위반하는 계정은 비활성화될 수 있습니다.'></textarea>
 								</div>
 								<div class="post-entry-1 border-bottom">
-									<input class="tag" placeholder="hash tags" name="hashtag">
+									<input class="tag" placeholder="hash tags" name="post_hashtag">
 
 								</div>
 								<div class="text-center">
 									<label for="image" class="fa-sharp fa-solid fa-camera fa-2x"
 										style="cursor: pointer;"></label> <input type="file"
-										name="file" id="image" style="display: none;" accept="image/*"
-										capture="camera"
+										name="post_file" id="image" style="display: none;"
+										accept="image/*" capture="camera"
 										onchange="getThumbnailPrivew(this,$('#cma_image'))" />
 									<button type="submit"
-										onclick="javascript: form.action='UploadCheck.jsp';return false;">추가</button>
+										onclick="javascript: btn(); form.action='UploadCheck.jsp'; return false;">upload</button>
 									<div id="image_container"></div>
 									<div id="cma_image"
 										style="width: 100%; max-width: 100%; border: 1px solid #000; display: none;"></div>
@@ -339,7 +339,7 @@
 							</ul>
 
 							<div class="tab-content" id="pills-tabContent">
-
+	
 								<!-- Popular -->
 								<div class="tab-pane fade show active" id="pills-popular"
 									role="tabpanel" aria-labelledby="pills-popular-tab">
@@ -487,6 +487,11 @@
       }
     </script>
 
+	<script>
+function btn(){
+    alert('사진이 업로드 되었습니다.');
+}
+</script>
 </body>
 
 </html>
