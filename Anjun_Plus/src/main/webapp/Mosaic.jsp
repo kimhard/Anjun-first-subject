@@ -7,8 +7,7 @@
 
 <title>Insert title here</title>
 <style type="text/css">
-<
-style>html, body {
+<style>html, body {
 	margin: 0;
 	padding: 0;
 }
@@ -41,7 +40,6 @@ style>html, body {
 #divCanvas #hover {
 	z-index: 3;
 }
-</style>
 </style>
 </head>
 <body>

@@ -34,6 +34,7 @@
    <script src="https://kit.fontawesome.com/10cd32872a.js" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
    <script type="text/javascript">
+   
       navigator.geolocation.getCurrentPosition(success, error);
       
       function success(position) {
@@ -225,13 +226,13 @@ placeholder='  ▶ 안전+ 게시물 작성 가이드라인
             <div class="post-entry-1 border-bottom">
 			</div>
             <div class="text-center">
-            <label for="input-file" class="fa-sharp fa-solid fa-camera fa-2x"></label>
-              <input type="file" name="file" id="input-file" style="display:none;" multiple="multiple">
+            <label for="input-file" class="fa-sharp fa-solid fa-camera fa-2x" style="cursor:pointer;"></label>
+              <input type="file" name="file" id="input-file" style="display:none;"/>
+              
               <button type="submit" onclick="javascript: form.action='UploadCheck.jsp';return false;">추가</button>
               <i class="fa-sharp fa-solid fa-video fa-2x"></i>　
               <input type="submit" value="글쓰기">
             </div>
-            
           </form>
 
 
@@ -371,6 +372,7 @@ placeholder='  ▶ 안전+ 게시물 작성 가이드라인
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
 
 </body>
 
