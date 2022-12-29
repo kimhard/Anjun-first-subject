@@ -201,12 +201,20 @@
                   <div class="name">
                   <!-- 게시자 아이디가 들어가는 곳 -->
                     <h3 class="m-0 p-0">Wade Warren</h3>
+					<a href="#" class="mx-2"><i
+					class="fa-solid fa-location-dot"></i></a>
+					<a href="#"class="mx-3"><i class="fa-solid fa-person-running"></i></a>
                   </div>
                 </div>
                 <!-- 내용이 들어가는 곳 -->
                 <h3><a href="single-post.html">What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</a></h3>
                 <!-- 작성일자가 들어가는 곳 -->
                 <div class="post-meta"> <span>Jul 5th '22</span></div>
+                <div class="like-dislike">
+					<a href="#" class="mx-2"><span class="Like"> <i
+					class="fa-regular fa-heart"></i></span></a> <a href="#" class="mx-2"><span
+					class="disLike"> <i class="fa-regular fa-thumbs-down"></i></span></a>
+                </div>
               	<hr class="hr-5"> 
               </div>
             </div>
@@ -234,7 +242,7 @@
 	                    <div class="post-meta author"></div>
 		                  <div class="photo"><img src="assets/img/person-2.jpg" alt class="img-fluid"></div>
 		                  <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
-	                    <h2 class="mb-2"><a href="#">smhrd</a></h2>
+	                    <h2 class="mb-2"><a href="Profile.jsp">smhrd</a></h2>
 	                    <h3 class="mb-2">smhrd</h3>
 	                    <button class="btn btn-primary btn-ghost btn-fill">
 						    내 게시글
