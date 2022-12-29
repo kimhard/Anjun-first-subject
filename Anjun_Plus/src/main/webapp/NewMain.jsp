@@ -245,7 +245,7 @@
             <div class="aside-block">
               <h3 class="aside-title">내 위치</h3>
               <div class="video-post">
-              	<iframe src="http://localhost:8089/Anjun_Plus/UserLocation.jsp" scrolling="no"></iframe>
+              	<iframe src="http://localhost:8090/Anjun_Plus/UserLocation.jsp" scrolling="no"></iframe>
               </div>
             </div><!-- End Video -->
 
@@ -262,9 +262,11 @@
                 <li><a href="category.html">Travel</a></li>
               </ul>
             </div><!-- End Tags -->
-
+		
           </div>
-
+			<div class="button_container">
+			  <button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button>
+			</div>
         </div>
       </div>
     </section>
