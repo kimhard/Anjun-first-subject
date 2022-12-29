@@ -160,7 +160,7 @@
             </ul>
           </li>
 
-          <li><a href="Shelter.jsp">대피소</a></li>
+          <li><a href="ShelterLocation.jsp">대피소</a></li>
           <li><a href="contact.html">이벤트</a></li>
         </ul>
       </nav><!-- .navbar -->
@@ -193,45 +193,10 @@
         <div class="row">
 
           <div class="col-md-9" data-aos="fade-up">
-            <h3 class="category-title">피드</h3>
+            <h3 class="category-title">주변 대피소</h3>
 
+            	<iframe src="ShelterLocation.jsp" scrolling="no" width="100%" height="100%"></iframe>
             <div class="d-md-flex post-entry-2 half">
-              <a href="single-post.html" class="me-4 thumbnail">
-              <!-- 게시물 이미지가 들어가는 곳 -->
-                <img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
-              </a>
-              <div>
-                <div class="d-flex align-items-center author post-author">
-                  <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
-                  <div class="name">
-                
-                  <!-- 게시자 아이디가 들어가는 곳 -->
-                    <h3 class="m-0 p-0">Wade Warren</h3>
-                    	
-                    
-                  </div><!--  대피소, 위치>--> 
-                  <div class="loc-dot">
-				<a href="#"class="button2"><i class="fa-solid fa-location-dot"fa-4x></i></a>
-				<a href="#"class="button3"><i class="fa-solid fa-person-running"fa-4x></i></a>
-				</div>
-                </div>
-                	<hr class="hr-5"> 
-                <!-- 내용이 들어가는 곳 -->
-                <h3><a href="single-post.html">What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</a></h3>
-                <!-- 작성일자가 들어가는 곳 -->
-                <div class="post-meta"> <span>Jul 5th '22</span></div>
-                
-                <!--  좋아요 싫어요 -->
-                <div class="like-dislike">
-					<a href="#" class="button4"><i	class="fa-regular fa-heart"></i></a> 
-					<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i></a>
-                </div>
-              	<hr class="hr-5"> 
-              	
-              	
-              	
-              	
-              </div>
             </div>
 
             
@@ -271,7 +236,6 @@
 	                    <div class="post-meta author"></div>
 		                  <div class="photo"><img src="assets/img/person-2.jpg" alt class="img-fluid"></div>
 		                  <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
-<<<<<<< HEAD
 	                    <h2 class="mb-2"><a href="Profile.jsp"><%=info.getId() %></a></h2>
 	                    <h3 class="mb-2"><%=grade %></h3>
 	                    <button class="btn btn-primary btn-ghost btn-fill">
@@ -282,13 +246,6 @@
                   	<%	}else { %>
                   		<a href="Login.jsp">로그인</a>
           			<%	}%>
-=======
-	                    <h2 class="mb-2"><a href="Profile.jsp">smhrd</a></h2>
-	                    <h3 class="mb-2">smhrd</h3>
-	                    
-						
-	                   
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-AI1/TeamAnjun.git
 					</div>
                   </div>
                 </div> <!-- End Popular -->
@@ -300,7 +257,7 @@
             <div class="aside-block">
               <h3 class="aside-title">내 위치</h3>
               <div class="video-post">
-              	<iframe src="http://localhost:8090/Anjun_Plus/UserLocation.jsp" scrolling="no"></iframe>
+              	<iframe src="UserLocation.jsp" scrolling="no"></iframe>
               </div>
             </div><!-- End Video -->
 
