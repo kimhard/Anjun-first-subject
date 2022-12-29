@@ -271,7 +271,6 @@
 	                    <div class="post-meta author"></div>
 		                  <div class="photo"><img src="assets/img/person-2.jpg" alt class="img-fluid"></div>
 		                  <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
-<<<<<<< HEAD
 	                    <h2 class="mb-2"><a href="Profile.jsp"><%=info.getId() %></a></h2>
 	                    <h3 class="mb-2"><%=grade %></h3>
 	                    <button class="btn btn-primary btn-ghost btn-fill">
@@ -282,13 +281,6 @@
                   	<%	}else { %>
                   		<a href="Login.jsp">로그인</a>
           			<%	}%>
-=======
-	                    <h2 class="mb-2"><a href="Profile.jsp">smhrd</a></h2>
-	                    <h3 class="mb-2">smhrd</h3>
-	                    
-						
-	                   
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-AI1/TeamAnjun.git
 					</div>
                   </div>
                 </div> <!-- End Popular -->
