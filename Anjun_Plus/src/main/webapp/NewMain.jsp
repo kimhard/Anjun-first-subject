@@ -63,7 +63,7 @@
 			sessionStorage.setItem("userLng", longitude);
 			console.log(sessionStorage.getItem("userLat"));
 			console.log(sessionStorage.getItem("userLng"));
-		    }
+		}
 	
 		function requestCoords() {
 		    navigator.geolocation.getCurrentPosition(success, error);
@@ -195,7 +195,7 @@
                 <img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
               </a>
               <div>
-                <div class="d-flex align-items-center author">
+                <div class="d-flex align-items-center author post-author">
                   <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
                   <div class="name">
                   <!-- 게시자 아이디가 들어가는 곳 -->
@@ -222,24 +222,20 @@
                   <button class="nav-link active" id="pills-popular-tab" data-bs-toggle="pill" data-bs-target="#pills-popular" type="button" role="tab" aria-controls="pills-popular" aria-selected="true">내 정보</button>
                 </li>
               </ul>
-
               <div class="tab-content" id="pills-tabContent">
 
                 <!-- Popular -->
                 <div class="tab-pane fade show active" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
                   <div class="post-entry-1 border-bottom">
-                    <div class="post-meta"></div>
-                    <h2 class="mb-2"><a href="#">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
-                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                    <span class="author mb-3 d-block">Jenny Wilson</span>
+                  	<div class="box multiple-box-shadows">
+	                    <div class="post-meta author"></div>
+		                  <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
+		                  <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
+	                    <h2 class="mb-2"><a href="#">smhrd</a></h2>
+	                    <h3 class="mb-2">smhrd</h3>
+	                    <button></button>
+					</div>
                   </div>
-
-                  <div class="post-entry-1 border-bottom">
-                    <div class="post-meta"></div>
-                    <h2 class="mb-2"><a href="#">17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</a></h2>
-                    <span class="author mb-3 d-block">Jenny Wilson</span>
-                  </div>
-
                 </div> <!-- End Popular -->
 
 
@@ -249,7 +245,7 @@
             <div class="aside-block">
               <h3 class="aside-title">내 위치</h3>
               <div class="video-post">
-              	<iframe src="http://localhost:8087/Anjun_Plus/UserLocation.jsp"></iframe>
+              	<iframe src="http://localhost:8089/Anjun_Plus/UserLocation.jsp" scrolling="no"></iframe>
               </div>
             </div><!-- End Video -->
 
