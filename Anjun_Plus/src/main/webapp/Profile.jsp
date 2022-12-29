@@ -1,12 +1,14 @@
+<%@page import="Model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>ZenBlog Bootstrap Template - Category</title>
+  <title>ZenBlog Bootstrap Template - Contact</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -63,7 +65,7 @@
 			sessionStorage.setItem("userLng", longitude);
 			console.log(sessionStorage.getItem("userLat"));
 			console.log(sessionStorage.getItem("userLng"));
-		}
+		    }
 	
 		function requestCoords() {
 		    navigator.geolocation.getCurrentPosition(success, error);
@@ -99,8 +101,35 @@
 	</script>
 </head>
 
-
 <body>
+<%
+	UserDTO dto = new UserDTO();
+
+	dto.setId("smhrd");
+	dto.setName("이창현");
+	dto.setRrn("123456-1234567");
+	dto.setGrade("C");
+	
+	String id = dto.getId();
+	String name = dto.getName();
+	String rrn = dto.getRrn();
+	String grade = dto.getGrade();
+	
+	if(grade.equals("A")){
+		grade = "VIP";
+	}else if(grade.equals("B")){
+		grade = "GOLD";
+	}else if(grade.equals("C")){
+		grade = "SILVER";
+	}else {
+		grade = "IRON";
+	}
+
+	session.setAttribute("id", id);
+%>
+
+
+
 
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top">
@@ -181,43 +210,67 @@
     </div>
 
   </header><!-- End Header -->
-
+  
   <main id="main">
     <section>
       <div class="container">
         <div class="row">
-
           <div class="col-md-9" data-aos="fade-up">
-            <h3 class="category-title">피드</h3>
-
-            <div class="d-md-flex post-entry-2 half">
-              <a href="single-post.html" class="me-4 thumbnail">
-              <!-- 게시물 이미지가 들어가는 곳 -->
-                <img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
-              </a>
-              <div>
-                <div class="d-flex align-items-center author post-author">
-                  <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
-                  <div class="name">
-                  <!-- 게시자 아이디가 들어가는 곳 -->
-                    <h3 class="m-0 p-0">Wade Warren</h3>
-                  </div>
-                </div>
-                <!-- 내용이 들어가는 곳 -->
-                <h3><a href="single-post.html">What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</a></h3>
-                <!-- 작성일자가 들어가는 곳 -->
-                <div class="post-meta"> <span>Jul 5th '22</span></div>
-              	<hr class="hr-5">  
-              </div>
+            <form action="UpdateProfile" method="post">
+            <div class="col-lg-12 text-center mb-5">
+              <h1 class="page-title">내 정보</h1>
             </div>
+            <div>
+              <h3>ID</h3>
+              <div class="form-control" name="id" required>
+                <%=id%>
+              </div>
+            </div><br>
+            <div>
+              <h3>이름</h3>
+              <div class="form-control" name="name" required>
+                <%=name%>
+              </div>
+            </div><br>
+            <div>
+              <h3>주민등록번호</h3>
+              <div class="form-control" name="rrn" required>
+                <%=rrn%>
+              </div>
+            </div><br>
+            <div>
+                <h3>등급</h3>
+                <div class="form-control" name="grade" required>
+                  <%=grade%>등급
+                </div>
+              </div><br>
+            <div class="form-group">
+              <h3>닉네임</h3>
+              <input type="text" class="form-control" name="nick" id="nick" placeholder="Your Nickname">
+            </div><br>
+            <div class="form-group">
+              <h3>비밀번호</h3>
+              <input type="password" class="form-control" name="pw" id="pw" placeholder="Your Password">
+            </div><br>
+            <div class="form-group">
+              <h3>EMAIL</h3>
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
+            </div><br>
+            <br>
+            <!-- <div class="text-center">
+              <button type="submit" formmethod="post" onclick="nextPage()">정보수정</button>
+            </div> -->
+            <div class="text-center">
+              <input type="submit" value="정보수정">
+            </div>
+            
+          </form>
 
             
           </div>
 
           <div class="col-md-3">
             <!-- ======= Sidebar ======= -->
-  
-            
             <div class="aside-block">
 
               <ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab" role="tablist">
@@ -225,20 +278,24 @@
                   <button class="nav-link active" id="pills-popular-tab" data-bs-toggle="pill" data-bs-target="#pills-popular" type="button" role="tab" aria-controls="pills-popular" aria-selected="true">내 정보</button>
                 </li>
               </ul>
+
               <div class="tab-content" id="pills-tabContent">
 
                 <!-- Popular -->
                 <div class="tab-pane fade show active" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
                   <div class="post-entry-1 border-bottom">
-                  	<div class="box multiple-box-shadows">
-	                    <div class="post-meta author"></div>
-		                  <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
-		                  <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
-	                    <h2 class="mb-2"><a href="#">smhrd</a></h2>
-	                    <h3 class="mb-2">smhrd</h3>
-	                    <button></button>
-					</div>
+                    <div class="post-meta"></div>
+                    <h2 class="mb-2"><a href="#">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
+                    <span class="author mb-3 d-block">Jenny Wilson</span>
+                    <span class="author mb-3 d-block">Jenny Wilson</span>
                   </div>
+
+                  <div class="post-entry-1 border-bottom">
+                    <div class="post-meta"></div>
+                    <h2 class="mb-2"><a href="#">17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</a></h2>
+                    <span class="author mb-3 d-block">Jenny Wilson</span>
+                  </div>
+
                 </div> <!-- End Popular -->
 
 
@@ -248,7 +305,7 @@
             <div class="aside-block">
               <h3 class="aside-title">내 위치</h3>
               <div class="video-post">
-              	<iframe src="http://localhost:8089/Anjun_Plus/UserLocation.jsp" scrolling="no"></iframe>
+              	<iframe src="http://localhost:8087/Anjun_Plus/UserLocation.jsp"></iframe>
               </div>
             </div><!-- End Video -->
 
@@ -271,17 +328,11 @@
         </div>
       </div>
     </section>
-  
   </main><!-- End #main -->
-    
- 
-  <!-- ======= Footer ======= -->
-  
-  
-  
-  <footer id="footer" class="footer">
   
 
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
 
 
     <div class="footer-legal">
@@ -292,8 +343,6 @@
             <div class="copyright">
               © Copyright <strong><span>ZenBlog</span></strong>. All Rights Reserved
             </div>
-            
-              
 
             <div class="credits">
               <!-- All the links in the footer should remain intact. -->
@@ -313,7 +362,6 @@
               <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
               <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
-            
 
           </div>
 
@@ -321,11 +369,9 @@
 
       </div>
     </div>
- 
- 
+
   </footer>
 
-	
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
@@ -337,9 +383,13 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script type="text/javascript">
+	function nextPage()  {
+		$(location).attr('href', 'UpdateProfile');
+		}
   
   
-
+  </script>
 
 </body>
 

@@ -22,6 +22,26 @@ hr.hr-5 {
   border-top: 3px double #8c8c8c;
 }
 
+.box {
+  width: 90%;
+  text-align: center;
+  margin: 20px auto;
+  margin-bottom: 30px;
+  padding: 50px 15px;
+  background-color: white;
+  color: white;
+  vertical-align: middle;
+  border-radius: 6px;
+}
+
+.multiple-box-shadows {
+  box-shadow: -1px -1px 3px 1px #F24464, 1px 1px 3px 1px #F24171;
+}
+
+.img-user {
+	
+}
+
 :root {
   scroll-behavior: smooth;
 }
@@ -141,7 +161,7 @@ section {
   height: 90px;
   transition: all 0.5s;
   z-index: 997;
-  background: #f2f2f2;
+  background: #ff6868;
 }
 
 .header.sticked {
@@ -156,7 +176,7 @@ section {
 .header .logo h1 {
   font-size: 30px;
   font-weight: 700;
-  color: var(--color-default);
+  color: white;
   font-family: var(--font-primary);
 }
 
@@ -250,7 +270,7 @@ section {
     font-family: var(--font-default);
     font-size: 16px;
     font-weight: 500;
-    color: rgba(var(--color-default-rgb), 1);
+    color: white;
     white-space: nowrap;
     transition: 0.3s;
   }
@@ -294,7 +314,7 @@ section {
     z-index: 99;
     opacity: 0;
     visibility: hidden;
-    background: var(--color-white);
+    background: black;
     box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
     transition: 0.3s;
     border-radius: 4px;
@@ -510,7 +530,6 @@ section {
 
 .author .photo img {
   width: 40px;
-  border-radius: 50%;
   margin-bottom: 0;
 }
 
@@ -1293,7 +1312,7 @@ section {
 }
 
 .footer .footer-legal {
-  background: var(--color-black);
+  background: #ff6868;
   padding: 40px 0;
 }
 

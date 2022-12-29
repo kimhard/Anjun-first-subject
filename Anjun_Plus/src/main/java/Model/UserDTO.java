@@ -23,6 +23,15 @@ public class UserDTO {
 		this.pw = pw;
 	}
 	
+	// 생성자 메소드(정보수정)
+	public UserDTO(String id, String pw, String nick, String email) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.nick = nick;
+		this.email = email;
+	}
+	
 	// 생성자 메소드(회원가입)
 	public UserDTO(String id, String pw, String nick, String name, String email, String rrn, String grade) {
 			super();
