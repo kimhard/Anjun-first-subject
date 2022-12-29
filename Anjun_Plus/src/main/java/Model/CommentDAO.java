@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class CommentDAO {
 
@@ -41,6 +42,42 @@ public class CommentDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	// 댓글 불러오기용 read()
+	public ArrayList<CommentDTO> read(int post_seq) {
+		ArrayList<CommentDTO> comments = new ArrayList<CommentDTO>();
+		CommentDTO comment = null;
+		try {
+			getConn();
+			String sql = "SELECT * FROM anjun_comment WHERE post_seq=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, post_seq);
+			System.out.println(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				int cmt_seq = rs.getInt(1);
+				post_seq = rs.getInt(2);
+				String cmt_content = rs.getString(3);
+				String cmt_date = rs.getString(4);
+				int cmt_likes = rs.getInt(5);
+				String user_id = rs.getString(6);
+				
+				comment = new CommentDTO(cmt_seq, post_seq, cmt_content, cmt_date, cmt_likes, user_id);
+				comments.add(comment);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			close();
+		}
+		return comments;
+		
+		
+		
+		
 	}
 
 	// 댓글쓰기용 comment()
