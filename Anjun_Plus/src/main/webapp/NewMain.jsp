@@ -250,14 +250,14 @@
 						<%	for(int i=0; i<mainPostList.size(); i++) {
 								
 								CommentDAO cmt = new CommentDAO();
-							   	ArrayList<CommentDTO> comments = cmt.read(mainPostList.get(i).getPost_seq()); %>
-							
+							   	ArrayList<CommentDTO> comments = cmt.read(mainPostList.get(i).getPost_seq());	%>
+								
 							
 						<!-- 포스트 시작 -->
-						<form id="frm" action="Blog.jsp" method="get">
+						<form id="frm<%=mainPostList.get(i).getPost_seq()%>" action="Blog.jsp" method="get">
 						<input type="hidden" name="post_seq" value="<%=mainPostList.get(i).getPost_seq()%>">
 						<div class="d-md-flex post-entry-2 half">
-							<a type="submit" onclick="document.getElementById('frm').submit();" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
+							<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
 								<img src="assets/img/post-landscape-6.jpg" alt=""
 								class="img-fluid">
 							</a>
