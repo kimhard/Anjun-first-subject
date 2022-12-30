@@ -155,7 +155,7 @@
           </li>
 
           <li><a href="Shelter.jsp">대피소</a></li>
-          <li><a href="UserStamp2.jsp">이벤트</a></li>
+          <li><a href="UserStamp2.jsp">출석</a></li>
         </ul>
       </nav><!-- .navbar -->
 

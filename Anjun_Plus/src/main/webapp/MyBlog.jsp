@@ -108,43 +108,7 @@
 
 
 <body>
-<%-- <%
-   /* UserDTO info = (UserDTO)session.getAttribute("info"); */
 
-   /* int post_seq = Integer.parseInt(request.getParameter("post_seq")); */
-
-   int post_seq = 22;
-   
-   PostDTO dto = new PostDTO();
-   PostDAO dao = new PostDAO();
-   CommentDAO cmt = new CommentDAO();
-   
-   PostDTO result = dao.read(post_seq);
-   
-   ArrayList<CommentDTO> comments = cmt.read(post_seq);
-   
-   
-   System.out.println(comments);
-   
-   /* String id = info.getId();
-   String nick = info.getNick();
-   String grade = info.getGrade();
-   
-   
-   
-   if(grade.equals("A")){
-      grade = "VIP";
-   }else if(grade.equals("B")){
-      grade = "GOLD";
-   }else if(grade.equals("C")){
-      grade = "SILVER";
-   }else {
-      grade = "IRON";
-   } */
-
-   
-   
-%> --%>
 <%
 	UserDTO info = (UserDTO)session.getAttribute("info");
 
@@ -205,7 +169,7 @@
 
 
 					<li><a href="Shelter.jsp">대피소</a></li>
-					<li><a href="UserStamp2.jsp">이벤트</a></li>
+					<li><a href="UserStamp2.jsp">출석</a></li>
 				</ul>
 			</nav>
 			<!-- .navbar -->

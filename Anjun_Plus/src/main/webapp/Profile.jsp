@@ -219,7 +219,7 @@
           </li>
 
           <li><a href="about.html">대피소</a></li>
-          <li><a href="contact.html">이벤트</a></li>
+          <li><a href="contact.html">출석</a></li>
         </ul>
       </nav><!-- .navbar -->
 

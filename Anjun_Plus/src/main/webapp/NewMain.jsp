@@ -12,6 +12,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+
 <title>안전+</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
@@ -104,11 +105,12 @@
 		}
 	</script>
 	
+	
 </head>
 
 
 <body>
-<%-- <%
+<%-- 
    /* UserDTO info = (UserDTO)session.getAttribute("info"); */
 
    /* int post_seq = Integer.parseInt(request.getParameter("post_seq")); */
@@ -142,9 +144,7 @@
       grade = "IRON";
    } */
 
-   
-   
-%> --%>
+   --%>
 <%
 	UserDTO info = (UserDTO)session.getAttribute("info");
 
@@ -205,7 +205,7 @@
 
 
 					<li><a href="Shelter.jsp">대피소</a></li>
-					<li><a href="UserStamp2.jsp">이벤트</a></li>
+					<li><a href="UserStamp2.jsp">출석</a></li>
 				</ul>
 			</nav>
 			<!-- .navbar -->
