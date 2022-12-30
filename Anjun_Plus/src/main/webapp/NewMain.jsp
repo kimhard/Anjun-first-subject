@@ -234,13 +234,13 @@
 									<span>Jul 5th '22</span>
 								</div>
 
+								<hr class="hr-5">
 								<!--  좋아요 싫어요 -->
 								<div class="like-dislike">
-									<a href="#" class="button4"><i class="fa-regular fa-heart"></i></a>
+									<a href="#" class="button4"><i class="fa-regular fa-heart"></i>5</a>
 									<a href="#" class="button4"><i
-										class="fa-regular fa-thumbs-down"></i></a>
+										class="fa-regular fa-thumbs-down"></i>5</a>
 								</div>
-								<hr class="hr-5">
 
 
 
@@ -296,10 +296,9 @@
 												<a href="Profile.jsp"><%=info.getId()%></a>
 											</h2>
 											<h3 class="mb-2"><%=grade%></h3>
-											<button class="btn btn-primary btn-ghost btn-fill">
-												내 게시글</button>
+											
 											<button class="custom-btn btn-10">
-												<a href="UpdateProfile.jsp">개인정보 수정</a>
+												<a href="MyBlog.jsp">내 게시물</a>
 											</button>
 											<button class="custom-btn btn-10">
 												<a href="LogoutService">로그아웃</a>

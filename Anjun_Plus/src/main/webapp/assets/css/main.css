@@ -1428,14 +1428,9 @@ textarea::placeholder {
 }
 .button4 {
 	position:relative;	
- 	left:250px;
+ 	left:350px;
 	font-size:20px; padding:10px 10px;
 	}
-.button5 {
-	position:relative;	
- 	left:280px;
-	font-size:20px; padding:10px 10px;
-	
-	}
+
 	
 
