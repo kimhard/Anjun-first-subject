@@ -22,7 +22,7 @@ public class PostService extends HttpServlet {
 		String hashtag = request.getParameter("post_hashtag");
 
 		PostDTO dto = new PostDTO(content, hashtag);
-		PostDAO dao = PostDAO();
+		PostDAO dao = new PostDAO();
 	}
 
 }
