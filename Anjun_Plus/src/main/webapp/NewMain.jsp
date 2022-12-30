@@ -161,7 +161,6 @@
 
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li><a href="single-post.html">Single Post</a></li>
 					<li class="dropdown"><a
 						href="ManualService?category=natural&query=flooding"><span>대응
 								요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>

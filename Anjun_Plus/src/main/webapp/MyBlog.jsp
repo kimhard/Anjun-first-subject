@@ -161,7 +161,6 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="single-post.html">Single Post</a></li>
           <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
