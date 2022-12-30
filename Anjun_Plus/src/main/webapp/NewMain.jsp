@@ -286,7 +286,7 @@
 								<!-- 내용이 들어가는 곳 -->
 								<h3>
 
-									<a type="submit" onclick="document.getElementById('frm').submit();"><%=mainPostList.get(i).getPost_content() %></a>
+									<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();"><%=mainPostList.get(i).getPost_content() %></a>
 								</h3>
 								<!-- 작성일자가 들어가는 곳 -->
 								<div class="post-meta">
