@@ -458,7 +458,10 @@
 								href="#" class="google-plus"><i class="bi bi-skype"></i></a> <a
 								href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
 						</div>
+
+
 					</div>
+
 				</div>
 
 			</div>

@@ -179,19 +179,21 @@ public class PostDAO {
 	}
 	
 	//이미지 업로드
-	public void ImgUpload() {
+	public int ImgUpload(PostDTO dto) {
 		try {
 			getConn();
-			
-			File file = new File("C:\\Users\\user\\first_project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Anjun_Plus\\uploadedFiles");
-			FileInputStream fis = new FileInputStream(file);
-			
-			String sql = "insert into anjun_file ";
+			String sql = "insert into anjun_file values(post_seq, ?, post_dt, ?, post_likes, post_dislikes, ?, post_lat, post_lng";
 			psmt = conn.prepareStatement(sql);
-			psmt.setBinaryStream(cnt, null);
+			psmt.setString(1, dto.getPost_content());
+			psmt.setString(2, dto.getUser_id());
+			psmt.setString(3, dto.getPost_hashtag());
+			cnt = psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			close();
 		}
+		return cnt;
 	}
 	
 

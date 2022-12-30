@@ -41,11 +41,6 @@ try {
 
 	type = multiRequest.getContentType(str); // 파일 확장자(파일종류/확장자명)
 	
-	if (str != null) {
-		File oldFile = new File(Folder + "\\" + original_filename);
-		File newFile = new File(Folder + "\\" + str + "사진.jpg");
-		oldFile.renameTo(newFile);
-	}
 	System.out.println("str : " + str);
 	System.out.println("filename : " + post_file);
 	System.out.println("original_filename : " + original_filename);
