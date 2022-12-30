@@ -105,7 +105,7 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="NewMain.jsp" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="https://i.postimg.cc/j27n4qQh/removebg.png" alt="">
         <h1>안전+</h1>
@@ -113,49 +113,48 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="single-post.html">Single Post</a></li>
-          <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a href="ManualService?category=natural&query=flooding"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
-                  <li><a href="#">침수</a></li>
-                  <li><a href="#">태풍</a></li>
-                  <li><a href="#">호우</a></li>
-                  <li><a href="#">낙뢰</a></li>
-                  <li><a href="#">강풍</a></li>
-                  <li><a href="#">풍랑</a></li>
-                  <li><a href="#">대설</a></li>
-                  <li><a href="#">폭염</a></li>
-                  <li><a href="#">황사</a></li>
-                  <li><a href="#">지진</a></li>
-                  <li><a href="#">해일</a></li>
-                  <li><a href="#">가뭄</a></li>
-                  <li><a href="#">홍수</a></li>
-                  <li><a href="#">산사태</a></li>
+                  <li><a href="ManualService?category=natural&query=flooding">침수</a></li>
+                  <li><a href="ManualService?category=natural&query=hurricane">태풍</a></li>
+                  <li><a href="ManualService?category=natural&query=downpour">호우</a></li>
+                  <li><a href="ManualService?category=natural&query=thunderstroke">낙뢰</a></li>
+                  <li><a href="ManualService?category=natural&query=gale">강풍</a></li>
+                  <li><a href="ManualService?category=natural&query=storm">풍랑</a></li>
+                  <li><a href="ManualService?category=natural&query=heavySnow">대설</a></li>
+                  <li><a href="ManualService?category=natural&query=heatWave">폭염</a></li>
+                  <li><a href="ManualService?category=natural&query=yellowDust">황사</a></li>
+                  <li><a href="ManualService?category=natural&query=earthquake">지진</a></li>
+                  <li><a href="ManualService?category=natural&query=tsunami">해일</a></li>
+                  <li><a href="ManualService?category=natural&query=drought">가뭄</a></li>
+                  <li><a href="ManualService?category=natural&query=flood">홍수</a></li>
+                  <li><a href="ManualService?category=natural&query=landslide">산사태</a></li>
                 </ul>
               </li>
               <li class="dropdown"><a href="#"><span>사회재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
-                  <li><a href="#">화재</a></li>
-                  <li><a href="#">산불</a></li>
-                  <li><a href="#">건축물붕괴</a></li>
-                  <li><a href="#">폭발</a></li>
-                  <li><a href="#">교통사고</a></li>
-                  <li><a href="#">전기ㆍ가스사고</a></li>
-                  <li><a href="#">철도ㆍ지하철사고</a></li>
-                  <li><a href="#">해양 선박사고</a></li>
-                  <li><a href="#">수질오염</a></li>
-                  <li><a href="#">정전 및 전력부족</a></li>
-                  <li><a href="#">해양오염사고</a></li>
-                  <li><a href="#">화학물질사고</a></li>
-                  <li><a href="#">미세먼지</a></li>
+                  <li><a href="ManualService?category=social&query=fire">화재</a></li>
+                  <li><a href="ManualService?category=social&query=wildfire">산불</a></li>
+                  <li><a href="ManualService?category=social&query=collapse">건축물붕괴</a></li>
+                  <li><a href="ManualService?category=social&query=explosion">폭발</a></li>
+                  <li><a href="ManualService?category=social&query=carAccident">교통사고</a></li>
+                  <li><a href="ManualService?category=social&query=electricGas">전기ㆍ가스사고</a></li>
+                  <li><a href="ManualService?category=social&query=railroad">철도ㆍ지하철사고</a></li>
+                  <li><a href="ManualService?category=social&query=shipCollision">해양 선박사고</a></li>
+                  <li><a href="ManualService?category=social&query=waterPollution">수질오염</a></li>
+                  <li><a href="ManualService?category=social&query=blackout">정전 및 전력부족</a></li>
+                  <li><a href="ManualService?category=social&query=marinePollution">해양오염사고</a></li>
+                  <li><a href="ManualService?category=social&query=chemicalAccident">화학물질사고</a></li>
+                  <li><a href="ManualService?category=social&query=particulate">미세먼지</a></li>
                 </ul>
               </li>
             </ul>
           </li>
 
           <li><a href="Shelter.jsp">대피소</a></li>
-          <li><a href="contact.html">이벤트</a></li>
+          <li><a href="UserStamp2.jsp">이벤트</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -272,7 +271,7 @@
 		
           </div>
 			<div class="button_container">
-			  <button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button>
+			  <a href = "Postform.jsp"><button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button></a>
 			</div>
         </div>
       </div>
