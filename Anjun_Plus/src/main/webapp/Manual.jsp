@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>ZenBlog Bootstrap Template - Category</title>
+  <title>안전+ 대응 요령</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -105,6 +105,8 @@
 <%
 	UserDTO info = (UserDTO)session.getAttribute("info");
 
+	String category = request.getParameter("category");
+	String query = request.getParameter("query");
 %>
 
   <!-- ======= Header ======= -->
@@ -120,7 +122,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="single-post.html">Single Post</a></li>
-          <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                   <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
@@ -160,7 +162,7 @@
             </ul>
           </li>
 
-          <li><a href="ShelterLocation.jsp">대피소</a></li>
+          <li><a href="Shelter.jsp">대피소</a></li>
           <li><a href="contact.html">이벤트</a></li>
         </ul>
       </nav><!-- .navbar -->
@@ -191,15 +193,37 @@
     <section>
       <div class="container">
         <div class="row">
-
-          <div class="col-md-9" data-aos="fade-up">
-            <h3 class="category-title">주변 대피소</h3>
-            	<iframe src="ShelterLocation.jsp" scrolling="no" width="100%" height="100%"></iframe>
+			<div class="col-md-9" data-aos="fade-up">
+            <h3 class="category-title">대응 요령</h3>
             <div class="d-md-flex post-entry-2 half">
+            	<div class="disaster">
+            		<div class="query">
+            			<%if(query.equals("flooding")) {%>
+            				<img src="https://www.safekorea.go.kr/idsiSFK/neo/ext/img/prevent/prevent21_20220915_01.png">
+            				<img src="https://www.safekorea.go.kr/idsiSFK/neo/ext/img/prevent/prevent21_20220915_02.png">
+            			<%} else if(query.equals("hurricane")) {%>
+            				<img src="https://www.smu.ac.kr/flexer/out//_attach/file/2021/03//kTDUBYxtLBrgAynDfEcr.pdf.files//00001.png">
+            			<%} else if(query.equals("downpour")) {%>
+            				<img src="https://www.smu.ac.kr/flexer/out//_attach/file/2021/03//kTDUBYxtLBrgAynDfEcr.pdf.files//00001.png">
+            			<%} else if(query.equals("thunderstroke")) {%>
+            				<img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA2MjNfOTcg/MDAxNjI0NDMyOTA4NTAx.v0NVhKGunSPBf1Trwhtt_twDgd0J3-WgSD3I3Lm3WpMg.GT_o4GRBOAaH_ZqgOg4IoVFmyzSnZF0XzWU5-maVyZ4g.PNG.gccity_blog/%EB%82%99%EB%A2%B0_%EA%B5%AD%EB%AF%BC%ED%96%89%EB%8F%99%EC%9A%94%EB%A0%B9.png?type=w800">
+            			<%} else if(query.equals("gale")) {%>
+            			<%} else if(query.equals("storm")) {%>
+            			<%} else if(query.equals("heavySnow")) {%>
+            			<%} else if(query.equals("heatWave")) {%>
+            				<img src="https://www.smu.ac.kr/flexer/out//_attach/file/2021/03//kTDUBYxtLBrgAynDfEcr.pdf.files//00003.png">
+            			<%} else if(query.equals("yellowDust")) {%>
+            			<%} else if(query.equals("earthquake")) {%>
+            			<%} else if(query.equals("tsunami")) {%>
+            			<%} else if(query.equals("drought")) {%>
+            			<%} else if(query.equals("flood")) {%>
+            			<%} else if(query.equals("landslide")) {%>
+            			<%} %>
+            		</div>
+            	</div>
             </div>
           </div>
           <div class="col-md-3">
-          
             <!-- ======= Sidebar ======= -->
   
             
