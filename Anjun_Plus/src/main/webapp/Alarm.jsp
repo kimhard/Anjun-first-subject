@@ -12,7 +12,7 @@
 
 	<script type="text/javascript">
 	//권한 요청하기
-		window.onload = function() {
+		window.onload = function() {                                 
 			if (window.Notification) {
 				Notification.requestPermission();
 			}

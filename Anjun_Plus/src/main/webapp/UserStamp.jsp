@@ -11,17 +11,14 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-
 <style type="text/css">
 body {
 	padding:1.5em;
 	background: #f5f5f5
 }
-
 h1 {
 	text-align: center;
 }
-
 table {
 	margin: auto;
 	border: 1px #a39485 solid;
@@ -31,18 +28,15 @@ table {
 	border-radius: 5px;
 	overflow: hidden;
 }
-
 th {
 	text-align: center;
 }
-
 td {
 	text-align: right;
 	vertical-align: text-top; 
 	width: 100px;
 	height: 100px;
 }
-
 thead {
 	font-weight: bold;
 	color: #fff;
@@ -57,19 +51,15 @@ td {
 	border-bottom: 1px solid rgba(0,0,0,.1);
 	background: #fff;
 }
-
 a {
 	color: #73685d;
 }
-
 #sat {
 	color: blue;
 }
-
 #sun {
 	color: red;
 }
-
 .good {
 	float: left;
 }
@@ -130,20 +120,18 @@ a {
 	int day = 1;
 	
 	
-
 	// Calendar 객체 생성 (오늘의 대한 정보)
 	Calendar cal = Calendar.getInstance();
 	// 희망 연도, 월, 일 셋팅
 	// 월의 범위는 0~11 이기 때문에 실제월 -1
 	// 일은 달력이 1일부터 시작하기 때문에 1일로 셋팅
 	// 요일 구하기(월의 첫날)
-	cal.set(year, month-1, day);
+		cal.set(year, month-1, day);
 	
 	// 달의 마지막 날짜를 구함 
 	int lastOfDate = cal.getActualMaximum(Calendar.DATE);
 	// 주를  구함 1일요일 ,2월요일
 	int week = cal.get(Calendar.DAY_OF_WEEK);
-
 	// 세션받아온다
 	request.getSession();
 	// 임시로 세션입력해둠(나중에삭제)
@@ -204,7 +192,7 @@ a {
     </thead>
     <tbody>
     <tr>
-
+    
 <%
 	// 첫째주 시작일만큼 빈칸 생성
 	int cnt=0;
@@ -225,12 +213,12 @@ a {
 	for(int i=day; i<=nextweek; i++){%>
 		<td>
 		<%if(stampList.get(i-1)==1){%>
-			<div class="good"><img src="img/good80.jpg"></div>
+			<div  class="good"><img src="img/good80.jpg"></div>
 		<%} %><%=i%></td><%
 		day++;
 		cnt++;
 	}
-	%></tr><tr><%
+		%></tr><tr><%
 	nextweek-=cnt;
 	
 	// 둘째주부터 달력 생성 및 도장 확인
@@ -238,9 +226,9 @@ a {
 		if(nextweek%7==0){
 			%></tr><tr><%
 		}%>
-		<td>
+				<td>
 		<%if(stampList.get(i-1)==1){%>
-			<div  class="good"><img src="img/good80.jpg"></div>
+			<div class="good"><img src="img/good80.jpg"></div>
 		<%} %><%=i%></td><%
 		nextweek++; 
 	}
@@ -248,6 +236,5 @@ a {
 	</tr>
     </tbody>
 </table>
-
 </body>
 </html>

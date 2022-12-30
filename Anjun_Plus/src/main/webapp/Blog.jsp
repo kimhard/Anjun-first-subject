@@ -113,6 +113,9 @@
 
 	/* int post_seq = Integer.parseInt(request.getParameter("post_seq")); */
 
+	UserDTO info = new UserDTO("smhrd", "3", "3", "스인재", "3@3", "111111-1111111", "C");
+	session.setAttribute("info", info);
+	
 	int post_seq = 22;
 	
 	PostDTO dto = new PostDTO();
@@ -126,7 +129,7 @@
 	
 	System.out.println(comments);
 	
-	/* String id = info.getId();
+	String id = info.getId();
 	String nick = info.getNick();
 	String grade = info.getGrade();
 	
@@ -140,17 +143,21 @@
 		grade = "SILVER";
 	}else {
 		grade = "IRON";
-	} */
+	} 
 
 	
 	
+%>
+<%
+	/* UserDTO info = (UserDTO)session.getAttribute("info"); */
+
 %>
 
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="NewMain.jsp" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="https://i.postimg.cc/j27n4qQh/removebg.png" alt="">
         <h1>안전+</h1>
@@ -238,7 +245,7 @@
             
             <div class="single-post">
             
-              <div class="post-meta"><span><%=result.getPost_dt()%></span></div>
+              <div class="post-meta"><span><%=result.getPost_dt().substring(0, 16)%></span></div>
               <!-- 날짜 -->
               <h1 class="mb-5"><%=result.getUser_id()%></h1>
               <!-- 아이디 -->
@@ -254,7 +261,7 @@
 
             <!-- ======= Comments ======= -->
             <div class="comments">
-              <h5 class="comment-title py-4"><%=comments.size() %> 댓글</h5>
+              <h5 class="comment-title py-4">댓글 <%=comments.size() %></h5>
               
               <%for(int i=0; i<comments.size(); i++) {%>
 	              <div class="comment d-flex">
@@ -289,11 +296,15 @@
                 <div class="row">          
                   <div class="col-12 mb-3">
                     <label for="comment-message">Message</label>
-
-                    <textarea class="form-control" id="comment-message" placeholder="Enter your name" cols="30" rows="10"></textarea>
+					<form action="CommentService" method="get">
+					
+                    <textarea class="form-control" name="cmt_content" id="comment-message" placeholder="Enter your name" cols="30" rows="10"></textarea>
                   </div>
+                  <input type="hidden" name="post_seq" value="<%=result.getPost_seq()%>">
+                  <input type="hidden" name="user_id" value="<%=result.getUser_id()%>">
                   <div class="col-12">
                     <input type="submit" class="btn btn-primary" value="Post comment">
+					</form>
                   </div>
                 </div>
               </div>
@@ -318,11 +329,35 @@
                 <div class="tab-pane fade show active" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
                   <div class="post-entry-1 border-bottom">
                   	<div class="box multiple-box-shadows">
+                  	<%
+                  		if(info != null){
+                  			grade = info.getGrade();
+                  			
+                  			if(grade.equals("A")){
+                  				grade = "VIP";
+                  			}else if(grade.equals("B")){
+                  				grade = "GOLD";
+                  			}else if(grade.equals("C")){
+                  				grade = "SILVER";
+                  			}else {
+                  				grade = "IRON";
+                  			}
+                  		%>
 	                    <div class="post-meta author"></div>
 		                  <div class="photo"><img src="assets/img/person-2.jpg" alt class="img-fluid"></div>
 		                  <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
-	                    <h2 class="mb-2"><a href="Profile.jsp">smhrd</a></h2>
-	                    <h3 class="mb-2">smhrd</h3>
+	                    <h2 class="mb-2"><a href="Profile.jsp"><%= info.getId() %></a></h2>
+	                    <h3 class="mb-2"><%= grade %></h3>
+	                    <button class="btn btn-primary btn-ghost btn-fill">
+						    내 게시글
+						</button>
+						<button class="custom-btn btn-10"><a href="MyBlog.jsp">내 게시물</a></button>
+						<button class="custom-btn btn-10"><a href="LogoutService">로그아웃</a></button>
+                  	<%	}else { %>
+                  		<a href="Login.jsp">로그인</a>
+          			<%	}%>
+	                 
+
 	                    
 						
 	                   
