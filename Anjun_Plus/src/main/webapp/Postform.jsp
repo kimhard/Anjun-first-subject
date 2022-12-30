@@ -301,8 +301,10 @@
 										style="width: 100%; max-width: 100%; border: 1px solid #000; display: none;"></div>
 
 
-									<i class="fa-sharp fa-solid fa-video fa-2x"></i> <input
-										type="submit" value="글쓰기">
+									<i class="fa-sharp fa-solid fa-video fa-2x"></i> 
+									
+									
+									<input type="submit" value="글쓰기">
 								</div>
 							</form>
 
