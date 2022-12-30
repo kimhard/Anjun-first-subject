@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>안전+</title>
+  <title>안전+ 대응 요령</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -105,6 +105,8 @@
 <%
 	UserDTO info = (UserDTO)session.getAttribute("info");
 
+	String category = request.getParameter("category");
+	String query = request.getParameter("query");
 %>
 
   <!-- ======= Header ======= -->
@@ -124,37 +126,37 @@
             <ul>
               <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
-                  <li><a href="#">침수</a></li>
-                  <li><a href="#">태풍</a></li>
-                  <li><a href="#">호우</a></li>
-                  <li><a href="#">낙뢰</a></li>
-                  <li><a href="#">강풍</a></li>
-                  <li><a href="#">풍랑</a></li>
-                  <li><a href="#">대설</a></li>
-                  <li><a href="#">폭염</a></li>
-                  <li><a href="#">황사</a></li>
-                  <li><a href="#">지진</a></li>
-                  <li><a href="#">해일</a></li>
-                  <li><a href="#">가뭄</a></li>
-                  <li><a href="#">홍수</a></li>
-                  <li><a href="#">산사태</a></li>
+                  <li><a href="ManualService?category=natural&query=flooding">침수</a></li>
+                  <li><a href="ManualService?category=natural&query=hurricane ">태풍</a></li>
+                  <li><a href="ManualService?category=natural&query=downpour">호우</a></li>
+                  <li><a href="ManualService?category=natural&query=thunderstroke">낙뢰</a></li>
+                  <li><a href="ManualService?category=natural&query=gale">강풍</a></li>
+                  <li><a href="ManualService?category=natural&query=storm">풍랑</a></li>
+                  <li><a href="ManualService?category=natural&query=heavySnow">대설</a></li>
+                  <li><a href="ManualService?category=natural&query=heatWave">폭염</a></li>
+                  <li><a href="ManualService?category=natural&query=yellowDust">황사</a></li>
+                  <li><a href="ManualService?category=natural&query=earthquake">지진</a></li>
+                  <li><a href="ManualService?category=natural&query=tsunami">해일</a></li>
+                  <li><a href="ManualService?category=natural&query=drought">가뭄</a></li>
+                  <li><a href="ManualService?category=natural&query=flood">홍수</a></li>
+                  <li><a href="ManualService?category=natural&query=landslide">산사태</a></li>
                 </ul>
               </li>
               <li class="dropdown"><a href="#"><span>사회재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
-                  <li><a href="#">화재</a></li>
-                  <li><a href="#">산불</a></li>
-                  <li><a href="#">건축물붕괴</a></li>
-                  <li><a href="#">폭발</a></li>
-                  <li><a href="#">교통사고</a></li>
-                  <li><a href="#">전기ㆍ가스사고</a></li>
-                  <li><a href="#">철도ㆍ지하철사고</a></li>
-                  <li><a href="#">해양 선박사고</a></li>
-                  <li><a href="#">수질오염</a></li>
-                  <li><a href="#">정전 및 전력부족</a></li>
-                  <li><a href="#">해양오염사고</a></li>
-                  <li><a href="#">화학물질사고</a></li>
-                  <li><a href="#">미세먼지</a></li>
+                 <li><a href="ManualService?category=social&query=fire">화재</a></li>
+                  <li><a href="ManualService?category=social&query=wildfire">산불</a></li>
+                  <li><a href="ManualService?category=social&query=collapse">건축물붕괴</a></li>
+                  <li><a href="ManualService?category=social&query=explosion">폭발</a></li>
+                  <li><a href="ManualService?category=social&query=carAccident">교통사고</a></li>
+                  <li><a href="ManualService?category=social&query=electricGas">전기ㆍ가스사고</a></li>
+                  <li><a href="ManualService?category=social&query=railroad">철도ㆍ지하철사고</a></li>
+                  <li><a href="ManualService?category=social&query=shipCollision">해양 선박사고</a></li>
+                  <li><a href="ManualService?category=social&query=waterPollution">수질오염</a></li>
+                  <li><a href="ManualService?category=social&query=blackout">정전 및 전력부족</a></li>
+                  <li><a href="ManualService?category=social&query=marinePollution">해양오염사고</a></li>
+                  <li><a href="ManualService?category=social&query=chemicalAccident">화학물질사고</a></li>
+                  <li><a href="ManualService?category=social&query=particulate">미세먼지</a></li>
                 </ul>
               </li>
             </ul>
@@ -191,52 +193,36 @@
     <section>
       <div class="container">
         <div class="row">
-
-          <div class="col-md-9" data-aos="fade-up">
-            <h3 class="category-title">피드</h3>
-
+			<div class="col-md-9" data-aos="fade-up">
+            <h3 class="category-title">대응 요령</h3>
             <div class="d-md-flex post-entry-2 half">
-              <a href="single-post.html" class="me-4 thumbnail">
-              <!-- 게시물 이미지가 들어가는 곳 -->
-                <img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
-              </a>
-              <div>
-                <div class="d-flex align-items-center author post-author">
-                  <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
-                  <div class="name">
-                
-                  <!-- 게시자 아이디가 들어가는 곳 -->
-                    <h3 class="m-0 p-0">Wade Warren</h3>
-                    	
-                    
-                  </div><!--  대피소, 위치>--> 
-                  <div class="loc-dot">
-				<a href="#"class="button2"><i class="fa-solid fa-location-dot"fa-4x></i></a>
-				<a href="#"class="button3"><i class="fa-solid fa-person-running"fa-4x></i></a>
-				</div>
-                </div>
-                	<hr class="hr-5"> 
-                <!-- 내용이 들어가는 곳 -->
-                <h3><a href="single-post.html">What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</a></h3>
-                <!-- 작성일자가 들어가는 곳 -->
-                <div class="post-meta"> <span>Jul 5th '22</span></div>
-                
-                <!--  좋아요 싫어요 -->
-                <div class="like-dislike">
-					<a href="#" class="button4"><i	class="fa-regular fa-heart"></i></a> 
-					<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i></a>
-                </div>
-              	<hr class="hr-5"> 
-              	
-              	
-              	
-              	
-              </div>
+            	<div class="disaster">
+            		<div class="query">
+            			<%if(query.equals("flooding")) {%>
+            				<img src="https://www.safekorea.go.kr/idsiSFK/neo/ext/img/prevent/prevent21_20220915_01.png">
+            				<img src="https://www.safekorea.go.kr/idsiSFK/neo/ext/img/prevent/prevent21_20220915_02.png">
+            			<%} else if(query.equals("hurricane")) {%>
+            				<img src="https://www.smu.ac.kr/flexer/out//_attach/file/2021/03//kTDUBYxtLBrgAynDfEcr.pdf.files//00001.png">
+            			<%} else if(query.equals("downpour")) {%>
+            				<img src="https://www.smu.ac.kr/flexer/out//_attach/file/2021/03//kTDUBYxtLBrgAynDfEcr.pdf.files//00001.png">
+            			<%} else if(query.equals("thunderstroke")) {%>
+            				<img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA2MjNfOTcg/MDAxNjI0NDMyOTA4NTAx.v0NVhKGunSPBf1Trwhtt_twDgd0J3-WgSD3I3Lm3WpMg.GT_o4GRBOAaH_ZqgOg4IoVFmyzSnZF0XzWU5-maVyZ4g.PNG.gccity_blog/%EB%82%99%EB%A2%B0_%EA%B5%AD%EB%AF%BC%ED%96%89%EB%8F%99%EC%9A%94%EB%A0%B9.png?type=w800">
+            			<%} else if(query.equals("gale")) {%>
+            			<%} else if(query.equals("storm")) {%>
+            			<%} else if(query.equals("heavySnow")) {%>
+            			<%} else if(query.equals("heatWave")) {%>
+            				<img src="https://www.smu.ac.kr/flexer/out//_attach/file/2021/03//kTDUBYxtLBrgAynDfEcr.pdf.files//00003.png">
+            			<%} else if(query.equals("yellowDust")) {%>
+            			<%} else if(query.equals("earthquake")) {%>
+            			<%} else if(query.equals("tsunami")) {%>
+            			<%} else if(query.equals("drought")) {%>
+            			<%} else if(query.equals("flood")) {%>
+            			<%} else if(query.equals("landslide")) {%>
+            			<%} %>
+            		</div>
+            	</div>
             </div>
-
-            
           </div>
-
           <div class="col-md-3">
             <!-- ======= Sidebar ======= -->
   
