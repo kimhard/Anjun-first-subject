@@ -1,9 +1,9 @@
+<%@page import="Model.UserDTO"%>
 <%@page import="Model.CommentDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.CommentDAO"%>
 <%@page import="Model.PostDAO"%>
 <%@page import="Model.PostDTO"%>
-<%@page import="Model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -105,65 +105,49 @@
 	</script>
 </head>
 
+
 <body>
+<%
+   /* UserDTO info = (UserDTO)session.getAttribute("info"); */
+
+   /* int post_seq = Integer.parseInt(request.getParameter("post_seq")); */
+
+   int post_seq = 22;
+   
+   PostDTO dto = new PostDTO();
+   PostDAO dao = new PostDAO();
+   CommentDAO cmt = new CommentDAO();
+   
+   PostDTO result = dao.read(post_seq);
+   
+   ArrayList<CommentDTO> comments = cmt.read(post_seq);
+   
+   
+   System.out.println(comments);
+   
+   /* String id = info.getId();
+   String nick = info.getNick();
+   String grade = info.getGrade();
+   
+   
+   
+   if(grade.equals("A")){
+      grade = "VIP";
+   }else if(grade.equals("B")){
+      grade = "GOLD";
+   }else if(grade.equals("C")){
+      grade = "SILVER";
+   }else {
+      grade = "IRON";
+   } */
+
+   
+   
+%>
 <%
 	UserDTO info = (UserDTO)session.getAttribute("info");
 
-	
-	String id = info.getId();
-	String name = info.getName();
-	String rrn = info.getRrn();
-	String grade = info.getGrade();
-	
-	if(grade.equals("A")){
-		grade = "VIP";
-	}else if(grade.equals("B")){
-		grade = "GOLD";
-	}else if(grade.equals("C")){
-		grade = "SILVER";
-	}else {
-		grade = "IRON";
-	}
-
-	session.setAttribute("id", id);
-	
-	/*UserDTO info = (UserDTO)session.getAttribute("info"); */
-
-	   /* int post_seq = Integer.parseInt(request.getParameter("post_seq")); */
-
-	   int post_seq = 22;
-	  
-	   PostDAO dao = new PostDAO();
-	   CommentDAO cmt = new CommentDAO();
-	  
-	   PostDTO result = dao.read(post_seq);
-	   
-	   ArrayList<CommentDTO> comments = cmt.read(post_seq);
-
-	   
-	   System.out.println(comments);
-	   
-	   /* String id = info.getId();
-	   String nick = info.getNick();
-	   String grade = info.getGrade();
-	   
-	   
-	   
-	   if(grade.equals("A")){
-	      grade = "VIP";
-	   }else if(grade.equals("B")){
-	      grade = "GOLD";
-	   }else if(grade.equals("C")){
-	      grade = "SILVER";
-	   }else {
-	      grade = "IRON";
-	   } */
-	
-	
-
-	
 %>
-
 
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top">
@@ -244,67 +228,62 @@
     </div>
 
   </header><!-- End Header -->
-  
+
   <main id="main">
     <section>
       <div class="container">
         <div class="row">
+
           <div class="col-md-9" data-aos="fade-up">
-            <form action="UpdateProfile" method="post" class="inputform">
-            <div class="col-lg-12 text-center mb-5">
-              <h1 class="page-title">내 정보</h1>
-            </div>
-            <div>
-              <h3>ID</h3>
-              <div class="form-control" name="id" required>
-                <%=id%>
-              </div>
-            </div><br>
-            <div>
-              <h3>이름</h3>
-              <div class="form-control" name="name" required>
-                <%=name%>
-              </div>
-            </div><br>
-            <div>
-              <h3>주민등록번호</h3>
-              <div class="form-control" name="rrn" required>
-                <%=rrn%>
-              </div>
-            </div><br>
-            <div>
-                <h3>등급</h3>
-                <div class="form-control" name="grade" required>
-                  <%=grade%>등급
+            <h3 class="category-title">My Blog</h3>
+
+            <div class="d-md-flex post-entry-2 half">
+              <a href="single-post.html" class="me-4 thumbnail">
+              <!-- 게시물 이미지가 들어가는 곳 -->
+                <img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
+              </a>
+              <div>
+                <div class="d-flex align-items-center author post-author">
+                  <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
+                  <div class="name">
+                
+                  <!-- 게시자 아이디가 들어가는 곳 -->
+                    <h3 class="m-0 p-0">Wade Warren</h3>
+                    	
+                    
+                  </div><!--  대피소, 위치>--> 
+                  <div class="loc-dot">
+				<a href="#"class="button2"><i class="fa-solid fa-location-dot"fa-4x></i></a>
+				<a href="#"class="button3"><i class="fa-solid fa-person-running"fa-4x></i></a>
+				</div>
                 </div>
-              </div><br>
-            <div class="form-group">
-              <h3>닉네임</h3>
-              <input type="text" class="form-control" name="nick" id="nick" placeholder="Your Nickname">
-            </div><br>
-            <div class="form-group">
-              <h3>비밀번호</h3>
-              <input type="password" class="form-control" name="pw" id="pw" placeholder="Your Password">
-            </div><br>
-            <div class="form-group">
-              <h3>EMAIL</h3>
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
-            </div><br>
-            <br>
-            <!-- <div class="text-center">
-              <button type="submit" formmethod="post" onclick="nextPage()">정보수정</button>
-            </div> -->
-            <div class="text-center">
-              <input type="submit" value="정보수정">
+                	<hr class="hr-5"> 
+                <!-- 내용이 들어가는 곳 -->
+                <h3><a href="single-post.html">What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</a></h3>
+                <!-- 작성일자가 들어가는 곳 -->
+                <div class="post-meta"> <span>Jul 5th '22</span></div>
+                
+              	<hr class="hr-5"> 
+                <!--  댓글 좋아요 싫어요 -->
+                <div class="like-dislike">   
+					댓글 <%=comments.size() %>
+					<a href="#" class="button4"><i	class="fa-regular fa-heart"> </i></a> 
+					<a href="#" class="button5"><i class="fa-regular fa-thumbs-down"> </i></a>
+				
+
+                </div>
+              	
+              	
+              	
+              	
+              </div>
             </div>
-            
-          </form>
 
             
           </div>
 
           <div class="col-md-3">
-<!-- ======= Sidebar ======= -->
+            <!-- ======= Sidebar ======= -->
   
             
             <div class="aside-block">
@@ -320,11 +299,9 @@
                 <div class="tab-pane fade show active" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
                   <div class="post-entry-1 border-bottom">
                   	<div class="box multiple-box-shadows">
-	                    
-	                    
-	                    <%
+                  	<%
                   		if(info != null){
-                  			grade = info.getGrade();
+                  			String grade = info.getGrade();
                   			
                   			if(grade.equals("A")){
                   				grade = "VIP";
@@ -345,12 +322,13 @@
 						    내 게시글
 						</button>
 						<button class="custom-btn btn-10"><a href="MyBlog.jsp">내 게시물</a></button>
-						<button class="custom-btn btn-10"><a href="Profile.jsp">개인정보 수정</a></button>
 						<button class="custom-btn btn-10"><a href="LogoutService">로그아웃</a></button>
                   	<%	}else { %>
                   		<a href="Login.jsp">로그인</a>
           			<%	}%>
 	                    
+						
+	                   
 					</div>
                   </div>
                 </div> <!-- End Popular -->
@@ -389,10 +367,15 @@
     </section>
   
   </main><!-- End #main -->
+    
+ 
+  <!-- ======= Footer ======= -->
+  
+  
+  
+  <footer id="footer" class="footer">
   
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
 
 
     <div class="footer-legal">
@@ -403,6 +386,8 @@
             <div class="copyright">
               © Copyright <strong><span>ZenBlog</span></strong>. All Rights Reserved
             </div>
+            
+              
 
             <div class="credits">
               <!-- All the links in the footer should remain intact. -->
@@ -422,6 +407,7 @@
               <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
               <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
+            
 
           </div>
 
@@ -429,9 +415,11 @@
 
       </div>
     </div>
-
+ 
+ 
   </footer>
 
+	
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
@@ -443,13 +431,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script type="text/javascript">
-	function nextPage()  {
-		$(location).attr('href', 'UpdateProfile');
-		}
   
-  
-  </script>
 
 </body>
 
