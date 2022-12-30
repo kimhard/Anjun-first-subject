@@ -52,7 +52,6 @@ public class PostDAO {
 				getConn();
 				String sql = "SELECT * FROM anjun_post ORDER BY post_dt DESC"; 
 				psmt = conn.prepareStatement(sql);
-				System.out.println(sql);
 				rs = psmt.executeQuery();
 				
 				int cnt = 1;
