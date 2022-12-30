@@ -108,48 +108,46 @@
 
 <body>
 <%
-	/* UserDTO info = (UserDTO)session.getAttribute("info"); */
+   /* UserDTO info = (UserDTO)session.getAttribute("info"); */
 
-	/* int post_seq = Integer.parseInt(request.getParameter("post_seq")); */
+   /* int post_seq = Integer.parseInt(request.getParameter("post_seq")); */
 
-	UserDTO info = new UserDTO("smhrd", "3", "3", "스인재", "3@3", "111111-1111111", "C");
-	session.setAttribute("info", info);
-	
-	int post_seq = 22;
-	
-	PostDTO dto = new PostDTO();
-	PostDAO dao = new PostDAO();
-	CommentDAO cmt = new CommentDAO();
-	
-	PostDTO result = dao.read(post_seq);
-	
-	ArrayList<CommentDTO> comments = cmt.read(post_seq);
-	
-	
-	System.out.println(comments);
-	
-	String id = info.getId();
-	String nick = info.getNick();
-	String grade = info.getGrade();
-	
-	
-	
-	if(grade.equals("A")){
-		grade = "VIP";
-	}else if(grade.equals("B")){
-		grade = "GOLD";
-	}else if(grade.equals("C")){
-		grade = "SILVER";
-	}else {
-		grade = "IRON";
-	} 
+   int post_seq = 22;
+   
+   PostDTO dto = new PostDTO();
+   PostDAO dao = new PostDAO();
+   CommentDAO cmt = new CommentDAO();
+   
+   PostDTO result = dao.read(post_seq);
+   
+   ArrayList<CommentDTO> comments = cmt.read(post_seq);
+   
+   
+   System.out.println(comments);
+   
+   /* String id = info.getId();
+   String nick = info.getNick();
+   String grade = info.getGrade();
+   
+   
+   
+   if(grade.equals("A")){
+      grade = "VIP";
+   }else if(grade.equals("B")){
+      grade = "GOLD";
+   }else if(grade.equals("C")){
+      grade = "SILVER";
+   }else {
+      grade = "IRON";
+   } */
 
-	
-	
+   
+   
 %>
-	<%
-	/*UserDTO info = (UserDTO) session.getAttribute("info");*/
-	%>
+<%
+	UserDTO info = (UserDTO)session.getAttribute("info");
+
+%>
 
 	<!-- ======= Header ======= -->
 	<header id="header" class="header d-flex align-items-center fixed-top">
@@ -320,7 +318,7 @@
 										<div class="box multiple-box-shadows">
 											<%
 											if (info != null) {
-												grade = info.getGrade();
+												String grade = info.getGrade();
 
 												if (grade.equals("A")) {
 													grade = "VIP";

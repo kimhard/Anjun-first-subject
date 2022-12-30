@@ -322,7 +322,6 @@
 						    내 게시글
 						</button>
 						<button class="custom-btn btn-10"><a href="MyBlog.jsp">내 게시물</a></button>
-						<button class="custom-btn btn-10"><a href="Profile.jsp">개인정보 수정</a></button>
 						<button class="custom-btn btn-10"><a href="LogoutService">로그아웃</a></button>
                   	<%	}else { %>
                   		<a href="Login.jsp">로그인</a>
