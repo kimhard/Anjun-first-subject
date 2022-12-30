@@ -163,7 +163,7 @@
 			<nav id="navbar" class="navbar">
 				<ul>
 
-					         <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+					         <li class="dropdown"><a href="ManualService?category=natural&query=flooding"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
@@ -385,7 +385,7 @@
 						<div class="aside-block">
 							<h3 class="aside-title">내 위치</h3>
 							<div class="video-post">
-								<iframe src="http://localhost:8090/Anjun_Plus/UserLocation.jsp"
+								<iframe src="UserLocation.jsp"
 									scrolling="no"></iframe>
 							</div>
 						</div>
@@ -407,10 +407,12 @@
 						<!-- End Tags -->
 
 					</div>
+					<%if(info != null) {%>
 					<div class="button_container">
-						<a href="Postform.jsp"
-							<button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button>></a>
+						<a href="Postform.jsp">
+							<button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button></a>
 					</div>
+					<%} %>
 				</div>
 			</div>
 		</section>
