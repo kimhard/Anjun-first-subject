@@ -215,7 +215,7 @@ z-index
 }
 
 .container.right-panel-active .overlay-left {
-	transform: translateX(10);
+	transform: translateX(0);
 }
 
 .overlay-right {
