@@ -111,12 +111,11 @@
 <%
 	/* UserDTO info = (UserDTO)session.getAttribute("info"); */
 
-	/* int post_seq = Integer.parseInt(request.getParameter("post_seq")); */
-
+	int post_seq = Integer.parseInt(request.getParameter("post_seq"));
+	System.out.println(post_seq);
+	
 	UserDTO info = new UserDTO("smhrd", "3", "3", "스인재", "3@3", "111111-1111111", "C");
 	session.setAttribute("info", info);
-	
-	int post_seq = 22;
 	
 	PostDTO dto = new PostDTO();
 	PostDAO dao = new PostDAO();
