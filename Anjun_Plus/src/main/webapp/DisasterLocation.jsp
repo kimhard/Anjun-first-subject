@@ -60,8 +60,8 @@ body, html {
 					},
 					{
 						title : '재난위치',
-						latlng : new kakao.maps.LatLng(37.39880986512285,
-								126.6431184447251)
+						latlng : new kakao.maps.LatLng(35.13281166373863,
+								126.9024713924392)
 					}, ];
 
 			// 마커 이미지의 주소
