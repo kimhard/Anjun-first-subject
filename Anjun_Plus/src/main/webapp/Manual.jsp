@@ -122,12 +122,12 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="single-post.html">Single Post</a></li>
-          <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                   <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
                   <li><a href="ManualService?category=natural&query=flooding">침수</a></li>
-                  <li><a href="ManualService?category=natural&query=hurricane ">태풍</a></li>
+                  <li><a href="ManualService?category=natural&query=hurricane">태풍</a></li>
                   <li><a href="ManualService?category=natural&query=downpour">호우</a></li>
                   <li><a href="ManualService?category=natural&query=thunderstroke">낙뢰</a></li>
                   <li><a href="ManualService?category=natural&query=gale">강풍</a></li>
@@ -144,7 +144,7 @@
               </li>
               <li class="dropdown"><a href="#"><span>사회재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
-                 <li><a href="ManualService?category=social&query=fire">화재</a></li>
+                  <li><a href="ManualService?category=social&query=fire">화재</a></li>
                   <li><a href="ManualService?category=social&query=wildfire">산불</a></li>
                   <li><a href="ManualService?category=social&query=collapse">건축물붕괴</a></li>
                   <li><a href="ManualService?category=social&query=explosion">폭발</a></li>
