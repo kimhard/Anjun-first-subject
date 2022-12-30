@@ -254,7 +254,7 @@
 							
 						<!-- 포스트 시작 -->
 						<div class="d-md-flex post-entry-2 half">
-							<a href="single-post.html" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
+							<a href="Blog.jsp" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
 								<img src="assets/img/post-landscape-6.jpg" alt=""
 								class="img-fluid">
 							</a>
