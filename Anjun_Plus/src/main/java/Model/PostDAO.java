@@ -1,5 +1,7 @@
 package Model;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -176,6 +178,21 @@ public class PostDAO {
 		return boards;
 	}
 	
+	//이미지 업로드
+	public void ImgUpload() {
+		try {
+			getConn();
+			
+			File file = new File("C:\\Users\\user\\first_project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Anjun_Plus\\uploadedFiles");
+			FileInputStream fis = new FileInputStream(file);
+			
+			String sql = "insert into anjun_file ";
+			psmt = conn.prepareStatement(sql);
+			psmt.setBinaryStream(cnt, null);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 
 	// 글삭제용 delete_post()

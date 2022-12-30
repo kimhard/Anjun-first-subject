@@ -26,7 +26,7 @@ if (!Folder.exists()) {
 // 업로드 파일 최대 용량
 int size = 1024 * 1024 * 20; // 20MB
 
-String str, filename, original_filename, type;
+String str, post_file, original_filename, type;
 
 try {
 	MultipartRequest multiRequest = new MultipartRequest(request, path, size, "utf-8", new DefaultFileRenamePolicy());
@@ -35,7 +35,7 @@ try {
 
 	str = (String) files.nextElement(); // 파라미터 이름(String str에 파일 이름 저장)
 
-	filename = multiRequest.getFilesystemName(str); // 저장된 파일 이름(서버에 저장할 파일명)
+	post_file = multiRequest.getFilesystemName(str); // 저장된 파일 이름(서버에 저장할 파일명)
 
 	original_filename = multiRequest.getOriginalFileName(str); // 원본 파일명(업로드 파일명)
 
@@ -47,7 +47,7 @@ try {
 		oldFile.renameTo(newFile);
 	}
 	System.out.println("str : " + str);
-	System.out.println("filename : " + filename);
+	System.out.println("filename : " + post_file);
 	System.out.println("original_filename : " + original_filename);
 	System.out.println("type : " + type);
 	System.out.println("path : " + path);

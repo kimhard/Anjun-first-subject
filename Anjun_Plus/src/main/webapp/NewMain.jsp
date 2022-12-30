@@ -163,7 +163,7 @@
 			<nav id="navbar" class="navbar">
 				<ul>
 
-					         <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+					         <li class="dropdown"><a href="ManualService?category=natural&query=flooding"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
@@ -458,10 +458,7 @@
 								href="#" class="google-plus"><i class="bi bi-skype"></i></a> <a
 								href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
 						</div>
-
-
 					</div>
-
 				</div>
 
 			</div>

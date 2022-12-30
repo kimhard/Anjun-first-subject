@@ -25,7 +25,5 @@ public class PostService extends HttpServlet {
 
 		PostDTO dto = new PostDTO(content, hashtag);
 		PostDAO dao = new PostDAO();
-
 	}
-
 }
