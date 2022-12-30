@@ -107,7 +107,7 @@
 
 
 <body>
-<%
+<%-- <%
    /* UserDTO info = (UserDTO)session.getAttribute("info"); */
 
    /* int post_seq = Integer.parseInt(request.getParameter("post_seq")); */
@@ -143,7 +143,7 @@
 
    
    
-%>
+%> --%>
 <%
 	UserDTO info = (UserDTO)session.getAttribute("info");
 
@@ -161,65 +161,47 @@
 
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li class="dropdown"><a
-						href="ManualService?category=natural&query=flooding"><span>대응
-								요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-						<ul>
-							<li class="dropdown"><a href="#"><span>자연재난</span> <i
-									class="bi bi-chevron-down dropdown-indicator"></i></a>
-								<ul>
-									<li><a
-										href="ManualService?category=natural&query=flooding">침수</a></li>
-									<li><a
-										href="ManualService?category=natural&query=hurricane">태풍</a></li>
-									<li><a
-										href="ManualService?category=natural&query=downpour">호우</a></li>
-									<li><a
-										href="ManualService?category=natural&query=thunderstroke">낙뢰</a></li>
-									<li><a href="ManualService?category=natural&query=gale">강풍</a></li>
-									<li><a href="ManualService?category=natural&query=storm">풍랑</a></li>
-									<li><a
-										href="ManualService?category=natural&query=heavySnow">대설</a></li>
-									<li><a
-										href="ManualService?category=natural&query=heatWave">폭염</a></li>
-									<li><a
-										href="ManualService?category=natural&query=yellowDust">황사</a></li>
-									<li><a
-										href="ManualService?category=natural&query=earthquake">지진</a></li>
-									<li><a href="ManualService?category=natural&query=tsunami">해일</a></li>
-									<li><a href="ManualService?category=natural&query=drought">가뭄</a></li>
-									<li><a href="ManualService?category=natural&query=flood">홍수</a></li>
-									<li><a
-										href="ManualService?category=natural&query=landslide">산사태</a></li>
-								</ul></li>
-							<li class="dropdown"><a href="#"><span>사회재난</span> <i
-									class="bi bi-chevron-down dropdown-indicator"></i></a>
-								<ul>
-									<li><a href="ManualService?category=social&query=fire">화재</a></li>
-									<li><a href="ManualService?category=social&query=wildfire">산불</a></li>
-									<li><a href="ManualService?category=social&query=collapse">건축물붕괴</a></li>
-									<li><a
-										href="ManualService?category=social&query=explosion">폭발</a></li>
-									<li><a
-										href="ManualService?category=social&query=carAccident">교통사고</a></li>
-									<li><a
-										href="ManualService?category=social&query=electricGas">전기ㆍ가스사고</a></li>
-									<li><a href="ManualService?category=social&query=railroad">철도ㆍ지하철사고</a></li>
-									<li><a
-										href="ManualService?category=social&query=shipCollision">해양
-											선박사고</a></li>
-									<li><a
-										href="ManualService?category=social&query=waterPollution">수질오염</a></li>
-									<li><a href="ManualService?category=social&query=blackout">정전
-											및 전력부족</a></li>
-									<li><a
-										href="ManualService?category=social&query=marinePollution">해양오염사고</a></li>
-									<li><a
-										href="ManualService?category=social&query=chemicalAccident">화학물질사고</a></li>
-									<li><a
-										href="ManualService?category=social&query=particulate">미세먼지</a></li>
-								</ul></li>
-						</ul></li>
+
+					         <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <ul>
+                  <li><a href="ManualService?category=natural&query=flooding">침수</a></li>
+                  <li><a href="ManualService?category=natural&query=hurricane">태풍</a></li>
+                  <li><a href="ManualService?category=natural&query=downpour">호우</a></li>
+                  <li><a href="ManualService?category=natural&query=thunderstroke">낙뢰</a></li>
+                  <li><a href="ManualService?category=natural&query=gale">강풍</a></li>
+                  <li><a href="ManualService?category=natural&query=storm">풍랑</a></li>
+                  <li><a href="ManualService?category=natural&query=heavySnow">대설</a></li>
+                  <li><a href="ManualService?category=natural&query=heatWave">폭염</a></li>
+                  <li><a href="ManualService?category=natural&query=yellowDust">황사</a></li>
+                  <li><a href="ManualService?category=natural&query=earthquake">지진</a></li>
+                  <li><a href="ManualService?category=natural&query=tsunami">해일</a></li>
+                  <li><a href="ManualService?category=natural&query=drought">가뭄</a></li>
+                  <li><a href="ManualService?category=natural&query=flood">홍수</a></li>
+                  <li><a href="ManualService?category=natural&query=landslide">산사태</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>사회재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <ul>
+                  <li><a href="ManualService?category=social&query=fire">화재</a></li>
+                  <li><a href="ManualService?category=social&query=wildfire">산불</a></li>
+                  <li><a href="ManualService?category=social&query=collapse">건축물붕괴</a></li>
+                  <li><a href="ManualService?category=social&query=explosion">폭발</a></li>
+                  <li><a href="ManualService?category=social&query=carAccident">교통사고</a></li>
+                  <li><a href="ManualService?category=social&query=electricGas">전기ㆍ가스사고</a></li>
+                  <li><a href="ManualService?category=social&query=railroad">철도ㆍ지하철사고</a></li>
+                  <li><a href="ManualService?category=social&query=shipCollision">해양 선박사고</a></li>
+                  <li><a href="ManualService?category=social&query=waterPollution">수질오염</a></li>
+                  <li><a href="ManualService?category=social&query=blackout">정전 및 전력부족</a></li>
+                  <li><a href="ManualService?category=social&query=marinePollution">해양오염사고</a></li>
+                  <li><a href="ManualService?category=social&query=chemicalAccident">화학물질사고</a></li>
+                  <li><a href="ManualService?category=social&query=particulate">미세먼지</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
 
 					<li><a href="Shelter.jsp">대피소</a></li>
 					<li><a href="UserStamp2.jsp">이벤트</a></li>
@@ -260,11 +242,23 @@
 					<div class="col-md-9" data-aos="fade-up">
 						<h3 class="category-title">피드</h3>
 
+						<%	PostDAO dao = new PostDAO();
+							PostDTO dto = new PostDTO();
+							ArrayList<PostDTO> mainPostList = dao.getMainPost();	%>
+							
+						<%	for(int i=0; i<mainPostList.size(); i++) {
+								
+								CommentDAO cmt = new CommentDAO();
+							   	ArrayList<CommentDTO> comments = cmt.read(mainPostList.get(i).getPost_seq()); %>
+							
+							
+						<!-- 포스트 시작 -->
 						<div class="d-md-flex post-entry-2 half">
 							<a href="single-post.html" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
 								<img src="assets/img/post-landscape-6.jpg" alt=""
 								class="img-fluid">
 							</a>
+
 							<div>
 								<div class="d-flex align-items-center author post-author">
 									<div class="photo">
@@ -273,7 +267,7 @@
 									<div class="name">
 
 										<!-- 게시자 아이디가 들어가는 곳 -->
-										<h3 class="m-0 p-0"><%=result.getUser_id()%></h3>
+										<h3 class="m-0 p-0"><%=mainPostList.get(i).getUser_id()%></h3>
 
 
 									</div>
@@ -288,28 +282,31 @@
 								<hr class="hr-5">
 								<!-- 내용이 들어가는 곳 -->
 								<h3>
-									<a href="single-post.html"><%=result.getPost_content() %></a>
+
+									<a href="Blog.jsp"><%=mainPostList.get(i).getPost_content() %></a>
 								</h3>
 								<!-- 작성일자가 들어가는 곳 -->
 								<div class="post-meta">
-									<span>Jul 5th '22</span>
+									<span><%=mainPostList.get(i).getPost_dt()%></span>
 								</div>
 
-								<hr class="hr-5">
+								<hr class="hr-5" size="5">
 								<!--  좋아요 싫어요 -->
-								댓글<%=comments.size() %>
+
 								<div class="like-dislike">
-									<a href="#" class="button4"><i class="fa-regular fa-heart"></i>5</a>
-									<a href="#" class="button4"><i
-										class="fa-regular fa-thumbs-down"></i>5</a>
+
+								댓글<%=comments.size() %>
+
+
+									<a href="#" class="button4"><i class="fa-regular fa-heart"></i><%=mainPostList.get(i).getPost_likes() %></a>
+									<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i><%=mainPostList.get(i).getPost_dislikes() %></a>
 								</div>
-
-
-
-
 							</div>
+							
+							
 						</div>
-
+						<!-- 포스트 끝 -->
+						<%	 }	%>
 
 					</div>
 

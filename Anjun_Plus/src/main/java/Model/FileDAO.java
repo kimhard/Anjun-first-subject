@@ -43,12 +43,30 @@ public class FileDAO {
 		}
 	}
 	
-	// 글에 표시되는 이미지 불러오기
-	public void readPost(int post_seq) {
+	// 파일 업로드
+	public int uploadFile(FileDTO dto) {
+		getConn();
 		try {
-			getConn();
+			String sql = "INSERT INTO anjun_file VALUES (ANJUN_FILE_SEQ.NEXTVAL, ?, ?, ?, ?, CURRENT_DATE)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, dto.getPost_seq());
+			psmt.setString(2, dto.getMedia_file());
+			psmt.setString(3, dto.getmedia_real_file());
+			psmt.setString(4, dto.getMedia_ext());
+			cnt = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	// 글에 표시되는 이미지 불러오기(수정중)
+	public void readPost(int post_seq) {
+		getConn();
+		try {
 			String sql = "SELECT ";
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
