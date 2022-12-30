@@ -105,7 +105,7 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="NewMain.jsp" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="https://i.postimg.cc/j27n4qQh/removebg.png" alt="">
         <h1>안전+</h1>
@@ -113,7 +113,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="single-post.html">Single Post</a></li>
+         
           <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -155,7 +155,7 @@
           </li>
 
           <li><a href="Shelter.jsp">대피소</a></li>
-          <li><a href="contact.html">이벤트</a></li>
+          <li><a href="UserStamp2.jsp">이벤트</a></li>
         </ul>
       </nav><!-- .navbar -->
 

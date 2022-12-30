@@ -154,14 +154,13 @@
 		<div
 			class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-			<a href="index.html" class="logo d-flex align-items-center"> <!-- Uncomment the line below if you also wish to use an image logo -->
+			<a href="NewMain.jsp" class="logo d-flex align-items-center"> <!-- Uncomment the line below if you also wish to use an image logo -->
 				<img src="https://i.postimg.cc/j27n4qQh/removebg.png" alt="">
 				<h1>안전+</h1>
 			</a>
 
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li><a href="single-post.html">Single Post</a></li>
 					         <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -203,7 +202,7 @@
           </li>
 
 					<li><a href="Shelter.jsp">대피소</a></li>
-					<li><a href="contact.html">이벤트</a></li>
+					<li><a href="UserStamp2.jsp">이벤트</a></li>
 				</ul>
 			</nav>
 			<!-- .navbar -->
@@ -269,17 +268,17 @@
 								<hr class="hr-5">
 								<!-- 내용이 들어가는 곳 -->
 								<h3>
-									<a href="single-post.html"><%=result.getPost_content() %></a>
+									<a href="Blog.jsp"><%=result.getPost_content() %></a>
 								</h3>
 								<!-- 작성일자가 들어가는 곳 -->
 								<div class="post-meta">
 									<span>Jul 5th '22</span>
 								</div>
 
-								<hr class="hr-5">
+								<hr class="hr-5" size="5">
 								<!--  좋아요 싫어요 -->
-								댓글<%=comments.size() %>
 								<div class="like-dislike">
+								댓글<%=comments.size() %>
 									<a href="#" class="button4"><i class="fa-regular fa-heart"></i>5</a>
 									<a href="#" class="button4"><i
 										class="fa-regular fa-thumbs-down"></i>5</a>
