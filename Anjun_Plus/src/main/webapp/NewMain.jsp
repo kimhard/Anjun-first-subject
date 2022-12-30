@@ -258,53 +258,50 @@
 						<input type="hidden" name="post_seq" value="<%=mainPostList.get(i).getPost_seq()%>">
 						<div class="d-md-flex post-entry-2 half">
 							<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
-								<img src="assets/img/post-landscape-6.jpg" alt=""
-								class="img-fluid">
+								<img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
 							</a>
 
-							<div>
-								<div class="d-flex align-items-center author post-author">
-									<div class="photo">
-										<img src="assets/img/person-2.jpg" alt="" class="img-fluid">
-									</div>
-									<div class="name">
-
-										<!-- 게시자 아이디가 들어가는 곳 -->
-										<h3 class="m-0 p-0"><%=mainPostList.get(i).getUser_id()%></h3>
-
-
-									</div>
-									<!--  대피소, 위치>-->
-									<div class="loc-dot">
-										<a href="#" class="button2"><i
-											class="fa-solid fa-location-dot" fa-4x></i></a> <a href="#"
-											class="button3"><i class="fa-solid fa-person-running"
-											fa-4x></i></a>
-									</div>
+						<div>
+							<div class="d-flex align-items-center author post-author">
+								<div class="photo">
+									<img src="assets/img/person-2.jpg" alt="" class="img-fluid">
 								</div>
-								<hr class="hr-5">
-								<!-- 내용이 들어가는 곳 -->
-								<h3>
+								<div class="name">
 
-									<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();"><%=mainPostList.get(i).getPost_content() %></a>
-								</h3>
-								<!-- 작성일자가 들어가는 곳 -->
-								<div class="post-meta">
-									<span><%=mainPostList.get(i).getPost_dt()%></span>
+									<!-- 게시자 아이디가 들어가는 곳 -->
+									<h3 class="m-0 p-0"><%=mainPostList.get(i).getUser_id()%></h3>
+
+
 								</div>
-
-								<hr class="hr-5" size="5">
-								<!--  좋아요 싫어요 -->
-
-								<div class="like-dislike">
-
-								댓글<%=comments.size() %>
-
-
-									<a href="#" class="button4"><i class="fa-regular fa-heart"></i><%=mainPostList.get(i).getPost_likes() %></a>
-									<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i><%=mainPostList.get(i).getPost_dislikes() %></a>
+								<!--  대피소, 위치>-->
+								<div class="loc-dot" align="right">
+									<a href="#" class="button2"><i class="fa-solid fa-location-dot" fa-4x></i></a>
+									<a href="#" class="button3"><i class="fa-solid fa-person-running" fa-4x></i></a>
 								</div>
 							</div>
+							<hr class="hr-5">
+							<!-- 내용이 들어가는 곳 -->
+							<h3>
+
+								<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();"><%=mainPostList.get(i).getPost_content() %></a>
+							</h3>
+							<!-- 작성일자가 들어가는 곳 -->
+							<div class="post-meta">
+								<span><%=mainPostList.get(i).getPost_dt()%></span>
+							</div>
+
+							<hr class="hr-5" size="5">
+							<!--  좋아요 싫어요 -->
+
+							<div class="like-dislike">
+
+							댓글<%=comments.size() %>
+
+
+								<a href="#" class="button4"><i class="fa-regular fa-heart"></i><%=mainPostList.get(i).getPost_likes() %></a>
+								<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i><%=mainPostList.get(i).getPost_dislikes() %></a>
+							</div>
+						</div>
 							
 							
 						</div>
