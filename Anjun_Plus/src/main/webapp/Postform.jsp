@@ -398,8 +398,7 @@
 						<div class="aside-block">
 							<h3 class="aside-title">내 위치</h3>
 							<div class="video-post">
-								<iframe src="http://localhost:8090/Anjun_Plus/UserLocation.jsp"
-									scrolling="no"></iframe>
+								<iframe src="UserLocation.jsp"></iframe>
 							</div>
 						</div>
 						<!-- End Video -->
