@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import Model.PostDAO;
 import Model.PostDTO;
+import Model.UserDTO;
 
 @WebServlet("/PostService")
 public class PostService extends HttpServlet {
@@ -23,16 +24,21 @@ public class PostService extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter writer = response.getWriter();
 		request.setCharacterEncoding("UTF-8");
+		
 		HttpSession session = request.getSession();
+		UserDTO info =(UserDTO)session.getAttribute("info");
 
-		String content = request.getParameter("post_content	");
-		String id = (String) session.getAttribute("id");
+		String content = request.getParameter("post_content");
+		String id = info.getId();
 		String hashtag = request.getParameter("post_hashtag");
 
+		System.out.println(content);
+		System.out.println(id);
+		System.out.println(hashtag);
+		
 		PostDTO dto = new PostDTO(content, id, hashtag);
 		PostDAO dao = new PostDAO();
 
-		
 		int cnt = dao.ImgUpload(dto);
 		if (cnt > 0) {
 			writer.println("<script>alert('성공적으로 게시하였습니다.');</script>");
@@ -41,8 +47,6 @@ public class PostService extends HttpServlet {
 			writer.println("<script>alert('게시를 실패하였습니다..');</script>");
 		}
 		writer.close();
-		String nextPage = "NewMain.jsp";
-		response.sendRedirect(nextPage);
 
 	}
 }

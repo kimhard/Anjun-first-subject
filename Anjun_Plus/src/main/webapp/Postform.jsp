@@ -261,8 +261,7 @@
 
 						<div class="col-lg-12 text-center mb-5">
 
-							<form action="PostService" method="post" class="inputform"
-								enctype="multipart/form-data">
+							<form action="UploadCheck.jsp" method="post" class="inputform" encType = "multipart/form-data"  >
 								<div class="col-lg-12 text-center mb-5"></div>
 								<div>
 									<textarea rows="20" style="width: 100%;" name="post_content"
@@ -294,8 +293,7 @@
 										name="post_file" id="image" style="display: none;"
 										accept="image/*" capture="camera"
 										onchange="getThumbnailPrivew(this,$('#cma_image'))" />
-									<button type="submit"
-										onclick="javascript: btn(); form.action='UploadCheck.jsp'; return false;">upload</button>
+									
 									<div id="image_container"></div>
 									<div id="cma_image"
 										style="width: 100%; max-width: 100%; border: 1px solid #000; display: none;"></div>

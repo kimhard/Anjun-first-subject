@@ -48,8 +48,7 @@ public class PostDTO {
 		this.post_seq = post_seq;
 	}
 
-
-	public PostDTO(String id, String content, String hashtag) {
+	public PostDTO(String content, String id, String hashtag) {
 	}
 
 	// getter

@@ -182,7 +182,7 @@ public class PostDAO {
 	public int ImgUpload(PostDTO dto) {
 		try {
 			getConn();
-			String sql = "insert into anjun_file values(post_seq, ?, post_dt, ?, post_likes, post_dislikes, ?, post_lat, post_lng";
+			String sql = "insert into anjun_post values(post_seq, ?, post_dt, ?, post_likes, post_dislikes, ?, post_lat, post_lng";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getPost_content());
 			psmt.setString(2, dto.getUser_id());
