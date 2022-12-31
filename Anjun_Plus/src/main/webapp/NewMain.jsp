@@ -261,7 +261,7 @@
 								<img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
 							</a>
 
-						<div>
+						<div class="post-info">
 							<div class="d-flex align-items-center author post-author">
 								<div class="photo">
 									<img src="assets/img/person-2.jpg" alt="" class="img-fluid">
@@ -287,7 +287,7 @@
 							</h3>
 							<!-- 작성일자가 들어가는 곳 -->
 							<div class="post-meta">
-								<span><%=mainPostList.get(i).getPost_dt()%></span>
+								<span><%=mainPostList.get(i).getPost_dt().substring(0, 16)%></span>
 							</div>
 
 							<hr class="hr-5" size="5">
@@ -302,8 +302,9 @@
 								<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i><%=mainPostList.get(i).getPost_dislikes() %></a>
 							</div>
 						</div>
-							
-							
+
+
+
 						</div>
 						</form>
 						<!-- 포스트 끝 -->
