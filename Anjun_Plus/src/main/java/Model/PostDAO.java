@@ -1,7 +1,5 @@
 package Model;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -126,13 +124,11 @@ public class PostDAO {
 		// 게시물 작성일자(post_dt)는 CURRENT_DATE로 현재시각 입력
 		// 게시물 추천수(post_likes), 게시물 비추천수(post_dislikes)는 기본값 0을 부여
 		try {
-			String sql = "INSERT INTO anjun_post(post_content, post_dt, user_id, post_likes, post_dislikes, post_hashtag, post_lat, post_lng) VALUES(?, CURRENT_DATE, ?, 0, 0, ?, ?, ?)";
+			String sql = "INSERT INTO anjun_post(post_content, post_dt, user_id, post_likes, post_dislikes, post_hashtag, post_lat, post_lng) VALUES(?, CURRENT_DATE, ?, 0, 0, ?, 1, 1)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getPost_content());
 			psmt.setString(2, dto.getUser_id());
 			psmt.setString(3, dto.getPost_hashtag());
-			psmt.setDouble(4, dto.getPost_lat());
-			psmt.setDouble(5, dto.getPost_lng());
 			cnt = psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -176,24 +172,6 @@ public class PostDAO {
 			close();
 		}
 		return boards;
-	}
-	
-	//이미지 업로드
-	public int ImgUpload(PostDTO dto) {
-		try {
-			getConn();
-			String sql = "insert into anjun_post values(post_seq, ?, post_dt, ?, post_likes, post_dislikes, ?, post_lat, post_lng";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, dto.getPost_content());
-			psmt.setString(2, dto.getUser_id());
-			psmt.setString(3, dto.getPost_hashtag());
-			cnt = psmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			close();
-		}
-		return cnt;
 	}
 	
 
