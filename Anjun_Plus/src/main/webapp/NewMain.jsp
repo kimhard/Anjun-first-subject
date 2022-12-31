@@ -146,7 +146,8 @@
    
 %> --%>
 <%
-	UserDTO info = (UserDTO)session.getAttribute("info");
+	UserDTO info = null;
+	info = (UserDTO)session.getAttribute("info");
 
 %>
 
@@ -218,9 +219,10 @@
 
 				<!-- ======= Search Form ======= -->
 				<div class="search-form-wrap js-search-form-wrap">
-					<form action="search-result.html" class="search-form">
-						<span class="icon bi-search"></span> <input type="text"
+					<form action="SearchResult.jsp" class="search-form">
+						<span class="icon bi-search"></span> <input name="searchWord" type="text"
 							placeholder="Search" class="form-control">
+							<input type="submit" style="display:none;"/>
 						<button class="btn js-search-close">
 							<span class="bi-x"></span>
 						</button>
