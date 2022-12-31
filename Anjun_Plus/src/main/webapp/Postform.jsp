@@ -1,3 +1,4 @@
+<%@page import="Model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,7 +33,7 @@
 <link href="assets/vendor/glightbox/css/glightbox.min.css"
 	rel="stylesheet">
 <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-
+	
 <!-- Template Main CSS Files -->
 <link href="assets/css/variables.css" rel="stylesheet">
 <link href="assets/css/main.css" rel="stylesheet">
@@ -147,6 +148,10 @@
 </head>
 
 <body>
+<%
+	UserDTO info = (UserDTO)session.getAttribute("info");
+
+%>
 
 	<!-- ======= Header ======= -->
 	<header id="header" class="header d-flex align-items-center fixed-top">
@@ -201,7 +206,7 @@
           </li>
 
           <li><a href="Shelter.jsp">대피소</a></li>
-          <li><a href="UserStamp2.jsp">이벤트</a></li>
+          <li><a href="UserStamp2.jsp">출석</a></li>
         </ul>
       </nav>
 
@@ -339,31 +344,52 @@
 										aria-selected="true">내 정보</button>
 								</li>
 							</ul>
-
 							<div class="tab-content" id="pills-tabContent">
 
 								<!-- Popular -->
 								<div class="tab-pane fade show active" id="pills-popular"
 									role="tabpanel" aria-labelledby="pills-popular-tab">
 									<div class="post-entry-1 border-bottom">
-										<div class="post-meta"></div>
-										<h2 class="mb-2">
-											<a href="#">How to Avoid Distraction and Stay Focused
-												During Video Calls?</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span> <span
-											class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
+										<div class="box multiple-box-shadows">
+											<%
+											if (info != null) {
+												String grade = info.getGrade();
 
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta"></div>
-										<h2 class="mb-2">
-											<a href="#">17 Pictures of Medium Length Hair in Layers
-												That Will Inspire Your New Haircut</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
+												if (grade.equals("A")) {
+													grade = "VIP";
+												} else if (grade.equals("B")) {
+													grade = "GOLD";
+												} else if (grade.equals("C")) {
+													grade = "SILVER";
+												} else {
+													grade = "IRON";
+												}
+											%>
+											<div class="post-meta author"></div>
+											<div class="photo">
+												<img src="assets/img/person-2.jpg" alt class="img-fluid">
+											</div>
+											<!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
+											<h2 class="mb-2">
+												<a href="Profile.jsp"><%=info.getId()%></a>
+											</h2>
+											<h3 class="mb-2"><%=grade%></h3>
+											
+											<button class="custom-btn btn-10">
+												<a href="MyBlog.jsp">내 게시물</a>
+											</button>
+											<button class="custom-btn btn-10">
+												<a href="LogoutService">로그아웃</a>
+											</button>
+											<%
+											} else {
+											%>
+											<a href="Login.jsp"><div>로그인</div></a>
+											<%
+											}
+											%>
+										</div>
 									</div>
-
 								</div>
 								<!-- End Popular -->
 

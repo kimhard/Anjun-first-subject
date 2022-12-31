@@ -1,5 +1,7 @@
 package Model;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -176,6 +178,23 @@ public class PostDAO {
 		return boards;
 	}
 	
+	//이미지 업로드
+	public int ImgUpload(PostDTO dto) {
+		try {
+			getConn();
+			String sql = "insert into anjun_file values(post_seq, ?, post_dt, ?, post_likes, post_dislikes, ?, post_lat, post_lng";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getPost_content());
+			psmt.setString(2, dto.getUser_id());
+			psmt.setString(3, dto.getPost_hashtag());
+			cnt = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return cnt;
+	}
 	
 
 	// 글삭제용 delete_post()
