@@ -54,7 +54,7 @@
             <div>
                 <form onsubmit="searchPlaces(); return false;">
                     키워드 : <input type="text" value="대피소" id="keyword" size="15"> 
-                    <button type="submit">검색하기</button> 
+                    <button id="autosubmit" type="submit" >검색하기</button> 
                 </form>
             </div>
         </div>
@@ -320,6 +320,9 @@
 	        el.removeChild (el.lastChild);
 	    }
 	}
+	 
+	document.getElementById('autosubmit').click();
+	
 </script>
 </body>
 </html>

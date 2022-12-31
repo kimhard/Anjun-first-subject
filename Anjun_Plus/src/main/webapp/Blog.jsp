@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.CommentDAO"%>
 <%@page import="Model.CommentDTO"%>
@@ -466,5 +465,3 @@
 </body>
 
 </html>
-=======
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-AI1/TeamAnjun.git

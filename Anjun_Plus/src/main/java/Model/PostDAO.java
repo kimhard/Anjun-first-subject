@@ -139,15 +139,23 @@ public class PostDAO {
 	}
 	
 	// 검색 기능
-	public ArrayList<PostDTO> getBoardSearch(String keyWord, String searchWord) {
+	public ArrayList<PostDTO> getBoardSearch(String searchWord) {
 		ArrayList<PostDTO> boards = new ArrayList<PostDTO>();
 		PostDTO board = null;
-		System.out.println(keyWord + "/" + searchWord);
+		System.out.println(searchWord);
 		try {
 			getConn();
-			String sql = "select * from anjun_post where " +keyWord+ " like ?"; 
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, "%"+ searchWord +"%");
+			String sql = "";
+			if(searchWord.substring(0, 1).equals("#")){
+				sql = "select * from anjun_post where post_hashtag like ? ORDER BY post_dt DESC"; 
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, "%"+ searchWord +"%");
+			}else{
+				sql = "select * from anjun_post where user_id like ? or post_content like ? ORDER BY post_dt DESC"; 
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, "%"+ searchWord +"%");
+				psmt.setString(2, "%"+ searchWord +"%");
+			}
 			System.out.println(sql);
 			rs = psmt.executeQuery();
 			

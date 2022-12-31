@@ -29,7 +29,7 @@ public class SearchService extends HttpServlet {
 
 		// 글 목록 전체 가져오기
 		PostDAO dao = new PostDAO(); // Dao 정보 가져오기
-		ArrayList<PostDTO> boards = dao.getBoardSearch(keyWord, searchWord);
+		ArrayList<PostDTO> boards = dao.getBoardSearch(searchWord);
 		
 		if (boards.size() > 0) {
 			for (PostDTO board : boards) {

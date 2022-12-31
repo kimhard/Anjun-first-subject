@@ -39,7 +39,7 @@ public class CommentService extends HttpServlet {
 		
 		int cnt = dao.comment(dto);
 		
-		String nextPage = "Blog.jsp";
+		String nextPage = "Blog.jsp?post_seq="+post_seq;
 		if (cnt>0) {
 			System.out.println("댓글 입력 완료");
 		}else {

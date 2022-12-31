@@ -206,7 +206,9 @@
 
 
 					<li><a href="Shelter.jsp">대피소</a></li>
-					<li><a href="UserStamp2.jsp">이벤트</a></li>
+					<%if(info != null) {%>
+					<li><a href="UserStamp2.jsp">출석</a></li>
+					<%} %>
 				</ul>
 			</nav>
 			<!-- .navbar -->
@@ -219,7 +221,7 @@
 
 				<!-- ======= Search Form ======= -->
 				<div class="search-form-wrap js-search-form-wrap">
-					<form action="SearchResult.jsp" class="search-form">
+					<form action="SearchResult.jsp" method="get" class="search-form">
 						<span class="icon bi-search"></span> <input name="searchWord" type="text"
 							placeholder="Search" class="form-control">
 							<input type="submit" style="display:none;"/>

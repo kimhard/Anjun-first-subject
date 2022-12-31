@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<title>ZenBlog Bootstrap Template - Category</title>
+<title>게시글 작성</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -303,9 +303,10 @@
   ▶ 게시물 신고 사유를 위반하면 어떻게 되나요?
  - 안전+의 정책은 가이드라인을 위반하는 콘텐츠를 삭제하는 것입니다. 이미지 또는 관련 내용이 가이드라인을 따르지 않는 경우 게시물 전체가 삭제될 수 있습니다. 가이드라인을 위반하는 계정은 비활성화될 수 있습니다.'></textarea>
 								</div>
+									<div id="map" style="width:100%;height:350px;"></div>
+									<p><em>지도에서 발생위치를 클릭해주세요!</em></p> 
 								<div class="post-entry-1 border-bottom">
-									<input class="tag" placeholder="hash tags" name="post_hashtag">
-
+									<input class="tag" placeholder="hash tags" name="post_hashtag
 								</div>
 								<div class="text-center">
 									<label for="image" class="fa-sharp fa-solid fa-camera fa-2x"
