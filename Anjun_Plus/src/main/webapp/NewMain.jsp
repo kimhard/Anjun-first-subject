@@ -12,6 +12,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+
 <title>안전+</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
@@ -104,11 +105,12 @@
 		}
 	</script>
 	
+	
 </head>
 
 
 <body>
-<%-- <%
+<%-- 
    /* UserDTO info = (UserDTO)session.getAttribute("info"); */
 
    /* int post_seq = Integer.parseInt(request.getParameter("post_seq")); */
@@ -142,9 +144,7 @@
       grade = "IRON";
    } */
 
-   
-   
-%> --%>
+   --%>
 <%
 	UserDTO info = (UserDTO)session.getAttribute("info");
 
@@ -205,7 +205,7 @@
 
 
 					<li><a href="Shelter.jsp">대피소</a></li>
-					<li><a href="UserStamp2.jsp">이벤트</a></li>
+					<li><a href="UserStamp2.jsp">출석</a></li>
 				</ul>
 			</nav>
 			<!-- .navbar -->
@@ -257,7 +257,9 @@
 						<form id="frm<%=mainPostList.get(i).getPost_seq()%>" action="Blog.jsp" method="get">
 						<input type="hidden" name="post_seq" value="<%=mainPostList.get(i).getPost_seq()%>">
 						<div class="d-md-flex post-entry-2 half">
+
 							<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
+
 								<img src="assets/img/post-landscape-6.jpg" alt=""
 								class="img-fluid">
 							</a>
@@ -286,7 +288,7 @@
 								<!-- 내용이 들어가는 곳 -->
 								<h3>
 
-									<a type="submit" onclick="document.getElementById('frm').submit();"><%=mainPostList.get(i).getPost_content() %></a>
+									<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();"><%=mainPostList.get(i).getPost_content() %></a>
 								</h3>
 								<!-- 작성일자가 들어가는 곳 -->
 								<div class="post-meta">
