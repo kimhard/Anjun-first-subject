@@ -58,3 +58,6 @@ INSERT INTO anjun_post(post_content, post_dt, user_id, post_likes, post_dislikes
 INSERT INTO anjun_post(post_content, post_dt, user_id, post_likes, post_dislikes, post_hashtag, post_lat, post_lng) VALUES('테스트23', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
 
 INSERT INTO anjun_post(post_content, post_dt, user_id, post_likes, post_dislikes, post_hashtag, post_lat, post_lng) VALUES('테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
+
+
+select * from anjun_post where user_id like '%테스트%' or post_content like '%테스트%'

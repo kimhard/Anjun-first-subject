@@ -221,7 +221,7 @@
 
 				<!-- ======= Search Form ======= -->
 				<div class="search-form-wrap js-search-form-wrap">
-					<form action="SearchResult.jsp" class="search-form">
+					<form action="SearchResult.jsp" method="get" class="search-form">
 						<span class="icon bi-search"></span> <input name="searchWord" type="text"
 							placeholder="Search" class="form-control">
 							<input type="submit" style="display:none;"/>

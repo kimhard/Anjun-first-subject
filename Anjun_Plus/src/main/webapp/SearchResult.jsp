@@ -8,54 +8,110 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>안전+ 검색 결과</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+<title>안전+</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<!-- Favicons -->
+<link href="assets/img/favicon.png" rel="icon">
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+	rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+<!-- Vendor CSS Files -->
+<link href="assets/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
+<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="assets/vendor/glightbox/css/glightbox.min.css"
+	rel="stylesheet">
+<link href="assets/vendor/aos/aos.css" rel="stylesheet">
 
-  <!-- Template Main CSS Files -->
-  <link href="assets/css/variables.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
+<!-- Template Main CSS Files -->
+<link href="assets/css/variables.css" rel="stylesheet">
+<link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: ZenBlog - v1.3.0
-  * Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
-  * Author: BootstrapMade.com
-  * License: https:///bootstrapmade.com/license/
-  ======================================================== -->
+<!-- 폰트어썸 script -->
+<script src="https://kit.fontawesome.com/10cd32872a.js"
+	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
+<script type="text/javascript">
+		navigator.geolocation.getCurrentPosition(success, error);
+		
+		function success(position) {
+			console.log(position);
+			    const latitude = position.coords.latitude;  // 경도  
+			    const longitude = position.coords.longitude;  // 위도
+			    const coordsObj = {
+			        latitude,
+			        longitude
+			    };
+			    saveCoords(latitude, longitude);
+			    getWeather(latitude, longitude);
+		}
+	
+		function error() {
+			console.log("위치 정보를 가져올 수 없습니다." + err);
+		}
+
+		function saveCoords(latitude, longitude) {
+			sessionStorage.setItem("userLat", latitude);
+			sessionStorage.setItem("userLng", longitude);
+			console.log(sessionStorage.getItem("userLat"));
+			console.log(sessionStorage.getItem("userLng"));
+		}
+	
+		function requestCoords() {
+		    navigator.geolocation.getCurrentPosition(success, error);
+		}
+		
+		function getWeather(latitude, longitude) {
+			$.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=35.1074481&lon=126.8828409&appid=b408d025daceb6920be202dc72f52ccc&units=metric',function(data){
+				console.log(data.main.temp);
+				console.log(data.weather[0].main);
+				var $temp = data.main.temp;
+				var $weather = data.weather[0].main;
+				
+				$('.temp').prepend($temp);
+				if($weather=="Clouds"){
+					$('.weather').attr('class','weather fa-solid fa-cloud-sun');
+				}else if($weather=="Clear"){
+					$('.weather').attr('class','weather fa-solid fa-sun');
+				}else if($weather=="Thunderstorm"){
+					$('.weather').attr('class','weather fa-solid fa-cloud-bolt');
+				}else if($weather=="Drizzle"){
+					$('.weather').attr('class','weather fa-solid fa-cloud-rain');
+				}else if($weather=="Rain"){
+					$('.weather').attr('class','weather fa-solid fa-cloud-showers-heavy');
+				}else if($weather=="Snow"){
+					$('.weather').attr('class','weather fa-regular fa-snowflake');
+				}else if($weather=="Atmosphere"){
+					$('.weather').attr('class','weather fa-solid fa-smog');
+				}else{
+					$('.weather').attr('class','weather fa-solid fa-cloud');
+				}
+			})
+		}
+	</script>
+	
 </head>
 
 <body>
 <%
-	UserDTO info = (UserDTO)session.getAttribute("info");
+	UserDTO info = null;
+	info = (UserDTO)session.getAttribute("info");
 	String searchWord = request.getParameter("searchWord");
-	String keyword = null;
-	if(searchWord.substring(0, 1).equals("#")){
-		keyword = "post_hashtag";
-	}else{
-		keyword = "";		
-	}
-
+	System.out.print(searchWord);
 %>
 
 	<!-- ======= Header ======= -->
@@ -113,7 +169,9 @@
 
 
 					<li><a href="Shelter.jsp">대피소</a></li>
-					<li><a href="UserStamp2.jsp">이벤트</a></li>
+					<%if(info != null) {%>
+					<li><a href="UserStamp2.jsp">출석</a></li>
+					<%} %>
 				</ul>
 			</nav>
 			<!-- .navbar -->
@@ -126,7 +184,7 @@
 
 				<!-- ======= Search Form ======= -->
 				<div class="search-form-wrap js-search-form-wrap">
-					<form action="SearchResult.jsp" class="search-form">
+					<form action="SearchResult.jsp" method="get" class="search-form">
 						<span class="icon bi-search"></span> <input name="searchWord" type="text"
 							placeholder="Search" class="form-control">
 							<input type="submit" style="display:none;"/>
@@ -151,98 +209,75 @@
       <div class="container">
         <div class="row">
           <div class="col-md-9">
-            <h3 class="category-title"><%=searchWord %> 검색 결과</h3>
+            <h3 class="category-title">'<%=searchWord%>' 검색 결과</h3>
             
             <%	PostDAO dao = new PostDAO();
 				PostDTO dto = new PostDTO();
-				ArrayList<PostDTO> getBoardSearch = dao.getBoardSearch(keyword, searchWord);	%>
+				ArrayList<PostDTO> getBoardSearch = dao.getBoardSearch(searchWord);	%>
 				
-				
+			<%	for(int i=0; i<getBoardSearch.size(); i++) {
+								
+					CommentDAO cmt = new CommentDAO();
+				   	ArrayList<CommentDTO> comments = cmt.read(getBoardSearch.get(i).getPost_seq());	%>	
 
-            <div class="d-md-flex post-entry-2 small-img">
-              <a href="single-post.html" class="me-4 thumbnail">
-                <img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
-              </a>
-              <div>
-                <div class="post-meta"><span class="date">#<%= %></span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                <h3><a href="single-post.html">What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</a></h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio placeat exercitationem magni voluptates dolore. Tenetur fugiat voluptates quas.</p>
-                <div class="d-flex align-items-center author">
-                  <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
-                  <div class="name">
-                    <h3 class="m-0 p-0">Wade Warren</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div class="d-md-flex post-entry-2 small-img">
-              <a href="single-post.html" class="me-4 thumbnail">
-                <img src="assets/img/post-landscape-1.jpg" alt="" class="img-fluid">
-              </a>
-              <div>
-                <div class="post-meta"><span class="date">Business</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                <h3><a href="single-post.html">17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</a></h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio placeat exercitationem magni voluptates dolore. Tenetur fugiat voluptates quas.</p>
-                <div class="d-flex align-items-center author">
-                  <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
-                  <div class="name">
-                    <h3 class="m-0 p-0">Wade Warren</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
+			<!-- 검색 시작 -->
+			<form id="frm<%=getBoardSearch.get(i).getPost_seq()%>" action="Blog.jsp" method="get">
+			<input type="hidden" name="post_seq" value="<%=getBoardSearch.get(i).getPost_seq()%>">
+			<div class="d-md-flex post-entry-2 half">
+				<a type="submit" onclick="document.getElementById('frm<%=getBoardSearch.get(i).getPost_seq()%>').submit();" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
+					<img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
+				</a>
 
-            <div class="d-md-flex post-entry-2 small-img">
-              <a href="single-post.html" class="me-4 thumbnail">
-                <img src="assets/img/post-landscape-2.jpg" alt="" class="img-fluid">
-              </a>
-              <div>
-                <div class="post-meta"><span class="date">Business</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                <h3><a href="single-post.html">The Best Homemade Masks for Face (keep the Pimples Away)</a></h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio placeat exercitationem magni voluptates dolore. Tenetur fugiat voluptates quas.</p>
-                <div class="d-flex align-items-center author">
-                  <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
-                  <div class="name">
-                    <h3 class="m-0 p-0">Wade Warren</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
+			<div class="post-info">
+				<div class="d-flex align-items-center author post-author">
+					<div class="photo">
+						<img src="assets/img/person-2.jpg" alt="" class="img-fluid">
+					</div>
+					<div class="name">
 
-            <div class="d-md-flex post-entry-2 small-img">
-              <a href="single-post.html" class="me-4 thumbnail">
-                <img src="assets/img/post-landscape-3.jpg" alt="" class="img-fluid">
-              </a>
-              <div>
-                <div class="post-meta"><span class="date">Business</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                <h3><a href="single-post.html">10 Life-Changing Hacks Every Working Mom Should Know</a></h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio placeat exercitationem magni voluptates dolore. Tenetur fugiat voluptates quas.</p>
-                <div class="d-flex align-items-center author">
-                  <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
-                  <div class="name">
-                    <h3 class="m-0 p-0">Wade Warren</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
+						<!-- 게시자 아이디가 들어가는 곳 -->
+						<h3 class="m-0 p-0"><%=getBoardSearch.get(i).getUser_id()%></h3>
 
-            <div class="d-md-flex post-entry-2 small-img">
-              <a href="single-post.html" class="me-4 thumbnail">
-                <img src="assets/img/post-landscape-4.jpg" alt="" class="img-fluid">
-              </a>
-              <div>
-                <div class="post-meta"><span class="date">Business</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                <h3><a href="single-post.html">9 Half-up/half-down Hairstyles for Long and Medium Hair</a></h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio placeat exercitationem magni voluptates dolore. Tenetur fugiat voluptates quas.</p>
-                <div class="d-flex align-items-center author">
-                  <div class="photo"><img src="assets/img/person-2.jpg" alt="" class="img-fluid"></div>
-                  <div class="name">
-                    <h3 class="m-0 p-0">Wade Warren</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+					</div>
+					<!--  대피소, 위치>-->
+					<div class="loc-dot" align="right">
+						<a href="#" class="button2"><i class="fa-solid fa-location-dot" fa-4x></i></a>
+						<a href="#" class="button3"><i class="fa-solid fa-person-running" fa-4x></i></a>
+					</div>
+				</div>
+				<hr class="hr-5">
+				<!-- 내용이 들어가는 곳 -->
+				<h3>
+
+					<a type="submit" onclick="document.getElementById('frm<%=getBoardSearch.get(i).getPost_seq()%>').submit();"><%=getBoardSearch.get(i).getPost_content() %></a>
+				</h3>
+				<!-- 작성일자가 들어가는 곳 -->
+				<div class="post-meta">
+					<span><%=getBoardSearch.get(i).getPost_dt().substring(0, 16)%></span>
+				</div>
+
+				<hr class="hr-5" size="5">
+				<!--  좋아요 싫어요 -->
+
+				<div class="like-dislike">
+
+				댓글<%=comments.size() %>
+
+
+					<a href="#" class="button4"><i class="fa-regular fa-heart"></i><%=getBoardSearch.get(i).getPost_likes() %></a>
+					<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i><%=getBoardSearch.get(i).getPost_dislikes() %></a>
+				</div>
+			</div>
+
+
+
+			</div>
+			</form>
+			<!-- 포스트 끝 -->
+			<!-- 검색 끝 -->
+			<%	 }	%>
 
             <!-- Paging -->
             <div class="text-start py-4">
@@ -365,144 +400,76 @@
 	</main>
 	<!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
+	<!-- ======= Footer ======= -->
 
-    <div class="footer-content">
-      <div class="container">
 
-        <div class="row g-5">
-          <div class="col-lg-4">
-            <h3 class="footer-heading">About ZenBlog</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ab, perspiciatis beatae autem deleniti voluptate nulla a dolores, exercitationem eveniet libero laudantium recusandae officiis qui aliquid blanditiis omnis quae. Explicabo?</p>
-            <p><a href="about.html" class="footer-link-more">Learn More</a></p>
-          </div>
-          <div class="col-6 col-lg-2">
-            <h3 class="footer-heading">Navigation</h3>
-            <ul class="footer-links list-unstyled">
-              <li><a href="index.html"><i class="bi bi-chevron-right"></i> Home</a></li>
-              <li><a href="index.html"><i class="bi bi-chevron-right"></i> Blog</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Categories</a></li>
-              <li><a href="single-post.html"><i class="bi bi-chevron-right"></i> Single Post</a></li>
-              <li><a href="about.html"><i class="bi bi-chevron-right"></i> About us</a></li>
-              <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-lg-2">
-            <h3 class="footer-heading">Categories</h3>
-            <ul class="footer-links list-unstyled">
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Business</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Culture</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Sport</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Food</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Politics</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Celebrity</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Startups</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Travel</a></li>
 
-            </ul>
-          </div>
+	<footer id="footer" class="footer">
 
-          <div class="col-lg-4">
-            <h3 class="footer-heading">Recent Posts</h3>
 
-            <ul class="footer-links footer-blog-entry list-unstyled">
-              <li>
-                <a href="single-post.html" class="d-flex align-items-center">
-                  <img src="assets/img/post-sq-1.jpg" alt="" class="img-fluid me-3">
-                  <div>
-                    <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                    <span>5 Great Startup Tips for Female Founders</span>
-                  </div>
-                </a>
-              </li>
 
-              <li>
-                <a href="single-post.html" class="d-flex align-items-center">
-                  <img src="assets/img/post-sq-2.jpg" alt="" class="img-fluid me-3">
-                  <div>
-                    <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                    <span>What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</span>
-                  </div>
-                </a>
-              </li>
 
-              <li>
-                <a href="single-post.html" class="d-flex align-items-center">
-                  <img src="assets/img/post-sq-3.jpg" alt="" class="img-fluid me-3">
-                  <div>
-                    <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                    <span>Life Insurance And Pregnancy: A Working Mom’s Guide</span>
-                  </div>
-                </a>
-              </li>
+		<div class="footer-legal">
+			<div class="container">
 
-              <li>
-                <a href="single-post.html" class="d-flex align-items-center">
-                  <img src="assets/img/post-sq-4.jpg" alt="" class="img-fluid me-3">
-                  <div>
-                    <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                    <span>How to Avoid Distraction and Stay Focused During Video Calls?</span>
-                  </div>
-                </a>
-              </li>
+				<div class="row justify-content-between">
+					<div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+						<div class="copyright">
+							© Copyright <strong><span>ZenBlog</span></strong>. All Rights
+							Reserved
+						</div>
 
-            </ul>
 
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="footer-legal">
-      <div class="container">
+						<div class="credits">
+							<!-- All the links in the footer should remain intact. -->
+							<!-- You can delete the links only if you purchased the pro version. -->
+							<!-- Licensing information: https://bootstrapmade.com/license/ -->
+							<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
+							Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+						</div>
 
-        <div class="row justify-content-between">
-          <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-            <div class="copyright">
-              © Copyright <strong><span>ZenBlog</span></strong>. All Rights Reserved
-            </div>
+					</div>
 
-            <div class="credits">
-              <!-- All the links in the footer should remain intact. -->
-              <!-- You can delete the links only if you purchased the pro version. -->
-              <!-- Licensing information: https://bootstrapmade.com/license/ -->
-              <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
-              Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-            </div>
+					<div class="col-md-6">
+						<div class="social-links mb-3 mb-lg-0 text-center text-md-end">
+							<a href="#" class="twitter"><i class="bi bi-twitter"></i></a> <a
+								href="#" class="facebook"><i class="bi bi-facebook"></i></a> <a
+								href="#" class="instagram"><i class="bi bi-instagram"></i></a> <a
+								href="#" class="google-plus"><i class="bi bi-skype"></i></a> <a
+								href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+						</div>
 
-          </div>
 
-          <div class="col-md-6">
-            <div class="social-links mb-3 mb-lg-0 text-center text-md-end">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            </div>
+					</div>
 
-          </div>
+				</div>
 
-        </div>
+			</div>
+		</div>
 
-      </div>
-    </div>
 
-  </footer>
+	</footer>
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+	<a href="#"
+		class="scroll-top d-flex align-items-center justify-content-center"><i
+		class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+	<!-- Vendor JS Files -->
+	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+	<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+	<script src="assets/vendor/aos/aos.js"></script>
+	<script src="assets/vendor/php-email-form/validate.js"></script>
+
+	<!-- Template Main JS File -->
+	<script src="assets/js/main.js"></script>
+
+
+
 
 </body>
 
 </html>
+
