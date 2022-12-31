@@ -31,12 +31,6 @@
   <link href="assets/css/variables.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: ZenBlog - v1.3.0
-  * Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
-  * Author: BootstrapMade.com
-  * License: https:///bootstrapmade.com/license/
-  ======================================================== -->
 	<!-- 폰트어썸 script -->
 	<script src="https://kit.fontawesome.com/10cd32872a.js" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
@@ -111,16 +105,14 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="https://i.postimg.cc/j27n4qQh/removebg.png" alt="">
+      <a href="NewMain.jsp" class="logo d-flex align-items-center">
+              <img src="https://i.postimg.cc/j27n4qQh/removebg.png" alt="">
         <h1>안전+</h1>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="single-post.html">Single Post</a></li>
-          <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a href="ManualService?category=natural&query=flooding"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
@@ -161,7 +153,7 @@
           </li>
 
           <li><a href="Shelter.jsp">대피소</a></li>
-          <li><a href="contact.html">이벤트</a></li>
+          <li><a href="UserStamp2.jsp">이벤트</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -274,7 +266,7 @@
 		
           </div>
 			<div class="button_container">
-			  <button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button>
+			  <a href = "Postform.jsp"><button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button></a>
 			</div>
         </div>
       </div>

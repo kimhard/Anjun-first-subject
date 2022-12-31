@@ -50,10 +50,9 @@ public class CommentDAO {
 		CommentDTO comment = null;
 		try {
 			getConn();
-			String sql = "SELECT * FROM anjun_comment WHERE post_seq=?";
+			String sql = "SELECT * FROM anjun_comment WHERE post_seq=? ORDER BY cmt_dt";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, post_seq);
-			System.out.println(sql);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {

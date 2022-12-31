@@ -1,3 +1,8 @@
+<%@page import="Model.CommentDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.CommentDAO"%>
+<%@page import="Model.PostDAO"%>
+<%@page import="Model.PostDTO"%>
 <%@page import="Model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -7,9 +12,9 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>안전+</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+<title>안전+</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
 
 <!-- Favicons -->
 <link href="assets/img/favicon.png" rel="icon">
@@ -98,27 +103,66 @@
 			})
 		}
 	</script>
+	
 </head>
 
 
 <body>
-	<%
-	UserDTO info = (UserDTO) session.getAttribute("info");
-	%>
+<%-- <%
+   /* UserDTO info = (UserDTO)session.getAttribute("info"); */
+
+   /* int post_seq = Integer.parseInt(request.getParameter("post_seq")); */
+
+   int post_seq = 22;
+   
+   PostDTO dto = new PostDTO();
+   PostDAO dao = new PostDAO();
+   CommentDAO cmt = new CommentDAO();
+   
+   PostDTO result = dao.read(post_seq);
+   
+   ArrayList<CommentDTO> comments = cmt.read(post_seq);
+   
+   
+   System.out.println(comments);
+   
+   /* String id = info.getId();
+   String nick = info.getNick();
+   String grade = info.getGrade();
+   
+   
+   
+   if(grade.equals("A")){
+      grade = "VIP";
+   }else if(grade.equals("B")){
+      grade = "GOLD";
+   }else if(grade.equals("C")){
+      grade = "SILVER";
+   }else {
+      grade = "IRON";
+   } */
+
+   
+   
+%> --%>
+<%
+	UserDTO info = (UserDTO)session.getAttribute("info");
+
+%>
 
 	<!-- ======= Header ======= -->
 	<header id="header" class="header d-flex align-items-center fixed-top">
 		<div
 			class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-			<a href="index.html" class="logo d-flex align-items-center"> <!-- Uncomment the line below if you also wish to use an image logo -->
+			<a href="NewMain.jsp" class="logo d-flex align-items-center"> <!-- Uncomment the line below if you also wish to use an image logo -->
 				<img src="https://i.postimg.cc/j27n4qQh/removebg.png" alt="">
 				<h1>안전+</h1>
 			</a>
 
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li><a href="single-post.html">Single Post</a></li>
+
 					         <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -159,8 +203,9 @@
             </ul>
           </li>
 
+
 					<li><a href="Shelter.jsp">대피소</a></li>
-					<li><a href="contact.html">이벤트</a></li>
+					<li><a href="UserStamp2.jsp">이벤트</a></li>
 				</ul>
 			</nav>
 			<!-- .navbar -->
@@ -198,11 +243,25 @@
 					<div class="col-md-9" data-aos="fade-up">
 						<h3 class="category-title">피드</h3>
 
+						<%	PostDAO dao = new PostDAO();
+							PostDTO dto = new PostDTO();
+							ArrayList<PostDTO> mainPostList = dao.getMainPost();	%>
+							
+						<%	for(int i=0; i<mainPostList.size(); i++) {
+								
+								CommentDAO cmt = new CommentDAO();
+							   	ArrayList<CommentDTO> comments = cmt.read(mainPostList.get(i).getPost_seq());	%>
+								
+							
+						<!-- 포스트 시작 -->
+						<form id="frm<%=mainPostList.get(i).getPost_seq()%>" action="Blog.jsp" method="get">
+						<input type="hidden" name="post_seq" value="<%=mainPostList.get(i).getPost_seq()%>">
 						<div class="d-md-flex post-entry-2 half">
-							<a href="single-post.html" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
+							<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
 								<img src="assets/img/post-landscape-6.jpg" alt=""
 								class="img-fluid">
 							</a>
+
 							<div>
 								<div class="d-flex align-items-center author post-author">
 									<div class="photo">
@@ -211,7 +270,7 @@
 									<div class="name">
 
 										<!-- 게시자 아이디가 들어가는 곳 -->
-										<h3 class="m-0 p-0">Wade Warren</h3>
+										<h3 class="m-0 p-0"><%=mainPostList.get(i).getUser_id()%></h3>
 
 
 									</div>
@@ -226,28 +285,32 @@
 								<hr class="hr-5">
 								<!-- 내용이 들어가는 곳 -->
 								<h3>
-									<a href="single-post.html">What is the son of Football
-										Coach John Gruden, Deuce Gruden doing Now?</a>
+
+									<a type="submit" onclick="document.getElementById('frm').submit();"><%=mainPostList.get(i).getPost_content() %></a>
 								</h3>
 								<!-- 작성일자가 들어가는 곳 -->
 								<div class="post-meta">
-									<span>Jul 5th '22</span>
+									<span><%=mainPostList.get(i).getPost_dt()%></span>
 								</div>
 
+								<hr class="hr-5" size="5">
 								<!--  좋아요 싫어요 -->
+
 								<div class="like-dislike">
-									<a href="#" class="button4"><i class="fa-regular fa-heart"></i></a>
-									<a href="#" class="button4"><i
-										class="fa-regular fa-thumbs-down"></i></a>
+
+								댓글<%=comments.size() %>
+
+
+									<a href="#" class="button4"><i class="fa-regular fa-heart"></i><%=mainPostList.get(i).getPost_likes() %></a>
+									<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i><%=mainPostList.get(i).getPost_dislikes() %></a>
 								</div>
-								<hr class="hr-5">
-
-
-
-
 							</div>
+							
+							
 						</div>
-
+						</form>
+						<!-- 포스트 끝 -->
+						<%	 }	%>
 
 					</div>
 
@@ -296,10 +359,9 @@
 												<a href="Profile.jsp"><%=info.getId()%></a>
 											</h2>
 											<h3 class="mb-2"><%=grade%></h3>
-											<button class="btn btn-primary btn-ghost btn-fill">
-												내 게시글</button>
+											
 											<button class="custom-btn btn-10">
-												<a href="UpdateProfile.jsp">개인정보 수정</a>
+												<a href="MyBlog.jsp">내 게시물</a>
 											</button>
 											<button class="custom-btn btn-10">
 												<a href="LogoutService">로그아웃</a>
@@ -307,7 +369,7 @@
 											<%
 											} else {
 											%>
-											<a href="Login.jsp">로그인</a>
+											<a href="Login.jsp"><div>로그인</div></a>
 											<%
 											}
 											%>
@@ -429,3 +491,4 @@
 </body>
 
 </html>
+

@@ -14,12 +14,15 @@
 hr {
   background-color: #fff;
   padding: 0;
-  margin-right: 20px;
+  margin-left:100px 20px;
+  margin-bottom: 30px;
+  
 }
 
 hr.hr-5 {
   border: 0;
   border-top: 3px double #8c8c8c;
+  
 }
 
 .box {
@@ -1427,6 +1430,10 @@ textarea::placeholder {
       
 }
 .button4 {
+	position:relative;	
+ 	left:280px;
 	font-size:20px; padding:10px 10px;
 	}
+
+	
 
