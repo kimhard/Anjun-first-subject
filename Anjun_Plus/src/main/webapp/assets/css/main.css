@@ -11,6 +11,7 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
 hr {
   background-color: #fff;
   padding: 0;
@@ -624,7 +625,7 @@ section {
   color: rgba(var(--color-black-rgb), 0.05);
 }
 
-.trending .trending-post li a h3 {
+.trending .trending-post li a h3 {#
   font-size: 18px;
   color: rgba(var(--color-black-rgb), 0.9);
 }
