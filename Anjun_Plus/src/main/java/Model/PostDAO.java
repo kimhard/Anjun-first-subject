@@ -118,8 +118,9 @@ public class PostDAO {
 	
 	
 	// 글쓰기용 post()
-	public int post(PostDTO dto) {
+	public PostDTO post(PostDTO dto) {
 		getConn();
+		PostDTO result = null;
 		// 게시물 순번(post_seq)는 시퀀스 사용
 		// 게시물 작성일자(post_dt)는 CURRENT_DATE로 현재시각 입력
 		// 게시물 추천수(post_likes), 게시물 비추천수(post_dislikes)는 기본값 0을 부여
@@ -130,12 +131,32 @@ public class PostDAO {
 			psmt.setString(2, dto.getUser_id());
 			psmt.setString(3, dto.getPost_hashtag());
 			cnt = psmt.executeUpdate();
+			
+			if(cnt > 0) {
+				String sql2 = "SELECT * FROM anjun_post WHERE user_id = ? ORDER BY post_dt DESC";
+				psmt = conn.prepareStatement(sql2);
+				psmt.setString(1, dto.getUser_id());
+				rs = psmt.executeQuery();
+				rs.next();
+				int seq = rs.getInt("post_seq");
+				String content = rs.getString("post_content");
+				String date = rs.getString("post_dt");
+				String id = rs.getString("user_id");
+				int likes = rs.getInt("post_likes");
+				int dislikes = rs.getInt("post_dislikes");
+				String hashtag = rs.getString("post_hashtag");
+				int lat = rs.getInt("post_lat");
+				int lng = rs.getInt("post_lng");
+					
+				result = new PostDTO(seq, content, date, id, likes, dislikes, hashtag, lat, lng);
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return cnt;
+		return result;
 	}
 	
 	// 검색 기능

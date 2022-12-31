@@ -51,6 +51,9 @@ INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트15', CURRENT_DA
 INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트16', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
 INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트17', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
 INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트18', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
+
+
+
 INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ, '테스트19', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
 INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트20', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
 INSERT INTO anjun_post(post_content, post_dt, user_id, post_likes, post_dislikes, post_hashtag, post_lat, post_lng) VALUES('테스트21', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
