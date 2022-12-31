@@ -205,7 +205,9 @@
 
 
 					<li><a href="Shelter.jsp">대피소</a></li>
+					<%if(info != null) {%>
 					<li><a href="UserStamp2.jsp">출석</a></li>
+					<%} %>
 				</ul>
 			</nav>
 			<!-- .navbar -->
@@ -409,10 +411,12 @@
 						<!-- End Tags -->
 
 					</div>
+					<%if(info != null) {%>
 					<div class="button_container">
-						<a href="Postform.jsp"
-							<button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button>></a>
+						<a href="Postform.jsp">
+							<button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button></a>
 					</div>
+					<%} %>
 				</div>
 			</div>
 		</section>
