@@ -75,7 +75,7 @@
 		FileDAO dao = new FileDAO();
 
 		// 게시글 내용, 해쉬태그, 아이디
-		String post_content = request.getParameter("post_content");
+		String post_content = multiRequest.getParameter("post_content");
 		String id = info.getId();
 		String post_hashtag2 = multiRequest.getParameter("post_hashtag");
 		
@@ -93,7 +93,6 @@
 		int cnt = dao2.post(dto2);
 		if (cnt > 0) {
 			writer.println("<script>alert('성공적으로 게시하였습니다.');</script>");
-			response.sendRedirect("Blog.jsp");
 		} else {
 			writer.println("<script>alert('게시물 작성을 실패하였습니다..');</script>");
 		}
