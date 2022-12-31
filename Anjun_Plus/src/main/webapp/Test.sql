@@ -64,3 +64,5 @@ INSERT INTO anjun_post(post_content, post_dt, user_id, post_likes, post_dislikes
 
 
 select * from anjun_post where user_id like '%테스트%' or post_content like '%테스트%'
+
+INSERT INTO anjun_post(post_content, post_dt, user_id, post_likes, post_dislikes, post_hashtag, post_lat, post_lng) VALUES('테스트', CURRENT_DATE, 'smhrd', 0, 0, '지진', 1, 1)

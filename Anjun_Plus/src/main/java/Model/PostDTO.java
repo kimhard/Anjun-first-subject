@@ -47,14 +47,13 @@ public class PostDTO {
 		super();
 		this.post_seq = post_seq;
 	}
+	
 
 	public PostDTO(String post_content, String user_id, String post_hashtag) {
 		super();
 		this.post_content = post_content;
 		this.user_id = user_id;
 		this.post_hashtag = post_hashtag;
-
-
 	}
 
 	// getter

@@ -91,10 +91,15 @@
 		
 		PostDTO dto2 = new PostDTO(post_content, id, post_hashtag);
 		PostDAO dao2 = new PostDAO();
+		
+		System.out.println("post_content:"+dto2.getPost_content());
+		System.out.println("user_id:"+dto2.getUser_id());
+		System.out.println("post_hashtag:"+dto2.getPost_hashtag());
 
-		int cnt = dao2.post(dto2);
-		if (cnt > 0) {
+		PostDTO dto3 = dao2.post(dto2);
+		if (dto3 != null) {
 			writer.println("<script>alert('성공적으로 게시하였습니다.');</script>");
+			response.sendRedirect("Blog.jsp?post_seq="+dto3.getPost_seq());
 		} else {
 			writer.println("<script>alert('게시물 작성을 실패하였습니다..');</script>");
 		}
