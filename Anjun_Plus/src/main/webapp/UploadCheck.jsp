@@ -75,7 +75,7 @@
 		FileDAO dao = new FileDAO();
 
 		// 게시글 내용, 해쉬태그, 아이디
-		String post_content = multiRequest.getParameter("post_content");
+		String post_content = request.getParameter("post_content");
 		String id = info.getId();
 		String post_hashtag2 = multiRequest.getParameter("post_hashtag");
 		
