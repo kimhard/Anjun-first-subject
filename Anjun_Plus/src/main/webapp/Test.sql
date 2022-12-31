@@ -1,6 +1,6 @@
 SELECT * FROM user_tables;
 
-SELECT * FROM anjun_POST;
+SELECT * FROM anjun_post;
 
 INSERT INTO anjun_user (user_id, user_pw, user_nick, user_name, user_email, user_rrn) 
 VALUES ('smart', 1234, 'smart', 'smart', 'smart@smart.com', '123456-1234567');
@@ -56,3 +56,5 @@ INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트20', CURRENT_DA
 INSERT INTO anjun_post(post_content, post_dt, user_id, post_likes, post_dislikes, post_hashtag, post_lat, post_lng) VALUES('테스트21', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
 INSERT INTO anjun_post(post_content, post_dt, user_id, post_likes, post_dislikes, post_hashtag, post_lat, post_lng) VALUES('테스트22', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
 INSERT INTO anjun_post(post_content, post_dt, user_id, post_likes, post_dislikes, post_hashtag, post_lat, post_lng) VALUES('테스트23', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
+
+INSERT INTO anjun_post(post_content, post_dt, user_id, post_likes, post_dislikes, post_hashtag, post_lat, post_lng) VALUES('테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)

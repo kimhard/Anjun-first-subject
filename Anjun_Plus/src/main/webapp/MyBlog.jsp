@@ -192,6 +192,34 @@
 				</div>
 				<!-- End Search Form -->
 
+
+              </div>
+            </div>
+
+            <div class="aside-block">
+              <h3 class="aside-title">내 위치</h3>
+              <div class="video-post">
+              	<iframe src="UserLocation.jsp" scrolling="no"></iframe>
+              </div>
+            </div><!-- End Video -->
+
+            <div class="aside-block">
+              <h3 class="aside-title">Tags</h3>
+              <ul class="aside-tags list-unstyled">
+                <li><a href="category.html">지진</a></li>
+                <li><a href="category.html">홍수</a></li>
+                <li><a href="category.html">침수</a></li>
+                <li><a href="category.html">Food</a></li>
+                <li><a href="category.html">Politics</a></li>
+                <li><a href="category.html">Celebrity</a></li>
+                <li><a href="category.html">Startups</a></li>
+                <li><a href="category.html">Travel</a></li>
+              </ul>
+            </div><!-- End Tags -->
+		
+          </div>
+			<div class="button_container">
+			  <button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button>
 			</div>
 
 		</div>

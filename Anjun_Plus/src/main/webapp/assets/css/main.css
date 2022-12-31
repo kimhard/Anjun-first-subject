@@ -625,7 +625,7 @@ section {
   color: rgba(var(--color-black-rgb), 0.05);
 }
 
-.trending .trending-post li a h3 {#
+.trending .trending-post li a h3 {
   font-size: 18px;
   color: rgba(var(--color-black-rgb), 0.9);
 }
@@ -1417,7 +1417,7 @@ textarea::placeholder {
 	padding-right: 100px;
 }
 
-.button2 {
+/* .button2 {
  	  position:relative;	
  	  left:240px;
       top:20px;
@@ -1435,6 +1435,5 @@ textarea::placeholder {
  	left:280px;
 	font-size:20px; padding:10px 10px;
 	}
-
-	
+ */
 
