@@ -73,6 +73,8 @@
 
 		FileDTO dto = new FileDTO(post_seq, media_file, media_real_file, media_ext);
 		FileDAO dao = new FileDAO();
+		
+		int cnt2 = dao.uploadFile(dto);
 
 		// 게시글 내용, 해쉬태그, 아이디
 		String post_content = multiRequest.getParameter("post_content");
