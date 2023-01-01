@@ -45,16 +45,21 @@ public class PostDAO {
 	}
 	
 	// 메인화면 최근글목록 불러오기
-		public ArrayList<PostDTO> getMainPost() {
+		public ArrayList<PostDTO> getMainPost(int pageNum) {
 			ArrayList<PostDTO> boards = new ArrayList<PostDTO>();
 			PostDTO board = null;
+			int maxNum = pageNum*15;
+			int minNum = maxNum-14;
 			try {
 				getConn();
-				String sql = "SELECT * FROM anjun_post ORDER BY post_dt DESC"; 
+//				String sql = "SELECT * FROM anjun_post WHERE post_seq < ? AND ROWNUM <= 15 ORDER BY post_seq DESC";
+				String sql = "SELECT * FROM (SELECT ROWNUM NUM, anjun_post.* FROM (SELECT * FROM anjun_post ORDER BY post_dt DESC) anjun_post) WHERE NUM BETWEEN ? AND ?";
 				psmt = conn.prepareStatement(sql);
+				psmt.setInt(1, minNum);
+				psmt.setInt(2, maxNum);
 				rs = psmt.executeQuery();
 				
-				int cnt = 1;
+				int cnt = 0;
 				while(rs.next()) {
 					if(cnt==15) {
 						break;

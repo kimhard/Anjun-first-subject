@@ -112,43 +112,6 @@
 
 
 <body>
-<%-- <%
-   /* UserDTO info = (UserDTO)session.getAttribute("info"); */
-
-   /* int post_seq = Integer.parseInt(request.getParameter("post_seq")); */
-
-   int post_seq = 22;
-   
-   PostDTO dto = new PostDTO();
-   PostDAO dao = new PostDAO();
-   CommentDAO cmt = new CommentDAO();
-   
-   PostDTO result = dao.read(post_seq);
-   
-   ArrayList<CommentDTO> comments = cmt.read(post_seq);
-   
-   
-   System.out.println(comments);
-   
-   /* String id = info.getId();
-   String nick = info.getNick();
-   String grade = info.getGrade();
-   
-   
-   
-   if(grade.equals("A")){
-      grade = "VIP";
-   }else if(grade.equals("B")){
-      grade = "GOLD";
-   }else if(grade.equals("C")){
-      grade = "SILVER";
-   }else {
-      grade = "IRON";
-   } */
-
-   
-   
-%> --%>
 <%
 	UserDTO info = null;
 	info = (UserDTO)session.getAttribute("info");
@@ -243,6 +206,13 @@
 	</header>
 	<!-- End Header -->
 
+	<%	PostDAO dao = new PostDAO();
+		PostDTO dto = new PostDTO();
+		int post_seq = 999999999;
+		if(request.getParameter("post_seq")!=null){
+			post_seq = Integer.parseInt(request.getParameter("post_seq"));
+		}
+		%>
 	<main id="main">
 		<section>
 			<div class="container">
@@ -250,19 +220,37 @@
 
 					<div class="col-md-9" data-aos="fade-up">
 						<h3 class="category-title">Feed</h3>
-
-						<%	PostDAO dao = new PostDAO();
-							PostDTO dto = new PostDTO();
-							ArrayList<PostDTO> mainPostList = dao.getMainPost();	%>
+						<div class="post-content">
+						<%	int pageNum = 1;
+							String active1 = "";
+							String active2 = "";
+							String active3 = "";
+							String active4 = "";
+							String active5 = "";
 							
-						<%	for(int i=0; i<mainPostList.size(); i++) {
-								
+							if(request.getParameter("pageNum")!=null){
+								pageNum = Integer.parseInt(request.getParameter("pageNum"));
+							}
+							if(pageNum==1){
+								active1 = "active";
+							}else if(pageNum==2){
+								active2 = "active";
+							}else if(pageNum==3){
+								active3 = "active";
+							}else if(pageNum==4){
+								active4 = "active";
+							}else if(pageNum==5){
+								active5 = "active";
+							}
+							
+							ArrayList<PostDTO> mainPostList = dao.getMainPost(pageNum);
+							for(int i=0; i<mainPostList.size(); i++) {
+								post_seq = mainPostList.get(i).getPost_seq();
 								CommentDAO cmt = new CommentDAO();
 							   	ArrayList<CommentDTO> comments = cmt.read(mainPostList.get(i).getPost_seq());
 							   	FileDAO file = new FileDAO();
 							   	ArrayList<FileDTO> files = file.postFile(mainPostList.get(i).getPost_seq());
 							   	String filePath = "removebg.png";
-							   	System.out.println("files.size:"+files.size());
 							   	if(files.size()!=0){
 							   		filePath = files.get(0).getMedia_file();
 							   		System.out.println(filePath);
@@ -271,7 +259,7 @@
 								
 							
 						<!-- 포스트 시작 -->
-						<form id="frm<%=mainPostList.get(i).getPost_seq()%>" action="Blog.jsp" method="get">
+						<form class="postList" id="frm<%=mainPostList.get(i).getPost_seq()%>" action="Blog.jsp" method="get">
 						<input type="hidden" name="post_seq" value="<%=mainPostList.get(i).getPost_seq()%>">
 						<div class="d-md-flex post-entry-2 half">
 							<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
@@ -326,6 +314,23 @@
 						</form>
 						<!-- 포스트 끝 -->
 						<%	 }	%>
+						</div>
+						
+						<div class="text-start py-4">
+							<form active=NewMain.jsp id="pageNum">
+							<input type="hidden" name="post_seq" value="<%=post_seq%>">
+								<div class="custom-pagination">
+					                <a href="NewMain.jsp?pageNum=<%=pageNum-1%>" class="prev">Prevous</a>
+					                <a href="NewMain.jsp?pageNum=1" class="<%=active1%>">1</a>
+					                <a href="NewMain.jsp?pageNum=2" class="<%=active2%>">2</a>
+					                <a href="NewMain.jsp?pageNum=3" class="<%=active3%>">3</a>
+					                <a href="NewMain.jsp?pageNum=4" class="<%=active4%>">4</a>
+					                <a href="NewMain.jsp?pageNum=5" class="<%=active5%>">5</a>
+					                <a href="NewMain.jsp?pageNum=<%=pageNum+1%> class="next">Next</a>
+								</div><!-- End Paging -->
+							</form>
+						</div>
+
 
 					</div>
 
@@ -436,6 +441,8 @@
 	<!-- End #main -->
 
 
+
+
 	<!-- ======= Footer ======= -->
 
 
@@ -501,6 +508,8 @@
 
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
+
+
 
 
 
