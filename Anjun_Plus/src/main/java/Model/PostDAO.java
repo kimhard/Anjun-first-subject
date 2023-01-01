@@ -170,7 +170,7 @@ public class PostDAO {
 			if(searchWord.substring(0, 1).equals("#")){
 				sql = "select * from anjun_post where post_hashtag like ? ORDER BY post_dt DESC"; 
 				psmt = conn.prepareStatement(sql);
-				psmt.setString(1, "%"+ searchWord +"%");
+				psmt.setString(1, "%"+ searchWord.substring(1) +"%");
 			}else{
 				sql = "select * from anjun_post where user_id like ? or post_content like ? ORDER BY post_dt DESC"; 
 				psmt = conn.prepareStatement(sql);
