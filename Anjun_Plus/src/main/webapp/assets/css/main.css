@@ -1402,11 +1402,7 @@ section {
 /*
  Noto Serif Korean Regular 400
 */ 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
 
-h1{
-	font-family: 'Noto Sans KR', sans-serif;
-}
 
 .position-relative a{
 	color: white;
@@ -1419,7 +1415,7 @@ textarea::placeholder {
 }
 
 .post_icon {
-	padding-right: 100px;
+	padding-right: 20px;
 }
 
 /* .button2 {
