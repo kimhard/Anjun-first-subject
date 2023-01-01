@@ -1,3 +1,5 @@
+<%@page import="Model.FileDTO"%>
+<%@page import="Model.FileDAO"%>
 <%@page import="Model.CommentDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.CommentDAO"%>
@@ -254,7 +256,16 @@
 						<%	for(int i=0; i<mainPostList.size(); i++) {
 								
 								CommentDAO cmt = new CommentDAO();
-							   	ArrayList<CommentDTO> comments = cmt.read(mainPostList.get(i).getPost_seq());	%>
+							   	ArrayList<CommentDTO> comments = cmt.read(mainPostList.get(i).getPost_seq());
+							   	FileDAO file = new FileDAO();
+							   	ArrayList<FileDTO> files = file.postFile(mainPostList.get(i).getPost_seq());
+							   	String filePath = "https://i.postimg.cc/j27n4qQh/removebg.png";
+							   	System.out.println("files.size:"+files.size());
+							   	if(files.size()>0){
+							   		filePath = files.get(0).getmedia_real_file();
+							   		System.out.println(filePath);
+							   	}
+							   	%>
 								
 							
 						<!-- 포스트 시작 -->
@@ -262,7 +273,7 @@
 						<input type="hidden" name="post_seq" value="<%=mainPostList.get(i).getPost_seq()%>">
 						<div class="d-md-flex post-entry-2 half">
 							<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
-								<img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
+								<img src="uploadedFiles/<%=filePath %>" alt="" class="img-fluid">
 							</a>
 
 						<div class="post-info">
