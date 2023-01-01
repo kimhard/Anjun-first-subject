@@ -107,7 +107,18 @@
 
 
 
-
+<style type="text/css">
+.post-info{
+	flex-grow: 3;
+}
+.loc-dot{
+	flex-grow: 3;
+}
+.like-dislike{
+	float:right;
+	display: inline;
+}
+</style>
 </head>
 
 
@@ -304,13 +315,12 @@
 							<hr class="hr-5" size="5">
 							<!--  좋아요 싫어요 -->
 
-							<div class="like-dislike">
-
-							댓글<%=comments.size() %>
-
-
-								<a href="#" class="button4"><i class="fa-regular fa-heart"></i><%=mainPostList.get(i).getPost_likes() %></a>
-								<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i><%=mainPostList.get(i).getPost_dislikes() %></a>
+							<div>
+								댓글<%=comments.size() %>
+								<div class="like-dislike">
+									<a href="#" class="button4"><i class="fa-regular fa-heart"></i><%=mainPostList.get(i).getPost_likes() %></a>
+									<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i><%=mainPostList.get(i).getPost_dislikes() %></a>
+								</div>
 							</div>
 						</div>
 
