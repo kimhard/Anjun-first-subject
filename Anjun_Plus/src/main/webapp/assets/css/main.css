@@ -111,7 +111,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-primary);
+	font-family: 'Noto Sans KR', sans-serif;
+  
 }
 
 #main {
@@ -127,11 +128,11 @@ section {
 }
 
 .section-header {
-  border-bottom: 2px solid var(--color-black);
+  border-bottom: 100px solid var(--color-black);
 }
 
 .section-header h2 {
-  font-size: 50px;
+  font-size: px;
   color: var(--color-black);
 }
 
@@ -214,15 +215,20 @@ section {
 }
 
 .header .logo img {
-  max-height: 40px;
-  margin-right: 6px;
+  max-height: 80px;
+  margin-right: 1px;
 }
 
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+
+
 .header .logo h1 {
-  font-size: 30px;
-  font-weight: 700;
+  font-size: 25px;
+  font-weight: 800;
   color: white;
-  font-family: var(--font-primary);
+  font-family: 'Noto Sans KR', sans-serif;
+  
 }
 
 .search-form-wrap {
@@ -479,7 +485,7 @@ section {
     margin: 10px 20px;
     background: var(--color-white);
     transition: all 0.5s ease-in-out;
-    box-shadow: 0px 0px 30px rgba(var(--color-black-rgb), 0.1);
+    -shadow: 0px 0px 30px rgba(var(--color-black-rgb), 0.1);
   }
 
   .navbar .dropdown>.dropdown-active,
