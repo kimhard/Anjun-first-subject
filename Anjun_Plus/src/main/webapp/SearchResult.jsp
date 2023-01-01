@@ -1,3 +1,8 @@
+<%@page import="Model.CommentDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.CommentDAO"%>
+<%@page import="Model.PostDAO"%>
+<%@page import="Model.PostDTO"%>
 <%@page import="Model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -6,10 +11,8 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<title>ZenBlog Bootstrap Template - Category</title>
+<title>안전+</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -33,7 +36,7 @@
 <link href="assets/vendor/glightbox/css/glightbox.min.css"
 	rel="stylesheet">
 <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-	
+
 <!-- Template Main CSS Files -->
 <link href="assets/css/variables.css" rel="stylesheet">
 <link href="assets/css/main.css" rel="stylesheet">
@@ -43,114 +46,72 @@
 	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
 <script type="text/javascript">
-   
-      navigator.geolocation.getCurrentPosition(success, error);
-      
-      function success(position) {
-         console.log(position);
-             const latitude = position.coords.latitude;  // 경도  
-             const longitude = position.coords.longitude;  // 위도
-             const coordsObj = {
-                 latitude,
-                 longitude
-             };
-             saveCoords(latitude, longitude);
-             getWeather(latitude, longitude);
-      }
-   
-      function error() {
-         console.log("위치 정보를 가져올 수 없습니다." + err);
-      }
-
-      function saveCoords(latitude, longitude) {
-         sessionStorage.setItem("userLat", latitude);
-         sessionStorage.setItem("userLng", longitude);
-         console.log(sessionStorage.getItem("userLat"));
-         console.log(sessionStorage.getItem("userLng"));
-          }
-   
-      function requestCoords() {
-          navigator.geolocation.getCurrentPosition(success, error);
-      }
-      
-      function getWeather(latitude, longitude) {
-         $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=35.1074481&lon=126.8828409&appid=b408d025daceb6920be202dc72f52ccc&units=metric',function(data){
-            console.log(data.main.temp);
-            console.log(data.weather[0].main);
-            var $temp = data.main.temp;
-            var $weather = data.weather[0].main;
-            
-            $('.temp').prepend($temp);
-            if($weather=="Clouds"){
-               $('.weather').attr('class','weather fa-solid fa-cloud-sun');
-            }else if($weather=="Clear"){
-               $('.weather').attr('class','weather fa-solid fa-sun');
-            }else if($weather=="Thunderstorm"){
-               $('.weather').attr('class','weather fa-solid fa-cloud-bolt');
-            }else if($weather=="Drizzle"){
-               $('.weather').attr('class','weather fa-solid fa-cloud-rain');
-            }else if($weather=="Rain"){
-               $('.weather').attr('class','weather fa-solid fa-cloud-showers-heavy');
-            }else if($weather=="Snow"){
-               $('.weather').attr('class','weather fa-regular fa-snowflake');
-            }else if($weather=="Atmosphere"){
-               $('.weather').attr('class','weather fa-solid fa-smog');
-            }else{
-               $('.weather').attr('class','weather fa-solid fa-cloud');
-            }
-         })
-      }
-   </script>
-<!-- 이미지 업로드 -->
-<script>
-	function getThumbnailPrivew(html, $target) {
-		if (html.files && html.files[0]) {
-			var reader = new FileReader();
-			reader.onload = function(e) {
-				$target.css('display', '');
-				//$target.css('background-image', 'url(\"' + e.target.result + '\")'); // 배경으로 지정시
-				$target
-						.html('<img src="' + e.target.result + '" border="0" alt="" />');
-			}
-			reader.readAsDataURL(html.files[0]);
+		navigator.geolocation.getCurrentPosition(success, error);
+		
+		function success(position) {
+			console.log(position);
+			    const latitude = position.coords.latitude;  // 경도  
+			    const longitude = position.coords.longitude;  // 위도
+			    const coordsObj = {
+			        latitude,
+			        longitude
+			    };
+			    saveCoords(latitude, longitude);
+			    getWeather(latitude, longitude);
 		}
-	}
-</script>
-<style>
-.filebox label {
-	display: inline-block;
-	padding: .5em .75em;
-	color: #999;
-	font-size: inherit;
-	line-height: normal;
-	vertical-align: middle;
-	background-color: #fdfdfd;
-	cursor: pointer;
-	border: 1px solid #ebebeb;
-	border-bottom-color: #e2e2e2;
-	border-radius: .25em;
-	width: 100%;
-	max-width: 100%;
-}
+	
+		function error() {
+			console.log("위치 정보를 가져올 수 없습니다." + err);
+		}
 
-.filebox input[type="file"] { /* 파일 필드 숨기기 */
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	border: 0;
-}
-</style>
-
+		function saveCoords(latitude, longitude) {
+			sessionStorage.setItem("userLat", latitude);
+			sessionStorage.setItem("userLng", longitude);
+			console.log(sessionStorage.getItem("userLat"));
+			console.log(sessionStorage.getItem("userLng"));
+		}
+	
+		function requestCoords() {
+		    navigator.geolocation.getCurrentPosition(success, error);
+		}
+		
+		function getWeather(latitude, longitude) {
+			$.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=35.1074481&lon=126.8828409&appid=b408d025daceb6920be202dc72f52ccc&units=metric',function(data){
+				console.log(data.main.temp);
+				console.log(data.weather[0].main);
+				var $temp = data.main.temp;
+				var $weather = data.weather[0].main;
+				
+				$('.temp').prepend($temp);
+				if($weather=="Clouds"){
+					$('.weather').attr('class','weather fa-solid fa-cloud-sun');
+				}else if($weather=="Clear"){
+					$('.weather').attr('class','weather fa-solid fa-sun');
+				}else if($weather=="Thunderstorm"){
+					$('.weather').attr('class','weather fa-solid fa-cloud-bolt');
+				}else if($weather=="Drizzle"){
+					$('.weather').attr('class','weather fa-solid fa-cloud-rain');
+				}else if($weather=="Rain"){
+					$('.weather').attr('class','weather fa-solid fa-cloud-showers-heavy');
+				}else if($weather=="Snow"){
+					$('.weather').attr('class','weather fa-regular fa-snowflake');
+				}else if($weather=="Atmosphere"){
+					$('.weather').attr('class','weather fa-solid fa-smog');
+				}else{
+					$('.weather').attr('class','weather fa-solid fa-cloud');
+				}
+			})
+		}
+	</script>
+	
 </head>
 
 <body>
 <%
-	UserDTO info = (UserDTO)session.getAttribute("info");
-
+	UserDTO info = null;
+	info = (UserDTO)session.getAttribute("info");
+	String searchWord = request.getParameter("searchWord");
+	System.out.print(searchWord);
 %>
 
 	<!-- ======= Header ======= -->
@@ -163,9 +124,10 @@
 				<h1>안전+</h1>
 			</a>
 
-			 <nav id="navbar" class="navbar">
-        <ul>
-          <li class="dropdown"><a href="ManualService?category=natural&query=flooding"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+			<nav id="navbar" class="navbar">
+				<ul>
+
+					         <li class="dropdown"><a href="ManualService?category=natural&query=flooding"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
@@ -205,11 +167,13 @@
             </ul>
           </li>
 
-          <li><a href="Shelter.jsp">대피소</a></li>
-          <li><a href="UserStamp2.jsp">출석</a></li>
-        </ul>
-      </nav>
 
+					<li><a href="Shelter.jsp">대피소</a></li>
+					<%if(info != null) {%>
+					<li><a href="UserStamp2.jsp">출석</a></li>
+					<%} %>
+				</ul>
+			</nav>
 			<!-- .navbar -->
 
 			<div class="position-relative">
@@ -220,9 +184,10 @@
 
 				<!-- ======= Search Form ======= -->
 				<div class="search-form-wrap js-search-form-wrap">
-					<form action="search-result.html" class="search-form">
-						<span class="icon bi-search"></span> <input type="text"
+					<form action="SearchResult.jsp" method="get" class="search-form">
+						<span class="icon bi-search"></span> <input name="searchWord" type="text"
 							placeholder="Search" class="form-control">
+							<input type="submit" style="display:none;"/>
 						<button class="btn js-search-close">
 							<span class="bi-x"></span>
 						</button>
@@ -237,99 +202,102 @@
 	</header>
 	<!-- End Header -->
 
-	<main id="main">
-		<section>
-			<div class="container">
-				<div class="row">
+  <main id="main">
 
-					<div class="col-md-9" data-aos="fade-up">
-
-
-
-
-
-
-						<!-- 여기에입력 -->
-
-
-
-
-
-
+    <!-- ======= Search Results ======= -->
+    <section id="search-result" class="search-result">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <h3 class="category-title">'<%=searchWord%>' 검색 결과</h3>
+            
+            <%	PostDAO dao = new PostDAO();
+				PostDTO dto = new PostDTO();
+				ArrayList<PostDTO> getBoardSearch = dao.getBoardSearch(searchWord);	%>
+				
+			<%	for(int i=0; i<getBoardSearch.size(); i++) {
+								
+					CommentDAO cmt = new CommentDAO();
+				   	ArrayList<CommentDTO> comments = cmt.read(getBoardSearch.get(i).getPost_seq());	%>	
 
 
+			<!-- 검색 시작 -->
+			<form id="frm<%=getBoardSearch.get(i).getPost_seq()%>" action="Blog.jsp" method="get">
+			<input type="hidden" name="post_seq" value="<%=getBoardSearch.get(i).getPost_seq()%>">
+			<div class="d-md-flex post-entry-2 half">
+				<a type="submit" onclick="document.getElementById('frm<%=getBoardSearch.get(i).getPost_seq()%>').submit();" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
+					<img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
+				</a>
 
-						<div class="col-lg-12 text-center mb-5">
+			<div class="post-info">
+				<div class="d-flex align-items-center author post-author">
+					<div class="photo">
+						<img src="assets/img/person-2.jpg" alt="" class="img-fluid">
+					</div>
+					<div class="name">
 
-							<form action="UploadCheck.jsp" method="post" class="inputform" enctype="multipart/form-data">
-								<div class="col-lg-12 text-center mb-5"></div>
-								<div>
-									<textarea rows="20" style="width: 100%;" name="post_content"
-										placeholder='  ▶ 안전+ 게시물 작성 가이드라인
-
- *게시글 작성 이전에 꼭 확인해주세요!*
-
- 폭력적 또는 혐오스러운 콘텐츠, 성적인 콘텐츠, 스팸 혹은 혼동을 야기하는 콘텐츠, 허위정보를 유포하는 콘텐츠, 증오 또는 학대하는 콘텐츠 등의 특정 위반 사항이 있는 경우 삭제 처리 될 수 있으며, 이용이 제한될 수 있습니다. 
-
- 의도적으로 허위 정보를 게시하여 시민들에게 혼동을 가중시키거나 피해를 입힌 사실이 확인될 경우 법적인 조치가 이루어질 수 있으니 유의해주시길 바랍니다.
-
-  ▶ 안전+ 이용 안내 
- - 폭력적 또는 혐오스러운 콘텐츠 : 안전+는 모두에게 적합한 환경을 유지하기 위해 폭력적인 이미지를 허용하지 않으며 과도하게 폭력적인 동영상 또는 이미지를 삭제할 수 있습니다. 재난으로 인한 인명, 물적피해에 공유되는 이미지는 허용할 수 있습니다.
- - 성적인 콘텐츠 : 안전+는 나체 이미지를 허용하지 않습니다.
- - 스팸 혹은 혼동을 야기하는 콘텐츠 : 안전+는 원치 않는 이메일, 댓글, 좋아요 또는 기타 상업적 또는 피해를 주는 콘텐츠를 만들거나 전송하는 행위를 허용하지 않습니다.
- - 허위정보를 유포하는 콘텐츠 : 안전+는 일어나지도 않은 재난을 허위로 유포하는 행위를 허용하지 않습니다. 허위정보로 인해 혼동을 야기할 경우 게시글을 삭제할 수 있습니다.
- - 증오 또는 학대하는 콘텐츠 : 안전+는 폭력 위협, 혐오 발언 및 개인을 공격 대상으로 삼는 콘텐츠를 삭제합니다. 인종, 민족, 국적, 성, 성별, 성 정체성, 성적 지향, 종교, 장애 또는 질병을 기반으로 타인을 공격하거나 학대하는 행위를 허용하지 않습니다.
- 
-  ▶ 게시물 신고 사유를 위반하면 어떻게 되나요?
- - 안전+의 정책은 가이드라인을 위반하는 콘텐츠를 삭제하는 것입니다. 이미지 또는 관련 내용이 가이드라인을 따르지 않는 경우 게시물 전체가 삭제될 수 있습니다. 가이드라인을 위반하는 계정은 비활성화될 수 있습니다.'></textarea>
-								</div>
-								<div class="post-entry-1 border-bottom">
-									<input class="tag" placeholder="hash tags" name="post_hashtag">
-
-								</div>
-								<div class="text-center">
-									<label for="image" class="fa-sharp fa-solid fa-camera fa-2x"
-										style="cursor: pointer;"></label> <input type="file"
-										name="post_file" id="image" style="display: none;"
-										accept="image/*" capture="camera"
-										onchange="getThumbnailPrivew(this,$('#cma_image'))" />
-									<div id="image_container"></div>
-									<div id="cma_image"
-										style="width: 100%; max-width: 100%; border: 1px solid #000; display: none;"></div>
-
-
-									<i class="fa-sharp fa-solid fa-video fa-2x"></i> 
-									
-									
-									<input type="submit" value="글쓰기">
-								</div>
-							</form>
-
-
-
-						</div>
-
-
-
-
-
-
-
-
-
-						<!-- 여기까지 -->
-
-
-
-
-
-
+						<!-- 게시자 아이디가 들어가는 곳 -->
+						<h3 class="m-0 p-0"><%=getBoardSearch.get(i).getUser_id()%></h3>
 
 
 					</div>
+					<!--  대피소, 위치>-->
+					<div class="loc-dot" align="right">
+						<a href="#" class="button2"><i class="fa-solid fa-location-dot" fa-4x></i></a>
+						<a href="#" class="button3"><i class="fa-solid fa-person-running" fa-4x></i></a>
+					</div>
+				</div>
+				<hr class="hr-5">
+				<!-- 내용이 들어가는 곳 -->
+				<h3>
 
-					<div class="col-md-3">
+					<a type="submit" onclick="document.getElementById('frm<%=getBoardSearch.get(i).getPost_seq()%>').submit();"><%=getBoardSearch.get(i).getPost_content() %></a>
+				</h3>
+				<!-- 작성일자가 들어가는 곳 -->
+				<div class="post-meta">
+					<span><%=getBoardSearch.get(i).getPost_dt().substring(0, 16)%></span>
+				</div>
+
+				<hr class="hr-5" size="5">
+				<!--  좋아요 싫어요 -->
+
+				<div class="like-dislike">
+
+				댓글<%=comments.size() %>
+
+
+					<a href="#" class="button4"><i class="fa-regular fa-heart"></i><%=getBoardSearch.get(i).getPost_likes() %></a>
+					<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i><%=getBoardSearch.get(i).getPost_dislikes() %></a>
+				</div>
+			</div>
+
+
+
+			</div>
+			</form>
+			<!-- 포스트 끝 -->
+			<!-- 검색 끝 -->
+			<%	 }	%>
+
+            <!-- Paging -->
+            <div class="text-start py-4">
+              <div class="custom-pagination">
+                <a href="#" class="prev">Prevous</a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#" class="next">Next</a>
+              </div>
+            </div><!-- End Paging -->
+
+          </div>
+
+          <div class="col-md-3">
 						<!-- ======= Sidebar ======= -->
+
+
 						<div class="aside-block">
 
 							<ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab"
@@ -397,7 +365,7 @@
 						<div class="aside-block">
 							<h3 class="aside-title">내 위치</h3>
 							<div class="video-post">
-								<iframe src="http://localhost:8090/Anjun_Plus/UserLocation.jsp"
+								<iframe src="UserLocation.jsp"
 									scrolling="no"></iframe>
 							</div>
 						</div>
@@ -419,15 +387,25 @@
 						<!-- End Tags -->
 
 					</div>
-
+					<%if(info != null) {%>
+					<div class="button_container">
+						<a href="Postform.jsp">
+							<button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button></a>
+					</div>
+					<%} %>
 				</div>
 			</div>
 		</section>
+
 	</main>
 	<!-- End #main -->
 
 	<!-- ======= Footer ======= -->
+
+
+
 	<footer id="footer" class="footer">
+
 
 
 
@@ -440,6 +418,8 @@
 							© Copyright <strong><span>ZenBlog</span></strong>. All Rights
 							Reserved
 						</div>
+
+
 
 						<div class="credits">
 							<!-- All the links in the footer should remain intact. -->
@@ -460,6 +440,7 @@
 								href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
 						</div>
 
+
 					</div>
 
 				</div>
@@ -467,7 +448,9 @@
 			</div>
 		</div>
 
+
 	</footer>
+
 
 	<a href="#"
 		class="scroll-top d-flex align-items-center justify-content-center"><i
@@ -484,40 +467,9 @@
 	<script src="assets/js/main.js"></script>
 
 
-	<script src="https://unpkg.com/@yaireo/tagify"></script>
-	<link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css"
-		rel="stylesheet" type="text/css" />
 
-	<!-- Tag -->
-	<script>
-		var input = document.querySelector('.tag')
-		var tagify = new Tagify(input);
 
-		// 태그가 추가되면 이벤트 발생
-		tagify.on('add', function() {
-			console.log(tagify.value); // 입력된 태그 정보 객체
-		})
-	</script>
-	<!-- 이미지 업로드 -->
-	<script>
-      function setThumbnail(event) {
-        var reader = new FileReader();
-
-        reader.onload = function(event) {
-          var img = document.createElement("img");
-          img.setAttribute("src", event.target.result);
-          document.querySelector("div#image_container").appendChild(img);
-        };
-
-        reader.readAsDataURL(event.target.files[0]);
-      }
-    </script>
-
-	<script>
-function btn(){
-    alert('사진이 업로드 되었습니다.');
-}
-</script>
 </body>
 
 </html>
+

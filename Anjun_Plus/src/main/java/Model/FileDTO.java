@@ -8,7 +8,7 @@ public class FileDTO {
 	private String media_real_file;
 	private String media_ext;
 	private String upload_time;
-	
+
 	// 생성자
 	public FileDTO(int media_seq, int post_seq, String media_file, String media_real_file, String media_ext,
 			String upload_time) {
@@ -19,6 +19,14 @@ public class FileDTO {
 		this.media_real_file = media_real_file;
 		this.media_ext = media_ext;
 		this.upload_time = upload_time;
+	}
+
+	public FileDTO(int post_seq, String media_file, String media_real_file, String media_ext) {
+		super();
+		this.post_seq = post_seq;
+		this.media_file = media_file;
+		this.media_real_file = media_real_file;
+		this.media_ext = media_ext;
 	}
 
 	// getter
@@ -70,12 +78,5 @@ public class FileDTO {
 	public void setUpload_time(String upload_time) {
 		this.upload_time = upload_time;
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }

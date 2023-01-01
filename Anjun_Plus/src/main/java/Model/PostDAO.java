@@ -118,38 +118,65 @@ public class PostDAO {
 	
 	
 	// 글쓰기용 post()
-	public int post(PostDTO dto) {
+	public PostDTO post(PostDTO dto) {
 		getConn();
+		PostDTO result = null;
 		// 게시물 순번(post_seq)는 시퀀스 사용
 		// 게시물 작성일자(post_dt)는 CURRENT_DATE로 현재시각 입력
 		// 게시물 추천수(post_likes), 게시물 비추천수(post_dislikes)는 기본값 0을 부여
 		try {
-			String sql = "INSERT INTO anjun_post(post_content, post_dt, user_id, post_likes, post_dislikes, post_hashtag, post_lat, post_lng) VALUES(?, CURRENT_DATE, ?, 0, 0, ?, ?, ?)";
+			String sql = "INSERT INTO anjun_post(post_content, post_dt, user_id, post_likes, post_dislikes, post_hashtag, post_lat, post_lng) VALUES(?, CURRENT_DATE, ?, 0, 0, ?, 1, 1)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getPost_content());
 			psmt.setString(2, dto.getUser_id());
 			psmt.setString(3, dto.getPost_hashtag());
-			psmt.setDouble(4, dto.getPost_lat());
-			psmt.setDouble(5, dto.getPost_lng());
 			cnt = psmt.executeUpdate();
+			
+			if(cnt > 0) {
+				String sql2 = "SELECT * FROM anjun_post WHERE user_id = ? ORDER BY post_dt DESC";
+				psmt = conn.prepareStatement(sql2);
+				psmt.setString(1, dto.getUser_id());
+				rs = psmt.executeQuery();
+				rs.next();
+				int seq = rs.getInt("post_seq");
+				String content = rs.getString("post_content");
+				String date = rs.getString("post_dt");
+				String id = rs.getString("user_id");
+				int likes = rs.getInt("post_likes");
+				int dislikes = rs.getInt("post_dislikes");
+				String hashtag = rs.getString("post_hashtag");
+				int lat = rs.getInt("post_lat");
+				int lng = rs.getInt("post_lng");
+					
+				result = new PostDTO(seq, content, date, id, likes, dislikes, hashtag, lat, lng);
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return cnt;
+		return result;
 	}
 	
 	// 검색 기능
-	public ArrayList<PostDTO> getBoardSearch(String keyWord, String searchWord) {
+	public ArrayList<PostDTO> getBoardSearch(String searchWord) {
 		ArrayList<PostDTO> boards = new ArrayList<PostDTO>();
 		PostDTO board = null;
-		System.out.println(keyWord + "/" + searchWord);
+		System.out.println(searchWord);
 		try {
 			getConn();
-			String sql = "select * from anjun_post where " +keyWord+ " like ?"; 
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, "%"+ searchWord +"%");
+			String sql = "";
+			if(searchWord.substring(0, 1).equals("#")){
+				sql = "select * from anjun_post where post_hashtag like ? ORDER BY post_dt DESC"; 
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, "%"+ searchWord +"%");
+			}else{
+				sql = "select * from anjun_post where user_id like ? or post_content like ? ORDER BY post_dt DESC"; 
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, "%"+ searchWord +"%");
+				psmt.setString(2, "%"+ searchWord +"%");
+			}
 			System.out.println(sql);
 			rs = psmt.executeQuery();
 			
@@ -175,7 +202,6 @@ public class PostDAO {
 		}
 		return boards;
 	}
-	
 	
 
 	// 글삭제용 delete_post()

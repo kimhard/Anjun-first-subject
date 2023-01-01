@@ -105,6 +105,7 @@
 			})
 		}
 	</script>
+
 <style>
 @import url(//fonts.googleapis.com/earlyaccess/nanumpenscript.css);
 
@@ -112,12 +113,14 @@ h1{
      font-family: 'Nanum Pen Script', cursive;
 }
 </style>	
+
+
 	
 </head>
 
 
 <body>
-<%-- 
+<%-- <%
    /* UserDTO info = (UserDTO)session.getAttribute("info"); */
 
    /* int post_seq = Integer.parseInt(request.getParameter("post_seq")); */
@@ -151,9 +154,12 @@ h1{
       grade = "IRON";
    } */
 
-   --%>
+   
+   
+%> --%>
 <%
-	UserDTO info = (UserDTO)session.getAttribute("info");
+	UserDTO info = null;
+	info = (UserDTO)session.getAttribute("info");
 
 %>
 
@@ -170,7 +176,7 @@ h1{
 			<nav id="navbar" class="navbar">
 				<ul>
 
-					         <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+					         <li class="dropdown"><a href="ManualService?category=natural&query=flooding"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
@@ -212,7 +218,9 @@ h1{
 
 
 					<li><a href="Shelter.jsp">대피소</a></li>
+					<%if(info != null) {%>
 					<li><a href="UserStamp2.jsp">출석</a></li>
+					<%} %>
 				</ul>
 			</nav>
 			<!-- .navbar -->
@@ -225,9 +233,10 @@ h1{
 
 				<!-- ======= Search Form ======= -->
 				<div class="search-form-wrap js-search-form-wrap">
-					<form action="search-result.html" class="search-form">
-						<span class="icon bi-search"></span> <input type="text"
+					<form action="SearchResult.jsp" method="get" class="search-form">
+						<span class="icon bi-search"></span> <input name="searchWord" type="text"
 							placeholder="Search" class="form-control">
+							<input type="submit" style="display:none;"/>
 						<button class="btn js-search-close">
 							<span class="bi-x"></span>
 						</button>
@@ -264,58 +273,54 @@ h1{
 						<form id="frm<%=mainPostList.get(i).getPost_seq()%>" action="Blog.jsp" method="get">
 						<input type="hidden" name="post_seq" value="<%=mainPostList.get(i).getPost_seq()%>">
 						<div class="d-md-flex post-entry-2 half">
-
 							<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
-
-								<img src="assets/img/post-landscape-6.jpg" alt=""
-								class="img-fluid">
+								<img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
 							</a>
 
-							<div>
-								<div class="d-flex align-items-center author post-author">
-									<div class="photo">
-										<img src="assets/img/person-2.jpg" alt="" class="img-fluid">
-									</div>
-									<div class="name">
-
-										<!-- 게시자 아이디가 들어가는 곳 -->
-										<h3 class="m-0 p-0"><%=mainPostList.get(i).getUser_id()%></h3>
-
-
-									</div>
-									<!--  대피소, 위치>-->
-									<div class="loc-dot">
-										<a href="#" class="button2"><i
-											class="fa-solid fa-location-dot" fa-4x></i></a> <a href="#"
-											class="button3"><i class="fa-solid fa-person-running"
-											fa-4x></i></a>
-									</div>
+						<div class="post-info">
+							<div class="d-flex align-items-center author post-author">
+								<div class="photo">
+									<img src="assets/img/person-2.jpg" alt="" class="img-fluid">
 								</div>
-								<hr class="hr-5">
-								<!-- 내용이 들어가는 곳 -->
-								<h3>
+								<div class="name">
 
-									<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();"><%=mainPostList.get(i).getPost_content() %></a>
-								</h3>
-								<!-- 작성일자가 들어가는 곳 -->
-								<div class="post-meta">
-									<span><%=mainPostList.get(i).getPost_dt()%></span>
+									<!-- 게시자 아이디가 들어가는 곳 -->
+									<h3 class="m-0 p-0"><%=mainPostList.get(i).getUser_id()%></h3>
+
+
 								</div>
-
-								<hr class="hr-5" size="5">
-								<!--  좋아요 싫어요 -->
-
-								<div class="like-dislike">
-
-								댓글<%=comments.size() %>
-
-
-									<a href="#" class="button4"><i class="fa-regular fa-heart"></i><%=mainPostList.get(i).getPost_likes() %></a>
-									<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i><%=mainPostList.get(i).getPost_dislikes() %></a>
+								<!--  대피소, 위치>-->
+								<div class="loc-dot" align="right">
+									<a href="#" class="button2"><i class="fa-solid fa-location-dot" fa-4x></i></a>
+									<a href="#" class="button3"><i class="fa-solid fa-person-running" fa-4x></i></a>
 								</div>
 							</div>
-							
-							
+							<hr class="hr-5">
+							<!-- 내용이 들어가는 곳 -->
+							<h3>
+
+								<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();"><%=mainPostList.get(i).getPost_content() %></a>
+							</h3>
+							<!-- 작성일자가 들어가는 곳 -->
+							<div class="post-meta">
+								<span><%=mainPostList.get(i).getPost_dt().substring(0, 16)%></span>
+							</div>
+
+							<hr class="hr-5" size="5">
+							<!--  좋아요 싫어요 -->
+
+							<div class="like-dislike">
+
+							댓글<%=comments.size() %>
+
+
+								<a href="#" class="button4"><i class="fa-regular fa-heart"></i><%=mainPostList.get(i).getPost_likes() %></a>
+								<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i><%=mainPostList.get(i).getPost_dislikes() %></a>
+							</div>
+						</div>
+
+
+
 						</div>
 						</form>
 						<!-- 포스트 끝 -->
@@ -394,7 +399,7 @@ h1{
 						<div class="aside-block">
 							<h3 class="aside-title">내 위치</h3>
 							<div class="video-post">
-								<iframe src="http://localhost:8090/Anjun_Plus/UserLocation.jsp"
+								<iframe src="UserLocation.jsp"
 									scrolling="no"></iframe>
 							</div>
 						</div>
@@ -416,10 +421,12 @@ h1{
 						<!-- End Tags -->
 
 					</div>
+					<%if(info != null) {%>
 					<div class="button_container">
-						<a href="Postform.jsp"
-							<button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button>></a>
+						<a href="Postform.jsp">
+							<button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button></a>
 					</div>
+					<%} %>
 				</div>
 			</div>
 		</section>
