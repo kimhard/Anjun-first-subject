@@ -44,7 +44,7 @@
 			<td>
 		</tr>
 	</table>
-	<img src='SampleImg.jpg' class='images blur hidden '>
+	<img src='SampleImg.jpg' class='images blur'>
 	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script>
 		$(function() {
