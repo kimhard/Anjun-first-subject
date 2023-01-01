@@ -265,7 +265,7 @@
 							   	String filePath = "removebg.png";
 							   	System.out.println("files.size:"+files.size());
 							   	if(files.size()!=0){
-							   		filePath = files.get(0).getmedia_real_file();
+							   		filePath = files.get(0).getMedia_file();
 							   		System.out.println(filePath);
 							   	}
 							   	%>
