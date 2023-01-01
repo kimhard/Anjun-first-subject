@@ -34,23 +34,23 @@ SELECT * FROM anjun_comment WHERE post_seq=22
 SELECT * FROM anjun_POST;
 
 INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트1', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트2', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트3', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트4', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트5', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트6', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트7', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트8', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트9', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트10', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트11', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트12', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트13', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트14', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트15', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트16', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트17', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
-INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트18', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1)
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트2', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트3', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트4', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트5', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트6', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트7', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트8', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트9', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트10', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트11', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트12', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트13', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트14', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트15', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트16', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트17', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
+INSERT INTO anjun_post VALUES (ANJUN_POST_SEQ.NEXTVAL, '테스트18', CURRENT_DATE, 'smhrd1', 0, 0, '지진', 1, 1);
 
 
 
@@ -66,3 +66,20 @@ INSERT INTO anjun_post(post_content, post_dt, user_id, post_likes, post_dislikes
 select * from anjun_post where user_id like '%테스트%' or post_content like '%테스트%'
 
 INSERT INTO anjun_post(post_content, post_dt, user_id, post_likes, post_dislikes, post_hashtag, post_lat, post_lng) VALUES('테스트', CURRENT_DATE, 'smhrd', 0, 0, '지진', 1, 1)
+
+
+SELECT * FROM anjun_post ORDER BY post_dt DESC
+SELECT * FROM anjun_post WHERE ROWNUM >= 1 AND ROWNUM <= 15 ORDER BY post_dt DESC
+SELECT * FROM (SELECT * FROM anjun_post ORDER BY post_dt DESC) WHERE ROWNUM >= 1 AND ROWNUM <= 15
+
+SELECT * FROM (SELECT * FROM anjun_post ORDER BY post_dt DESC) WHERE ROWNUM >= 6 AND ROWNUM <= 30 
+
+
+SELECT * FROM (SELECT ROWNUM NUM, anjun_post.* FROM (SELECT * FROM anjun_post ORDER BY post_dt DESC) anjun_post) WHERE NUM BETWEEN 1 AND 15;
+SELECT * FROM (SELECT ROWNUM NUM, anjun_post.* FROM (SELECT * FROM anjun_post ORDER BY post_dt DESC) anjun_post) WHERE NUM BETWEEN ? AND ?
+
+SELECT * FROM anjun_post WHERE post_seq<233 AND ROWNUM <= 15 ORDER BY post_seq DESC
+
+SELECT * FROM (SELECT ROWNUM NUM, anjun_post.* FROM (SELECT * FROM anjun_post ORDER BY post_dt DESC) anjun_post) WHERE NUM BETWEEN 31 AND 45
+
+SELECT * FROM (SELECT ROWNUM NUM, anjun_post.* FROM (SELECT * FROM anjun_post ORDER BY post_dt DESC) anjun_post) WHERE user_id='smhrd1' AND NUM BETWEEN 1 AND 15

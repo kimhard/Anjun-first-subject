@@ -45,16 +45,65 @@ public class PostDAO {
 	}
 	
 	// 메인화면 최근글목록 불러오기
-		public ArrayList<PostDTO> getMainPost() {
+	public ArrayList<PostDTO> getMyPost(String user_id, int pageNum) {
+		ArrayList<PostDTO> boards = new ArrayList<PostDTO>();
+		PostDTO board = null;
+		int maxNum = pageNum*15;
+		int minNum = maxNum-14;
+		try {
+			getConn();
+//			String sql = "SELECT * FROM anjun_post WHERE post_seq < ? AND ROWNUM <= 15 ORDER BY post_seq DESC";
+			String sql = "SELECT * FROM (SELECT ROWNUM NUM, anjun_post.* FROM (SELECT * FROM anjun_post ORDER BY post_dt DESC) anjun_post) WHERE user_id=? AND NUM BETWEEN ? AND ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, user_id);
+			psmt.setInt(2, minNum);
+			psmt.setInt(3, maxNum);
+			rs = psmt.executeQuery();
+			
+			int cnt = 0;
+			while(rs.next()) {
+				if(cnt==15) {
+					break;
+				}
+				int seq = rs.getInt("post_seq");
+				String content = rs.getString("post_content");
+				String date = rs.getString("post_dt");
+				String id = rs.getString("user_id");
+				int likes = rs.getInt("post_likes");
+				int dislikes = rs.getInt("post_dislikes");
+				String hashtag = rs.getString("post_hashtag");
+				int lat = rs.getInt("post_lat");
+				int lng = rs.getInt("post_lng");
+				
+				board = new PostDTO(seq, content, date, id, likes, dislikes, hashtag, lat, lng);
+				boards.add(board);
+				cnt++;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			close();
+		}
+		return boards;
+	}
+	
+	// 메인화면 최근글목록 불러오기
+		public ArrayList<PostDTO> getMainPost(int pageNum) {
 			ArrayList<PostDTO> boards = new ArrayList<PostDTO>();
 			PostDTO board = null;
+			int maxNum = pageNum*15;
+			int minNum = maxNum-14;
 			try {
 				getConn();
-				String sql = "SELECT * FROM anjun_post ORDER BY post_dt DESC"; 
+//				String sql = "SELECT * FROM anjun_post WHERE post_seq < ? AND ROWNUM <= 15 ORDER BY post_seq DESC";
+				String sql = "SELECT * FROM (SELECT ROWNUM NUM, anjun_post.* FROM (SELECT * FROM anjun_post ORDER BY post_dt DESC) anjun_post) WHERE NUM BETWEEN ? AND ?";
 				psmt = conn.prepareStatement(sql);
+				psmt.setInt(1, minNum);
+				psmt.setInt(2, maxNum);
 				rs = psmt.executeQuery();
 				
-				int cnt = 1;
+				int cnt = 0;
 				while(rs.next()) {
 					if(cnt==15) {
 						break;
