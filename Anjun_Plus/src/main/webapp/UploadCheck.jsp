@@ -100,7 +100,7 @@
 		
 		
 		int post_seq = dto3.getPost_seq();
-		String media_file = "C:\\Users\\user\\first_project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Anjun_Plus2\\uploadedFiles";
+		String media_file = path;
 
 		FileDTO dto = new FileDTO(post_seq, media_file, media_real_file, media_ext);
 		FileDAO dao = new FileDAO();
