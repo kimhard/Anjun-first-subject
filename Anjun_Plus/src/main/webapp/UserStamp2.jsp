@@ -181,9 +181,7 @@
 
   </header><!-- End Header -->
   <main id="main">
-  <figure >
-                <img src="assets/img/마이리지.png" alt="" class="img-fluid">
-              </figure>
+
     <section>
       <div class="container">
         <div class="row">
@@ -191,7 +189,8 @@
           <div class="col-md-9" data-aos="fade-up">
           
             <h3 class="category-title"></h3>
-              	<iframe src="UserStamp.jsp" scrolling="no" width="100%" height="100%"></iframe>
+            	<img alt="" src="마일리지.jpg" style="max-width: 100%; height: auto;">
+              	<iframe src="UserStamp.jsp"  width="100%" height="100%"></iframe>
             <div class="d-md-flex post-entry-2 half">
               <div>
               </div>
