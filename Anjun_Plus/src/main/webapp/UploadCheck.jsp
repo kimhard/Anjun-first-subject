@@ -100,9 +100,9 @@
 		
 		
 		int post_seq = dto3.getPost_seq();
-		String media_file = path;
+		/* String media_file = path; */
 
-		FileDTO dto = new FileDTO(post_seq, media_file, media_real_file, media_ext);
+		FileDTO dto = new FileDTO(post_seq, post_file, media_real_file, media_ext);
 		FileDAO dao = new FileDAO();
 		
 		int cnt2 = dao.uploadFile(dto);
