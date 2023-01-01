@@ -262,9 +262,9 @@
 							   	ArrayList<CommentDTO> comments = cmt.read(mainPostList.get(i).getPost_seq());
 							   	FileDAO file = new FileDAO();
 							   	ArrayList<FileDTO> files = file.postFile(mainPostList.get(i).getPost_seq());
-							   	String filePath = "https://i.postimg.cc/j27n4qQh/removebg.png";
+							   	String filePath = "removebg.png";
 							   	System.out.println("files.size:"+files.size());
-							   	if(files.size()>0){
+							   	if(files.size()!=0){
 							   		filePath = files.get(0).getmedia_real_file();
 							   		System.out.println(filePath);
 							   	}
