@@ -1,3 +1,5 @@
+<%@page import="Model.FileDTO"%>
+<%@page import="Model.FileDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.CommentDAO"%>
 <%@page import="Model.CommentDTO"%>
@@ -98,6 +100,10 @@
 			})
 		}
 	</script>
+	<style type="text/css">
+	#img{
+	text-align: center;
+	</style>
 </head>
 
 
@@ -123,7 +129,14 @@
 	System.out.println(comments);
 	
 	
-	
+	FileDAO file = new FileDAO();
+   	ArrayList<FileDTO> files = file.postFile(post_seq);
+   	String filePath = "removebg.png";
+   	if(files.size()!=0){
+   		filePath = files.get(0).getMedia_file();
+
+   		System.out.println(filePath);
+   	}
 	
 
 	
@@ -229,11 +242,7 @@
               <h1 class="mb-5"><%=result.getUser_id()%></h1>
               <!-- 아이디 -->
               <figure class="my-4">
-                <img src="assets/img/post-landscape-1.jpg" alt="" class="img-fluid">
-              </figure>
-              <figure class="my-4">
-                <img src="assets/img/post-landscape-5.jpg" alt="" class="img-fluid">
-                <figcaption></figcaption>
+                <div id="img"><img src="uploadedFiles/<%=filePath %>" alt="" class="img-fluid"></div>
               </figure>
               <p><%=result.getPost_content() %></p>
             </div><!-- End Single Post Content -->
