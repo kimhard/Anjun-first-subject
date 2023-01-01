@@ -107,7 +107,25 @@
 
 
 
-	
+<style type="text/css">
+.post-info{
+	flex-grow: 3;
+}
+.loc-dot{
+	flex-grow: 3;
+}
+.like-dislike{
+	float:right;
+	display: inline;
+}
+.video-post{
+	flex-grow: 0;
+}
+.nav-item{
+	flex-grow: 3;
+}
+
+</style>
 </head>
 
 
@@ -180,10 +198,10 @@
 			<!-- .navbar -->
 
 			<div class="position-relative">
-				<a href="#" class="mx-2"><span class="temp">℃</span></a> 
-				<a href="#" class="mx-2"><span class="weather"></span></a> 
-				<a href="#" class="mx-2 js-search-open"><span class="bi-search"></span></a> 
-				<i class="bi bi-list mobile-nav-toggle"></i>
+				<a href="#" class="mx-2"><span class="temp">℃</span></a> <a href="#"
+					class="mx-2"><span class="weather"></span></a> <a href="#"
+					class="mx-2 js-search-open"><span class="bi-search"></span></a> <i
+					class="bi bi-list mobile-nav-toggle"></i>
 
 				<!-- ======= Search Form ======= -->
 				<div class="search-form-wrap js-search-form-wrap">
@@ -197,22 +215,6 @@
 					</form>
 				</div>
 				<!-- End Search Form -->
-
-
-
-              </div>
-            </div>
-
-            <div class="aside-block">
-              <h3 class="aside-title">내 위치</h3>
-              <div class="video-post">
-              	<iframe src="UserLocation.jsp" scrolling="no"></iframe>
-              </div>
-           
-		
-          </div>
-			<div class="button_container">
-			 <a href = "Postform.jsp"<button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button>></a>
 
 			</div>
 
@@ -264,26 +266,27 @@
 								active5 = "active";
 							}
 							
-							ArrayList<PostDTO> myPostList = dao.getMyPost(info.getId(), pageNum);
-							for(int i=0; i<myPostList.size(); i++) {
-								post_seq = myPostList.get(i).getPost_seq();
+							ArrayList<PostDTO> mainPostList = dao.getMyPost(info.getId(), pageNum);
+							for(int i=0; i<mainPostList.size(); i++) {
+								post_seq = mainPostList.get(i).getPost_seq();
 								CommentDAO cmt = new CommentDAO();
-							   	ArrayList<CommentDTO> comments = cmt.read(myPostList.get(i).getPost_seq());
+							   	ArrayList<CommentDTO> comments = cmt.read(mainPostList.get(i).getPost_seq());
 							   	FileDAO file = new FileDAO();
-							   	ArrayList<FileDTO> files = file.postFile(myPostList.get(i).getPost_seq());
+							   	ArrayList<FileDTO> files = file.postFile(mainPostList.get(i).getPost_seq());
 							   	String filePath = "removebg.png";
 							   	if(files.size()!=0){
 							   		filePath = files.get(0).getMedia_file();
+
 							   		System.out.println(filePath);
 							   	}
 							   	%>
 								
 							
 						<!-- 포스트 시작 -->
-						<form class="postList" id="frm<%=myPostList.get(i).getPost_seq()%>" action="Blog.jsp" method="get">
-						<input type="hidden" name="post_seq" value="<%=myPostList.get(i).getPost_seq()%>">
+						<form class="postList" id="frm<%=mainPostList.get(i).getPost_seq()%>" action="Blog.jsp" method="get">
+						<input type="hidden" name="post_seq" value="<%=mainPostList.get(i).getPost_seq()%>">
 						<div class="d-md-flex post-entry-2 half">
-							<a type="submit" onclick="document.getElementById('frm<%=myPostList.get(i).getPost_seq()%>').submit();" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
+							<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
 								<img src="uploadedFiles/<%=filePath %>" alt="" class="img-fluid">
 							</a>
 
@@ -295,7 +298,7 @@
 								<div class="name">
 
 									<!-- 게시자 아이디가 들어가는 곳 -->
-									<h3 class="m-0 p-0"><%=myPostList.get(i).getUser_id()%></h3>
+									<h3 class="m-0 p-0"><%=mainPostList.get(i).getUser_id()%></h3>
 
 
 								</div>
@@ -309,23 +312,22 @@
 							<!-- 내용이 들어가는 곳 -->
 							<h3>
 
-								<a type="submit" onclick="document.getElementById('frm<%=myPostList.get(i).getPost_seq()%>').submit();"><%=myPostList.get(i).getPost_content() %></a>
+								<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();"><%=mainPostList.get(i).getPost_content() %></a>
 							</h3>
 							<!-- 작성일자가 들어가는 곳 -->
 							<div class="post-meta">
-								<span><%=myPostList.get(i).getPost_dt().substring(0, 16)%></span>
+								<span><%=mainPostList.get(i).getPost_dt().substring(0, 16)%></span>
 							</div>
 
 							<hr class="hr-5" size="5">
 							<!--  좋아요 싫어요 -->
 
-							<div class="like-dislike">
-
-							댓글<%=comments.size() %>
-
-
-								<a href="#" class="button4"><i class="fa-regular fa-heart"></i><%=myPostList.get(i).getPost_likes() %></a>
-								<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i><%=myPostList.get(i).getPost_dislikes() %></a>
+							<div>
+								댓글<%=comments.size() %>
+								<div class="like-dislike">
+									<a href="#" class="button4"><i class="fa-regular fa-heart"></i><%=mainPostList.get(i).getPost_likes() %></a>
+									<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i><%=mainPostList.get(i).getPost_dislikes() %></a>
+								</div>
 							</div>
 						</div>
 
@@ -338,16 +340,16 @@
 						</div>
 						
 						<div class="text-start py-4">
-							<form active=NewMain.jsp id="pageNum">
+							<form active=MyBlog.jsp id="pageNum">
 							<input type="hidden" name="post_seq" value="<%=post_seq%>">
 								<div class="custom-pagination">
-					                <a href="NewMain.jsp?pageNum=<%=pageNum-1%>" class="prev">Prevous</a>
-					                <a href="NewMain.jsp?pageNum=1" class="<%=active1%>">1</a>
-					                <a href="NewMain.jsp?pageNum=2" class="<%=active2%>">2</a>
-					                <a href="NewMain.jsp?pageNum=3" class="<%=active3%>">3</a>
-					                <a href="NewMain.jsp?pageNum=4" class="<%=active4%>">4</a>
-					                <a href="NewMain.jsp?pageNum=5" class="<%=active5%>">5</a>
-					                <a href="NewMain.jsp?pageNum=<%=pageNum+1%>" class="next">Next</a>
+					                <a href="MyBlog.jsp?pageNum=<%=pageNum-1%>" class="prev">Prevous</a>
+					                <a href="MyBlog.jsp?pageNum=1" class="<%=active1%>">1</a>
+					                <a href="MyBlog.jsp?pageNum=2" class="<%=active2%>">2</a>
+					                <a href="MyBlog.jsp?pageNum=3" class="<%=active3%>">3</a>
+					                <a href="MyBlog.jsp?pageNum=4" class="<%=active4%>">4</a>
+					                <a href="MyBlog.jsp?pageNum=5" class="<%=active5%>">5</a>
+					                <a href="MyBlog.jsp?pageNum=<%=pageNum+1%>" class="next">Next</a>
 								</div><!-- End Paging -->
 							</form>
 						</div>
@@ -364,10 +366,7 @@
 							<ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab"
 								role="tablist">
 								<li class="nav-item" role="presentation">
-									<button class="nav-link active" id="pills-popular-tab"
-										data-bs-toggle="pill" data-bs-target="#pills-popular"
-										type="button" role="tab" aria-controls="pills-popular"
-										aria-selected="true">내 정보</button>
+									<h3 class="aside-title">내 위치</h3>
 								</li>
 							</ul>
 							<div class="tab-content" id="pills-tabContent">
@@ -438,24 +437,17 @@
 								<li><a href="category.html">지진</a></li>
 								<li><a href="category.html">홍수</a></li>
 								<li><a href="category.html">침수</a></li>
-							
 							</ul>
 						</div>
 						<!-- End Tags -->
 
 					</div>
-<<<<<<< HEAD
-								<div class="button_container">
-			  <a href = "Postform.jsp"><button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button></a>
-			</div>
-=======
 					<%if(info != null) {%>
 					<div class="button_container">
 						<a href="Postform.jsp">
 							<button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button></a>
 					</div>
 					<%} %>
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-AI1/TeamAnjun.git
 				</div>
 			</div>
 		</section>

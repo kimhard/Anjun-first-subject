@@ -1,3 +1,5 @@
+<%@page import="Model.FileDTO"%>
+<%@page import="Model.FileDAO"%>
 <%@page import="Model.CommentDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.CommentDAO"%>
@@ -21,11 +23,10 @@
 <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-	rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
 
 <!-- Vendor CSS Files -->
 <link href="assets/vendor/bootstrap/css/bootstrap.min.css"
@@ -103,15 +104,36 @@
 			})
 		}
 	</script>
-	
+
+
+
+<style type="text/css">
+.post-info{
+	flex-grow: 3;
+}
+.loc-dot{
+	flex-grow: 3;
+}
+.like-dislike{
+	float:right;
+	display: inline;
+}
+.video-post{
+	flex-grow: 0;
+}
+.nav-item{
+	flex-grow: 3;
+}
+
+</style>
 </head>
+
 
 <body>
 <%
 	UserDTO info = null;
 	info = (UserDTO)session.getAttribute("info");
-	String searchWord = request.getParameter("searchWord");
-	System.out.print(searchWord);
+
 %>
 
 	<!-- ======= Header ======= -->
@@ -126,7 +148,7 @@
 			<nav id="navbar" class="navbar">
 				<ul>
 
-					         <li class="dropdown"><a href="ManualService?category=natural&query=flooding"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+					         <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
@@ -167,7 +189,7 @@
           </li>
 
 
-					<li><a href="Shelter.jsp">대피소</a></li>
+					<li><a href="Shelter.jsp">대피소</a></li>			
 					<%if(info != null) {%>
 					<li><a href="UserStamp2.jsp">출석</a></li>
 					<%} %>
@@ -201,99 +223,142 @@
 	</header>
 	<!-- End Header -->
 
-  <main id="main">
+	<%	PostDAO dao = new PostDAO();
+		PostDTO dto = new PostDTO();
+		int post_seq = 999999999;
+		if(request.getParameter("post_seq")!=null){
+			post_seq = Integer.parseInt(request.getParameter("post_seq"));
+		}
+		String searchWord = request.getParameter("searchWord");
+		%>
+	<main id="main">
+		<section>
+			<div class="container">
+				<div class="row">
 
-    <!-- ======= Search Results ======= -->
-    <section id="search-result" class="search-result">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-9">
-            <h3 class="category-title">'<%=searchWord%>' 검색 결과</h3>
-            
-            <%	PostDAO dao = new PostDAO();
-				PostDTO dto = new PostDTO();
-				ArrayList<PostDTO> getBoardSearch = dao.getBoardSearch(searchWord);	%>
-				
-			<%	for(int i=0; i<getBoardSearch.size(); i++) {
+					<div class="col-md-9" data-aos="fade-up">
+						<h3 class="category-title">'<%=searchWord %>' 검색 결과</h3>
+						<div class="post-content">
+						<%	int pageNum = 1;
+							String active1 = "";
+							String active2 = "";
+							String active3 = "";
+							String active4 = "";
+							String active5 = "";
+							
+							if(request.getParameter("pageNum")!=null){
+								pageNum = Integer.parseInt(request.getParameter("pageNum"));
+								if(pageNum<1){
+									pageNum=1;
+								}
+								if(pageNum>5){
+									pageNum=5;
+								}
+							}
+							if(pageNum==1){
+								active1 = "active";
+							}else if(pageNum==2){
+								active2 = "active";
+							}else if(pageNum==3){
+								active3 = "active";
+							}else if(pageNum==4){
+								active4 = "active";
+							}else if(pageNum==5){
+								active5 = "active";
+							}
+							
+							ArrayList<PostDTO> mainPostList = dao.getBoardSearch(searchWord);
+							for(int i=0; i<mainPostList.size(); i++) {
+								post_seq = mainPostList.get(i).getPost_seq();
+								CommentDAO cmt = new CommentDAO();
+							   	ArrayList<CommentDTO> comments = cmt.read(mainPostList.get(i).getPost_seq());
+							   	FileDAO file = new FileDAO();
+							   	ArrayList<FileDTO> files = file.postFile(mainPostList.get(i).getPost_seq());
+							   	String filePath = "removebg.png";
+							   	if(files.size()!=0){
+							   		filePath = files.get(0).getMedia_file();
+
+							   		System.out.println(filePath);
+							   	}
+							   	%>
 								
-					CommentDAO cmt = new CommentDAO();
-				   	ArrayList<CommentDTO> comments = cmt.read(getBoardSearch.get(i).getPost_seq());	%>	
+							
+						<!-- 포스트 시작 -->
+						<form class="postList" id="frm<%=mainPostList.get(i).getPost_seq()%>" action="Blog.jsp" method="get">
+						<input type="hidden" name="post_seq" value="<%=mainPostList.get(i).getPost_seq()%>">
+						<div class="d-md-flex post-entry-2 half">
+							<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
+								<img src="uploadedFiles/<%=filePath %>" alt="" class="img-fluid">
+							</a>
+
+						<div class="post-info">
+							<div class="d-flex align-items-center author post-author">
+								<div class="photo">
+									<img src="assets/img/person-2.jpg" alt="" class="img-fluid">
+								</div>
+								<div class="name">
+
+									<!-- 게시자 아이디가 들어가는 곳 -->
+									<h3 class="m-0 p-0"><%=mainPostList.get(i).getUser_id()%></h3>
 
 
-			<!-- 검색 시작 -->
-			<form id="frm<%=getBoardSearch.get(i).getPost_seq()%>" action="Blog.jsp" method="get">
-			<input type="hidden" name="post_seq" value="<%=getBoardSearch.get(i).getPost_seq()%>">
-			<div class="d-md-flex post-entry-2 half">
-				<a type="submit" onclick="document.getElementById('frm<%=getBoardSearch.get(i).getPost_seq()%>').submit();" class="me-4 thumbnail"> <!-- 게시물 이미지가 들어가는 곳 -->
-					<img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
-				</a>
+								</div>
+								<!--  대피소, 위치>-->
+								<div class="loc-dot" align="right">
+									<a href="#" class="button2"><i class="fa-solid fa-location-dot" fa-4x></i></a>
+									<a href="#" class="button3"><i class="fa-solid fa-person-running" fa-4x></i></a>
+								</div>
+							</div>
+							<hr class="hr-5">
+							<!-- 내용이 들어가는 곳 -->
+							<h3>
 
-			<div class="post-info">
-				<div class="d-flex align-items-center author post-author">
-					<div class="photo">
-						<img src="assets/img/person-2.jpg" alt="" class="img-fluid">
+								<a type="submit" onclick="document.getElementById('frm<%=mainPostList.get(i).getPost_seq()%>').submit();"><%=mainPostList.get(i).getPost_content() %></a>
+							</h3>
+							<!-- 작성일자가 들어가는 곳 -->
+							<div class="post-meta">
+								<span><%=mainPostList.get(i).getPost_dt().substring(0, 16)%></span>
+							</div>
+
+							<hr class="hr-5" size="5">
+							<!--  좋아요 싫어요 -->
+
+							<div>
+								댓글<%=comments.size() %>
+								<div class="like-dislike">
+									<a href="#" class="button4"><i class="fa-regular fa-heart"></i><%=mainPostList.get(i).getPost_likes() %></a>
+									<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i><%=mainPostList.get(i).getPost_dislikes() %></a>
+								</div>
+							</div>
+						</div>
+
+
+
+						</div>
+						</form>
+						<!-- 포스트 끝 -->
+						<%	 }	%>
+						</div>
+						
+						<div class="text-start py-4">
+							<form active=NewMain.jsp id="pageNum">
+							<input type="hidden" name="post_seq" value="<%=post_seq%>">
+								<div class="custom-pagination">
+					                <a href="NewMain.jsp?pageNum=<%=pageNum-1%>" class="prev">Prevous</a>
+					                <a href="NewMain.jsp?pageNum=1" class="<%=active1%>">1</a>
+					                <a href="NewMain.jsp?pageNum=2" class="<%=active2%>">2</a>
+					                <a href="NewMain.jsp?pageNum=3" class="<%=active3%>">3</a>
+					                <a href="NewMain.jsp?pageNum=4" class="<%=active4%>">4</a>
+					                <a href="NewMain.jsp?pageNum=5" class="<%=active5%>">5</a>
+					                <a href="NewMain.jsp?pageNum=<%=pageNum+1%>" class="next">Next</a>
+								</div><!-- End Paging -->
+							</form>
+						</div>
+
+
 					</div>
-					<div class="name">
 
-						<!-- 게시자 아이디가 들어가는 곳 -->
-						<h3 class="m-0 p-0"><%=getBoardSearch.get(i).getUser_id()%></h3>
-
-
-					</div>
-					<!--  대피소, 위치>-->
-					<div class="loc-dot" align="right">
-						<a href="#" class="button2"><i class="fa-solid fa-location-dot" fa-4x></i></a>
-						<a href="#" class="button3"><i class="fa-solid fa-person-running" fa-4x></i></a>
-					</div>
-				</div>
-				<hr class="hr-5">
-				<!-- 내용이 들어가는 곳 -->
-				<h3>
-
-					<a type="submit" onclick="document.getElementById('frm<%=getBoardSearch.get(i).getPost_seq()%>').submit();"><%=getBoardSearch.get(i).getPost_content() %></a>
-				</h3>
-				<!-- 작성일자가 들어가는 곳 -->
-				<div class="post-meta">
-					<span><%=getBoardSearch.get(i).getPost_dt().substring(0, 16)%></span>
-				</div>
-
-				<hr class="hr-5" size="5">
-				<!--  좋아요 싫어요 -->
-
-				<div class="like-dislike">
-
-				댓글<%=comments.size() %>
-
-
-					<a href="#" class="button4"><i class="fa-regular fa-heart"></i><%=getBoardSearch.get(i).getPost_likes() %></a>
-					<a href="#" class="button4"><i class="fa-regular fa-thumbs-down"></i><%=getBoardSearch.get(i).getPost_dislikes() %></a>
-				</div>
-			</div>
-
-
-
-			</div>
-			</form>
-			<!-- 포스트 끝 -->
-			<!-- 검색 끝 -->
-			<%	 }	%>
-
-            <!-- Paging -->
-            <div class="text-start py-4">
-              <div class="custom-pagination">
-                <a href="#" class="prev">Prevous</a>
-                <a href="#" class="active">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#" class="next">Next</a>
-              </div>
-            </div><!-- End Paging -->
-
-          </div>
-
-          <div class="col-md-3">
+					<div class="col-md-3">
 						<!-- ======= Sidebar ======= -->
 
 
@@ -302,10 +367,7 @@
 							<ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab"
 								role="tablist">
 								<li class="nav-item" role="presentation">
-									<button class="nav-link active" id="pills-popular-tab"
-										data-bs-toggle="pill" data-bs-target="#pills-popular"
-										type="button" role="tab" aria-controls="pills-popular"
-										aria-selected="true">내 정보</button>
+									<h3 class="aside-title">내 위치</h3>
 								</li>
 							</ul>
 							<div class="tab-content" id="pills-tabContent">
@@ -331,7 +393,7 @@
 											%>
 											<div class="post-meta author"></div>
 											<div class="photo">
-												<img src="assets/img/person-2.jpg" alt class="img-fluid">
+												<img src="https://www.gsef2021.org/images/Comite/Ampliado/User-light.png" alt class="img-fluid">
 											</div>
 											<!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
 											<h2 class="mb-2">
@@ -376,7 +438,6 @@
 								<li><a href="category.html">지진</a></li>
 								<li><a href="category.html">홍수</a></li>
 								<li><a href="category.html">침수</a></li>
-							
 							</ul>
 						</div>
 						<!-- End Tags -->
@@ -394,6 +455,9 @@
 
 	</main>
 	<!-- End #main -->
+
+
+
 
 	<!-- ======= Footer ======= -->
 
@@ -460,6 +524,8 @@
 
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
+
+
 
 
 

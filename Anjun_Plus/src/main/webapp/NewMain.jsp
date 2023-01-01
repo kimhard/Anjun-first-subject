@@ -340,16 +340,16 @@
 						</div>
 						
 						<div class="text-start py-4">
-							<form active=NewMain.jsp id="pageNum">
+							<form active=SearchResult.jsp id="pageNum">
 							<input type="hidden" name="post_seq" value="<%=post_seq%>">
 								<div class="custom-pagination">
-					                <a href="NewMain.jsp?pageNum=<%=pageNum-1%>" class="prev">Prevous</a>
-					                <a href="NewMain.jsp?pageNum=1" class="<%=active1%>">1</a>
-					                <a href="NewMain.jsp?pageNum=2" class="<%=active2%>">2</a>
-					                <a href="NewMain.jsp?pageNum=3" class="<%=active3%>">3</a>
-					                <a href="NewMain.jsp?pageNum=4" class="<%=active4%>">4</a>
-					                <a href="NewMain.jsp?pageNum=5" class="<%=active5%>">5</a>
-					                <a href="NewMain.jsp?pageNum=<%=pageNum+1%>" class="next">Next</a>
+					                <a href="SearchResult.jsp?pageNum=<%=pageNum-1%>" class="prev">Prevous</a>
+					                <a href="SearchResult.jsp?pageNum=1" class="<%=active1%>">1</a>
+					                <a href="SearchResult.jsp?pageNum=2" class="<%=active2%>">2</a>
+					                <a href="SearchResult.jsp?pageNum=3" class="<%=active3%>">3</a>
+					                <a href="SearchResult.jsp?pageNum=4" class="<%=active4%>">4</a>
+					                <a href="SearchResult.jsp?pageNum=5" class="<%=active5%>">5</a>
+					                <a href="SearchResult.jsp?pageNum=<%=pageNum+1%>" class="next">Next</a>
 								</div><!-- End Paging -->
 							</form>
 						</div>
