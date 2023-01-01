@@ -124,8 +124,7 @@
 			class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
 			<a href="NewMain.jsp" class="logo d-flex align-items-center"> <!-- Uncomment the line below if you also wish to use an image logo -->
-				<img src="https://i.postimg.cc/j27n4qQh/removebg.png" alt="">
-				<h1>안전+</h1>
+				<img src="로고.png" alt="">
 			</a>
 
 			<nav id="navbar" class="navbar">
@@ -259,6 +258,7 @@
 							   	String filePath = "removebg.png";
 							   	if(files.size()!=0){
 							   		filePath = files.get(0).getMedia_file();
+
 							   		System.out.println(filePath);
 							   	}
 							   	%>
@@ -378,7 +378,7 @@
 											%>
 											<div class="post-meta author"></div>
 											<div class="photo">
-												<img src="assets/img/person-2.jpg" alt class="img-fluid">
+												<img src="https://www.gsef2021.org/images/Comite/Ampliado/User-light.png" alt class="img-fluid">
 											</div>
 											<!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
 											<h2 class="mb-2">
@@ -423,11 +423,6 @@
 								<li><a href="category.html">지진</a></li>
 								<li><a href="category.html">홍수</a></li>
 								<li><a href="category.html">침수</a></li>
-								<li><a href="category.html">Food</a></li>
-								<li><a href="category.html">Politics</a></li>
-								<li><a href="category.html">Celebrity</a></li>
-								<li><a href="category.html">Startups</a></li>
-								<li><a href="category.html">Travel</a></li>
 							</ul>
 						</div>
 						<!-- End Tags -->

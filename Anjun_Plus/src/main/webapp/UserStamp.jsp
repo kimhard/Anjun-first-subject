@@ -12,6 +12,11 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <style type="text/css">
+
+
+
+
+
 body {
 	padding:1.5em;
 	background: #f5f5f5

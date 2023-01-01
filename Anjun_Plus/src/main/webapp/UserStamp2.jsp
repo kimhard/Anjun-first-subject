@@ -107,8 +107,7 @@
 
       <a href="NewMain.jsp" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="https://i.postimg.cc/j27n4qQh/removebg.png" alt="">
-        <h1>안전+</h1>
+        <img src="로고.png" alt="">
       </a>
 
       <nav id="navbar" class="navbar">
@@ -155,7 +154,9 @@
           </li>
 
           <li><a href="Shelter.jsp">대피소</a></li>
-          <li><a href="UserStamp2.jsp">출석</a></li>
+         <%if(info != null) {%>
+					<li><a href="UserStamp2.jsp">출석</a></li>
+					<%} %>
         </ul>
       </nav><!-- .navbar -->
 
@@ -180,15 +181,17 @@
     </div>
 
   </header><!-- End Header -->
-
   <main id="main">
+
     <section>
       <div class="container">
         <div class="row">
 
           <div class="col-md-9" data-aos="fade-up">
+          
             <h3 class="category-title"></h3>
-              	<iframe src="UserStamp.jsp" scrolling="no" width="100%" height="100%"></iframe>
+            	<img alt="" src="마일리지.jpg" style="max-width: 100%; height: auto;">
+              	<iframe src="UserStamp.jsp"  width="100%" height="100%"></iframe>
             <div class="d-md-flex post-entry-2 half">
               <div>
               </div>
@@ -229,7 +232,7 @@
                   			}
                   		%>
 	                    <div class="post-meta author"></div>
-		                  <div class="photo"><img src="assets/img/person-2.jpg" alt class="img-fluid"></div>
+		                  <div class="photo"><img src="https://www.gsef2021.org/images/Comite/Ampliado/User-light.png" alt class="img-fluid"></div>
 		                  <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
 	                    <h2 class="mb-2"><a href="Profile.jsp"><%=info.getId() %></a></h2>
 	                    <h3 class="mb-2"><%=grade %></h3>
@@ -262,18 +265,17 @@
                 <li><a href="category.html">지진</a></li>
                 <li><a href="category.html">홍수</a></li>
                 <li><a href="category.html">침수</a></li>
-                <li><a href="category.html">Food</a></li>
-                <li><a href="category.html">Politics</a></li>
-                <li><a href="category.html">Celebrity</a></li>
-                <li><a href="category.html">Startups</a></li>
-                <li><a href="category.html">Travel</a></li>
+
               </ul>
             </div><!-- End Tags -->
 		
           </div>
-			<div class="button_container">
-			  <a href = "Postform.jsp"><button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button></a>
-			</div>
+				<%if(info != null) {%>
+					<div class="button_container">
+						<a href="Postform.jsp">
+							<button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button></a>
+					</div>
+					<%} %>
         </div>
       </div>
     </section>

@@ -184,7 +184,9 @@
           </li>
 
           <li><a href="Shelter.jsp">대피소</a></li>
-          <li><a href="UserStamp.jsp">이벤트</a></li>
+          <%if(info != null) {%>
+					<li><a href="UserStamp2.jsp">출석</a></li>
+					<%} %>
         </ul>
       </nav><!-- .navbar -->
 
@@ -272,7 +274,7 @@
                 <h5 class="comment-title">Leave a Comment</h5>
                 <div class="row">          
                   <div class="col-12 mb-3">
-                    <label for="comment-message">Message</label>
+                    
 					<form action="CommentService" method="get">
 					
                     <textarea class="form-control" name="cmt_content" id="comment-message" placeholder="Enter your name" cols="30" rows="10"></textarea>
@@ -327,7 +329,7 @@
 											%>
 											<div class="post-meta author"></div>
 											<div class="photo">
-												<img src="assets/img/person-2.jpg" alt class="img-fluid">
+												<img src="https://www.gsef2021.org/images/Comite/Ampliado/User-light.png" alt class="img-fluid">
 											</div>
 											<!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
 											<h2 class="mb-2">
@@ -371,12 +373,7 @@
 							<ul class="aside-tags list-unstyled">
 								<li><a href="category.html">지진</a></li>
 								<li><a href="category.html">홍수</a></li>
-								<li><a href="category.html">침수</a></li>
-								<li><a href="category.html">Food</a></li>
-								<li><a href="category.html">Politics</a></li>
-								<li><a href="category.html">Celebrity</a></li>
-								<li><a href="category.html">Startups</a></li>
-								<li><a href="category.html">Travel</a></li>
+								<li><a href="category.html">침수</a></li>					
 							</ul>
 						</div>
 						<!-- End Tags -->

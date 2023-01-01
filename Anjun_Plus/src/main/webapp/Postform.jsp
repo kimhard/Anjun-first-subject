@@ -159,8 +159,7 @@
 			class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
 			<a href="NewMain.jsp" class="logo d-flex align-items-center"> <!-- Uncomment the line below if you also wish to use an image logo -->
-				<img src="https://i.postimg.cc/j27n4qQh/removebg.png" alt="">
-				<h1>안전+</h1>
+				<img src="로고.png" alt="">
 			</a>
 
 			 <nav id="navbar" class="navbar">
@@ -206,7 +205,9 @@
           </li>
 
           <li><a href="Shelter.jsp">대피소</a></li>
-          <li><a href="UserStamp2.jsp">출석</a></li>
+          <%if(info != null) {%>
+					<li><a href="UserStamp2.jsp">출석</a></li>
+					<%} %>
         </ul>
       </nav>
 
@@ -409,11 +410,7 @@
 								<li><a href="category.html">지진</a></li>
 								<li><a href="category.html">홍수</a></li>
 								<li><a href="category.html">침수</a></li>
-								<li><a href="category.html">Food</a></li>
-								<li><a href="category.html">Politics</a></li>
-								<li><a href="category.html">Celebrity</a></li>
-								<li><a href="category.html">Startups</a></li>
-								<li><a href="category.html">Travel</a></li>
+								
 							</ul>
 						</div>
 						<!-- End Tags -->
