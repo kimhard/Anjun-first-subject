@@ -261,10 +261,10 @@
 							   	ArrayList<CommentDTO> comments = cmt.read(mainPostList.get(i).getPost_seq());
 							   	FileDAO file = new FileDAO();
 							   	ArrayList<FileDTO> files = file.postFile(mainPostList.get(i).getPost_seq());
-							   	String filePath = "removebg.png";
+							   	String filePath = "https://i.postimg.cc/j27n4qQh/removebg.png";
 							   	System.out.println("files.size:"+files.size());
-							   	if(files.size()!=0){
-							   		filePath = files.get(0).getMedia_file();
+							   	if(files.size()>0){
+							   		filePath = files.get(0).getmedia_real_file();
 							   		System.out.println(filePath);
 							   	}
 							   	%>
@@ -367,7 +367,7 @@
 											%>
 											<div class="post-meta author"></div>
 											<div class="photo">
-												<img src="assets/img/person-2.jpg" alt class="img-fluid">
+												<img src="https://www.gsef2021.org/images/Comite/Ampliado/User-light.png" alt class="img-fluid">
 											</div>
 											<!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
 											<h2 class="mb-2">

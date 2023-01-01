@@ -175,10 +175,10 @@
 			<!-- .navbar -->
 
 			<div class="position-relative">
-				<a href="#" class="mx-2"><span class="temp">℃</span></a> <a href="#"
-					class="mx-2"><span class="weather"></span></a> <a href="#"
-					class="mx-2 js-search-open"><span class="bi-search"></span></a> <i
-					class="bi bi-list mobile-nav-toggle"></i>
+				<a href="#" class="mx-2"><span class="temp">℃</span></a> 
+				<a href="#" class="mx-2"><span class="weather"></span></a> 
+				<a href="#" class="mx-2 js-search-open"><span class="bi-search"></span></a> 
+				<i class="bi bi-list mobile-nav-toggle"></i>
 
 				<!-- ======= Search Form ======= -->
 				<div class="search-form-wrap js-search-form-wrap">
@@ -201,21 +201,7 @@
               <div class="video-post">
               	<iframe src="UserLocation.jsp" scrolling="no"></iframe>
               </div>
-            </div><!-- End Video -->
-
-            <div class="aside-block">
-              <h3 class="aside-title">Tags</h3>
-              <ul class="aside-tags list-unstyled">
-                <li><a href="category.html">지진</a></li>
-                <li><a href="category.html">홍수</a></li>
-                <li><a href="category.html">침수</a></li>
-                <li><a href="category.html">Food</a></li>
-                <li><a href="category.html">Politics</a></li>
-                <li><a href="category.html">Celebrity</a></li>
-                <li><a href="category.html">Startups</a></li>
-                <li><a href="category.html">Travel</a></li>
-              </ul>
-            </div><!-- End Tags -->
+           
 		
           </div>
 			<div class="button_container">
@@ -352,7 +338,7 @@
 											%>
 											<div class="post-meta author"></div>
 											<div class="photo">
-												<img src="assets/img/person-2.jpg" alt class="img-fluid">
+												<img src="https://www.gsef2021.org/images/Comite/Ampliado/User-light.png" alt class="img-fluid">
 											</div>
 											<!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
 											<h2 class="mb-2">
@@ -408,10 +394,9 @@
 						<!-- End Tags -->
 
 					</div>
-					<div class="button_container">
-						<a href="Postform.jsp"
-							<button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button>></a>
-					</div>
+								<div class="button_container">
+			  <a href = "Postform.jsp"><button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button></a>
+			</div>
 				</div>
 			</div>
 		</section>

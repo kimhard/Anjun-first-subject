@@ -180,13 +180,16 @@
     </div>
 
   </header><!-- End Header -->
-
   <main id="main">
+  <figure >
+                <img src="assets/img/마이리지.png" alt="" class="img-fluid">
+              </figure>
     <section>
       <div class="container">
         <div class="row">
 
           <div class="col-md-9" data-aos="fade-up">
+          
             <h3 class="category-title"></h3>
               	<iframe src="UserStamp.jsp" scrolling="no" width="100%" height="100%"></iframe>
             <div class="d-md-flex post-entry-2 half">
@@ -229,7 +232,7 @@
                   			}
                   		%>
 	                    <div class="post-meta author"></div>
-		                  <div class="photo"><img src="assets/img/person-2.jpg" alt class="img-fluid"></div>
+		                  <div class="photo"><img src="https://www.gsef2021.org/images/Comite/Ampliado/User-light.png" alt class="img-fluid"></div>
 		                  <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
 	                    <h2 class="mb-2"><a href="Profile.jsp"><%=info.getId() %></a></h2>
 	                    <h3 class="mb-2"><%=grade %></h3>
