@@ -184,7 +184,9 @@
           </li>
 
           <li><a href="Shelter.jsp">대피소</a></li>
-          <li><a href="UserStamp.jsp">이벤트</a></li>
+          <%if(info != null) {%>
+					<li><a href="UserStamp2.jsp">출석</a></li>
+					<%} %>
         </ul>
       </nav><!-- .navbar -->
 
@@ -371,12 +373,7 @@
 							<ul class="aside-tags list-unstyled">
 								<li><a href="category.html">지진</a></li>
 								<li><a href="category.html">홍수</a></li>
-								<li><a href="category.html">침수</a></li>
-								<li><a href="category.html">Food</a></li>
-								<li><a href="category.html">Politics</a></li>
-								<li><a href="category.html">Celebrity</a></li>
-								<li><a href="category.html">Startups</a></li>
-								<li><a href="category.html">Travel</a></li>
+								<li><a href="category.html">침수</a></li>					
 							</ul>
 						</div>
 						<!-- End Tags -->
