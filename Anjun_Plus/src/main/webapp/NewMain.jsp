@@ -249,7 +249,7 @@
 				<div class="row">
 
 					<div class="col-md-9" data-aos="fade-up">
-						<h3 class="category-title">피드</h3>
+						<h3 class="category-title">Feed</h3>
 
 						<%	PostDAO dao = new PostDAO();
 							PostDTO dto = new PostDTO();
