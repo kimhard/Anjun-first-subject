@@ -230,6 +230,12 @@
 							
 							if(request.getParameter("pageNum")!=null){
 								pageNum = Integer.parseInt(request.getParameter("pageNum"));
+								if(pageNum<1){
+									pageNum=1;
+								}
+								if(pageNum>5){
+									pageNum=5;
+								}
 							}
 							if(pageNum==1){
 								active1 = "active";
@@ -326,7 +332,7 @@
 					                <a href="NewMain.jsp?pageNum=3" class="<%=active3%>">3</a>
 					                <a href="NewMain.jsp?pageNum=4" class="<%=active4%>">4</a>
 					                <a href="NewMain.jsp?pageNum=5" class="<%=active5%>">5</a>
-					                <a href="NewMain.jsp?pageNum=<%=pageNum+1%> class="next">Next</a>
+					                <a href="NewMain.jsp?pageNum=<%=pageNum+1%>" class="next">Next</a>
 								</div><!-- End Paging -->
 							</form>
 						</div>

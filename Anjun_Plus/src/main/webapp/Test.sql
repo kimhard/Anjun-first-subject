@@ -81,3 +81,5 @@ SELECT * FROM (SELECT ROWNUM NUM, anjun_post.* FROM (SELECT * FROM anjun_post OR
 SELECT * FROM anjun_post WHERE post_seq<233 AND ROWNUM <= 15 ORDER BY post_seq DESC
 
 SELECT * FROM (SELECT ROWNUM NUM, anjun_post.* FROM (SELECT * FROM anjun_post ORDER BY post_dt DESC) anjun_post) WHERE NUM BETWEEN 31 AND 45
+
+SELECT * FROM (SELECT ROWNUM NUM, anjun_post.* FROM (SELECT * FROM anjun_post ORDER BY post_dt DESC) anjun_post) WHERE user_id='smhrd1' AND NUM BETWEEN 1 AND 15
