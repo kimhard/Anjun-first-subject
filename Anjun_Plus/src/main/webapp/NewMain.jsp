@@ -12,8 +12,11 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-
 <title>안전+</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -24,9 +27,7 @@
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 
 <!-- Vendor CSS Files -->
 <link href="assets/vendor/bootstrap/css/bootstrap.min.css"
@@ -104,7 +105,13 @@
 			})
 		}
 	</script>
-	
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+
+h1{
+     font-family: 'Nanum Pen Script', cursive;
+}
+</style>	
 	
 </head>
 
@@ -157,7 +164,7 @@
 
 			<a href="NewMain.jsp" class="logo d-flex align-items-center"> <!-- Uncomment the line below if you also wish to use an image logo -->
 				<img src="https://i.postimg.cc/j27n4qQh/removebg.png" alt="">
-				<h1>안전+</h1>
+				<h1 class="font1"> 안전+<h1>
 			</a>
 
 			<nav id="navbar" class="navbar">

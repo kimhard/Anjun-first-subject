@@ -12,6 +12,7 @@
 # General
 --------------------------------------------------------------*/
 
+
 hr {
   background-color: #fff;
   padding: 0;
@@ -1401,7 +1402,11 @@ section {
 /*
  Noto Serif Korean Regular 400
 */ 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+
+h1{
+	font-family: 'Noto Sans KR', sans-serif;
+}
 
 .position-relative a{
 	color: white;
