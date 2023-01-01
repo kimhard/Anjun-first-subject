@@ -92,6 +92,12 @@
 			})
 		}
 	</script>
+	
+<style type="text/css">
+.d-md-flex .post-entry-2 .half{
+	display: flex;
+}
+</style>
 </head>
 
 
@@ -191,8 +197,8 @@
           
             <h3 class="category-title"></h3>
             	<img alt="" src="마일리지.jpg" style="max-width: 100%; height: auto;">
-              	<iframe src="UserStamp.jsp"  width="100%" height="100%"></iframe>
             <div class="d-md-flex post-entry-2 half">
+              	<iframe src="UserStamp.jsp" frameborder="0" scrolling="no" style="overflow-x:hidden; overflow:auto; width:100%; min-height:850px;"></iframe>
               <div>
               </div>
             </div>
