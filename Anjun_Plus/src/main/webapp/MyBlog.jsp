@@ -219,7 +219,7 @@
 		
           </div>
 			<div class="button_container">
-			  <button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button>
+			 <a href = "Postform.jsp"<button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button>></a>
 			</div>
 
 		</div>
