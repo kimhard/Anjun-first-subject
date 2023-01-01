@@ -409,8 +409,8 @@
 
 					</div>
 					<div class="button_container">
-						<a href="Postform.jsp"
-							<button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button>></a>
+						<a href="Postform.jsp">
+							<button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button></a>
 					</div>
 				</div>
 			</div>
