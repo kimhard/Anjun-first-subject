@@ -105,6 +105,9 @@
 			})
 		}
 	</script>
+
+
+
 	
 </head>
 
@@ -166,7 +169,7 @@
 			<nav id="navbar" class="navbar">
 				<ul>
 
-					         <li class="dropdown"><a href="ManualService?category=natural&query=flooding"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+					         <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
@@ -207,7 +210,7 @@
           </li>
 
 
-					<li><a href="Shelter.jsp">대피소</a></li>
+					<li><a href="Shelter.jsp">대피소</a></li>			
 					<%if(info != null) {%>
 					<li><a href="UserStamp2.jsp">출석</a></li>
 					<%} %>
