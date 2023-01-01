@@ -118,6 +118,13 @@
 	float:right;
 	display: inline;
 }
+.video-post{
+	flex-grow: 0;
+}
+.nav-item{
+	flex-grow: 3;
+}
+
 </style>
 </head>
 
@@ -359,10 +366,7 @@
 							<ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab"
 								role="tablist">
 								<li class="nav-item" role="presentation">
-									<button class="nav-link active" id="pills-popular-tab"
-										data-bs-toggle="pill" data-bs-target="#pills-popular"
-										type="button" role="tab" aria-controls="pills-popular"
-										aria-selected="true">내 정보</button>
+									<h3 class="aside-title">내 위치</h3>
 								</li>
 							</ul>
 							<div class="tab-content" id="pills-tabContent">

@@ -1444,3 +1444,6 @@ textarea::placeholder {
 	}
  */
 
+.js-search-close{
+	height: 30px;
+}
