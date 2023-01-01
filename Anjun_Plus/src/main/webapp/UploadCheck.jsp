@@ -68,13 +68,13 @@
 		System.out.println("media_ext : " + media_ext);
 		System.out.println("path : " + path);
 
-		int post_seq = new PostDTO().getPost_seq();
+		/* int post_seq = new PostDTO().getPost_seq();
 		String media_file = "C:\\Users\\user\\first_project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Anjun_Plus2\\uploadedFiles";
 
 		FileDTO dto = new FileDTO(post_seq, media_file, media_real_file, media_ext);
 		FileDAO dao = new FileDAO();
 		
-		int cnt2 = dao.uploadFile(dto);
+		int cnt2 = dao.uploadFile(dto); */
 
 		// 게시글 내용, 해쉬태그, 아이디
 		String post_content = multiRequest.getParameter("post_content");
@@ -97,6 +97,18 @@
 		System.out.println("post_hashtag:"+dto2.getPost_hashtag());
 
 		PostDTO dto3 = dao2.post(dto2);
+		
+		
+		int post_seq = dto3.getPost_seq();
+		String media_file = "C:\\Users\\user\\first_project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Anjun_Plus2\\uploadedFiles";
+
+		FileDTO dto = new FileDTO(post_seq, media_file, media_real_file, media_ext);
+		FileDAO dao = new FileDAO();
+		
+		int cnt2 = dao.uploadFile(dto);
+		
+		
+		
 		if (dto3 != null) {
 			writer.println("<script>alert('성공적으로 게시하였습니다.');</script>");
 			response.sendRedirect("Blog.jsp?post_seq="+dto3.getPost_seq());
