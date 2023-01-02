@@ -267,7 +267,7 @@
 								active5 = "active";
 							}
 							
-							ArrayList<PostDTO> mainPostList = dao.getBoardSearch(searchWord);
+							ArrayList<PostDTO> mainPostList = dao.getBoardSearch(pageNum, searchWord);
 							for(int i=0; i<mainPostList.size(); i++) {
 								post_seq = mainPostList.get(i).getPost_seq();
 								CommentDAO cmt = new CommentDAO();
@@ -341,16 +341,16 @@
 						</div>
 						
 						<div class="text-start py-4">
-							<form active=NewMain.jsp id="pageNum">
-							<input type="hidden" name="post_seq" value="<%=post_seq%>">
+							<form active=SearchResult.jsp id="pageNum">
+							<input type="hidden" name="searchWord" value="<%=searchWord%>">
 								<div class="custom-pagination">
-					                <a href="NewMain.jsp?pageNum=<%=pageNum-1%>" class="prev">Prevous</a>
-					                <a href="NewMain.jsp?pageNum=1" class="<%=active1%>">1</a>
-					                <a href="NewMain.jsp?pageNum=2" class="<%=active2%>">2</a>
-					                <a href="NewMain.jsp?pageNum=3" class="<%=active3%>">3</a>
-					                <a href="NewMain.jsp?pageNum=4" class="<%=active4%>">4</a>
-					                <a href="NewMain.jsp?pageNum=5" class="<%=active5%>">5</a>
-					                <a href="NewMain.jsp?pageNum=<%=pageNum+1%>" class="next">Next</a>
+					                <a href="SearchResult.jsp?pageNum=<%=pageNum-1%>&searchWord=<%=searchWord%>" class="prev">Prevous</a>
+					                <a href="SearchResult.jsp?pageNum=1&searchWord=<%=searchWord%>" class="<%=active1%>">1</a>
+					                <a href="SearchResult.jsp?pageNum=2&searchWord=<%=searchWord%>" class="<%=active2%>">2</a>
+					                <a href="SearchResult.jsp?pageNum=3&searchWord=<%=searchWord%>" class="<%=active3%>">3</a>
+					                <a href="SearchResult.jsp?pageNum=4&searchWord=<%=searchWord%>" class="<%=active4%>">4</a>
+					                <a href="SearchResult.jsp?pageNum=5&searchWord=<%=searchWord%>" class="<%=active5%>">5</a>
+					                <a href="SearchResult.jsp?pageNum=<%=pageNum+1%>&searchWord=<%=searchWord%>" class="next">Next</a>
 								</div><!-- End Paging -->
 							</form>
 						</div>

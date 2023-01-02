@@ -209,22 +209,29 @@ public class PostDAO {
 	}
 	
 	// 검색 기능
-	public ArrayList<PostDTO> getBoardSearch(String searchWord) {
+	public ArrayList<PostDTO> getBoardSearch(int pageNum, String searchWord) {
 		ArrayList<PostDTO> boards = new ArrayList<PostDTO>();
 		PostDTO board = null;
-		System.out.println(searchWord);
+		int maxNum = pageNum*15;
+		int minNum = maxNum-14;
 		try {
 			getConn();
 			String sql = "";
 			if(searchWord.substring(0, 1).equals("#")){
-				sql = "select * from anjun_post where post_hashtag like ? ORDER BY post_dt DESC"; 
+				sql = "SELECT * FROM (SELECT ROWNUM NUM, anjun_post.* FROM (SELECT * FROM anjun_post ORDER BY post_dt DESC) anjun_post) WHERE post_hashtag like ? AND NUM BETWEEN ? AND ?";
+//				sql = "select * from anjun_post where post_hashtag like ? ORDER BY post_dt DESC"; 
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1, "%"+ searchWord.substring(1) +"%");
+				psmt.setInt(2, minNum);
+				psmt.setInt(3, maxNum);
 			}else{
-				sql = "select * from anjun_post where user_id like ? or post_content like ? ORDER BY post_dt DESC"; 
+				sql = "SELECT * FROM (SELECT ROWNUM NUM, anjun_post.* FROM (SELECT * FROM anjun_post ORDER BY post_dt DESC) anjun_post) WHERE user_id like ? or post_content like ? AND NUM BETWEEN ? AND ?";
+//				sql = "select * from anjun_post where user_id like ? or post_content like ? ORDER BY post_dt DESC"; 
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1, "%"+ searchWord +"%");
 				psmt.setString(2, "%"+ searchWord +"%");
+				psmt.setInt(3, minNum);
+				psmt.setInt(4, maxNum);
 			}
 			System.out.println(sql);
 			rs = psmt.executeQuery();

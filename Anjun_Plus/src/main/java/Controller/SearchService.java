@@ -26,10 +26,11 @@ public class SearchService extends HttpServlet {
 		// 검색어
 		String keyWord = request.getParameter("keyWord");
 		String searchWord = request.getParameter("searchWord");
+		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 
 		// 글 목록 전체 가져오기
 		PostDAO dao = new PostDAO(); // Dao 정보 가져오기
-		ArrayList<PostDTO> boards = dao.getBoardSearch(searchWord);
+		ArrayList<PostDTO> boards = dao.getBoardSearch(pageNum, searchWord);
 		
 		if (boards.size() > 0) {
 			for (PostDTO board : boards) {
