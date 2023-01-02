@@ -196,6 +196,10 @@
           <div class="col-md-9" data-aos="fade-up">
           
             <h3 class="category-title"></h3>
+            	<a href="NewMain.jsp" class="logo d-flex align-items-center"> <!-- Uncomment the line below if you also wish to use an image logo -->
+				<img src="출석체크.png" alt="">
+			</a>
+            
             <div class="d-md-flex post-entry-2 half">
               	<iframe src="UserStamp.jsp" frameborder="0" scrolling="no" style="overflow-x:hidden; overflow:auto; width:100%; min-height:850px;"></iframe>
               <div>
