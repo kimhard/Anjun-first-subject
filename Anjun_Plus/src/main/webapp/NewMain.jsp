@@ -118,13 +118,6 @@
 	float:right;
 	display: inline;
 }
-.video-post{
-	flex-grow: 0;
-}
-.nav-item{
-	flex-grow: 3;
-}
-
 </style>
 </head>
 
@@ -340,16 +333,16 @@
 						</div>
 						
 						<div class="text-start py-4">
-							<form active=SearchResult.jsp id="pageNum">
+							<form active=NewMain.jsp id="pageNum">
 							<input type="hidden" name="post_seq" value="<%=post_seq%>">
 								<div class="custom-pagination">
-					                <a href="SearchResult.jsp?pageNum=<%=pageNum-1%>" class="prev">Prevous</a>
-					                <a href="SearchResult.jsp?pageNum=1" class="<%=active1%>">1</a>
-					                <a href="SearchResult.jsp?pageNum=2" class="<%=active2%>">2</a>
-					                <a href="SearchResult.jsp?pageNum=3" class="<%=active3%>">3</a>
-					                <a href="SearchResult.jsp?pageNum=4" class="<%=active4%>">4</a>
-					                <a href="SearchResult.jsp?pageNum=5" class="<%=active5%>">5</a>
-					                <a href="SearchResult.jsp?pageNum=<%=pageNum+1%>" class="next">Next</a>
+					                <a href="NewMain.jsp?pageNum=<%=pageNum-1%>" class="prev">Prevous</a>
+					                <a href="NewMain.jsp?pageNum=1" class="<%=active1%>">1</a>
+					                <a href="NewMain.jsp?pageNum=2" class="<%=active2%>">2</a>
+					                <a href="NewMain.jsp?pageNum=3" class="<%=active3%>">3</a>
+					                <a href="NewMain.jsp?pageNum=4" class="<%=active4%>">4</a>
+					                <a href="NewMain.jsp?pageNum=5" class="<%=active5%>">5</a>
+					                <a href="NewMain.jsp?pageNum=<%=pageNum+1%>" class="next">Next</a>
 								</div><!-- End Paging -->
 							</form>
 						</div>
@@ -366,7 +359,10 @@
 							<ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab"
 								role="tablist">
 								<li class="nav-item" role="presentation">
-									<h3 class="aside-title">내 위치</h3>
+									<button class="nav-link active" id="pills-popular-tab"
+										data-bs-toggle="pill" data-bs-target="#pills-popular"
+										type="button" role="tab" aria-controls="pills-popular"
+										aria-selected="true">내 정보</button>
 								</li>
 							</ul>
 							<div class="tab-content" id="pills-tabContent">
