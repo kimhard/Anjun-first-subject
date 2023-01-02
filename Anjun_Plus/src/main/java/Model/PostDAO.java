@@ -226,7 +226,7 @@ public class PostDAO {
 				psmt.setInt(3, maxNum);
 			}else{
 				sql = "SELECT * FROM (SELECT ROWNUM NUM, anjun_post.* FROM (SELECT * FROM anjun_post ORDER BY post_dt DESC) anjun_post) WHERE user_id like ? or post_content like ? AND NUM BETWEEN ? AND ?";
-				sql = "select * from anjun_post where user_id like ? or post_content like ? ORDER BY post_dt DESC"; 
+//				sql = "select * from anjun_post where user_id like ? or post_content like ? ORDER BY post_dt DESC"; 
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1, "%"+ searchWord +"%");
 				psmt.setString(2, "%"+ searchWord +"%");
