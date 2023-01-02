@@ -92,6 +92,25 @@
 			})
 		}
 	</script>
+	<style type="text/css">
+.post-info{
+	flex-grow: 3;
+}
+.loc-dot{
+	flex-grow: 3;
+}
+.like-dislike{
+	float:right;
+	display: inline;
+}
+.video-post{
+	flex-grow: 0;
+}
+.nav-item{
+	flex-grow: 3;
+}
+
+</style>
 </head>
 
 
@@ -103,19 +122,19 @@
 	String query = request.getParameter("query");
 %>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+	<!-- ======= Header ======= -->
+	<header id="header" class="header d-flex align-items-center fixed-top">
+		<div
+			class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="NewMain.jsp" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="https://i.postimg.cc/j27n4qQh/removebg.png" alt="">
-        <h1>안전+</h1>
-      </a>
+			<a href="NewMain.jsp" class="logo d-flex align-items-center"> <!-- Uncomment the line below if you also wish to use an image logo -->
+				<img src="로고.png" alt="">
+			</a>
 
-      <nav id="navbar" class="navbar">
-        <ul>
-                   <li class="dropdown"><a href="ManualService?category=natural&query=flooding"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+			<nav id="navbar" class="navbar">
+				<ul>
+
+					         <li class="dropdown"><a href="category.html"><span>대응 요령</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>자연재난</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
@@ -155,34 +174,40 @@
             </ul>
           </li>
 
-          <li><a href="Shelter.jsp">대피소</a></li>
-          <%if(info != null) {%>
+
+					<li><a href="Shelter.jsp">대피소</a></li>			
+					<%if(info != null) {%>
 					<li><a href="UserStamp2.jsp">출석</a></li>
 					<%} %>
-        </ul>
-      </nav><!-- .navbar -->
+				</ul>
+			</nav>
+			<!-- .navbar -->
 
-      <div class="position-relative">
-        <a href="#" class="mx-2"><span class="temp">℃</span></a>
-        <a href="#" class="mx-2"><span class="weather"></span></a>
+			<div class="position-relative">
+				<a href="#" class="mx-2"><span class="temp">℃</span></a> <a href="#"
+					class="mx-2"><span class="weather"></span></a> <a href="#"
+					class="mx-2 js-search-open"><span class="bi-search"></span></a> <i
+					class="bi bi-list mobile-nav-toggle"></i>
 
-        <a href="#" class="mx-2 js-search-open"><span class="bi-search"></span></a>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+				<!-- ======= Search Form ======= -->
+				<div class="search-form-wrap js-search-form-wrap">
+					<form action="SearchResult.jsp" method="get" class="search-form">
+						<span class="icon bi-search"></span> <input name="searchWord" type="text"
+							placeholder="Search" class="form-control">
+							<input type="submit" style="display:none;"/>
+						<button class="btn js-search-close">
+							<span class="bi-x"></span>
+						</button>
+					</form>
+				</div>
+				<!-- End Search Form -->
 
-        <!-- ======= Search Form ======= -->
-        <div class="search-form-wrap js-search-form-wrap">
-          <form action="search-result.html" class="search-form">
-            <span class="icon bi-search"></span>
-            <input type="text" placeholder="Search" class="form-control">
-            <button class="btn js-search-close"><span class="bi-x"></span></button>
-          </form>
-        </div><!-- End Search Form -->
+			</div>
 
-      </div>
+		</div>
 
-    </div>
-
-  </header><!-- End Header -->
+	</header>
+	<!-- End Header -->
 
   <main id="main">
     <section>
@@ -219,87 +244,102 @@
             </div>
           </div>
           <div class="col-md-3">
-            <!-- ======= Sidebar ======= -->
-  
-            
-            <div class="aside-block">
+						<!-- ======= Sidebar ======= -->
 
-              <ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="pills-popular-tab" data-bs-toggle="pill" data-bs-target="#pills-popular" type="button" role="tab" aria-controls="pills-popular" aria-selected="true">내 정보</button>
-                </li>
-              </ul>
-              <div class="tab-content" id="pills-tabContent">
 
-                <!-- Popular -->
-                <div class="tab-pane fade show active" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
-                  <div class="post-entry-1 border-bottom">
-                  	<div class="box multiple-box-shadows">
-                  	<%
-                  		if(info != null){
-                  			String grade = info.getGrade();
-                  			
-                  			if(grade.equals("A")){
-                  				grade = "VIP";
-                  			}else if(grade.equals("B")){
-                  				grade = "GOLD";
-                  			}else if(grade.equals("C")){
-                  				grade = "SILVER";
-                  			}else {
-                  				grade = "IRON";
-                  			}
-                  		%>
-	                    <div class="post-meta author"></div>
-		                  <div class="photo"><img src="assets/img/person-2.jpg" alt class="img-fluid"></div>
-		                  <!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
-	                    <h2 class="mb-2"><a href="Profile.jsp"><%=info.getId() %></a></h2>
-	                    <h3 class="mb-2"><%=grade %></h3>
-	                    <button class="btn btn-primary btn-ghost btn-fill">
-						    내 게시글
-						</button>
-						<button class="custom-btn btn-10"><a href="UpdateProfile.jsp">개인정보 수정</a></button>
-						<button class="custom-btn btn-10"><a href="LogoutService">로그아웃</a></button>
-                  	<%	}else { %>
-                  		<a href="Login.jsp">로그인</a>
-          			<%	}%>
+						<div class="aside-block">
+
+							<ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab"
+								role="tablist">
+								<li class="nav-item" role="presentation">
+									<h3 class="aside-title">내 정보</h3>
+								</li>
+							</ul>
+							<div class="tab-content" id="pills-tabContent">
+
+								<!-- Popular -->
+								<div class="tab-pane fade show active" id="pills-popular"
+									role="tabpanel" aria-labelledby="pills-popular-tab">
+									<div class="post-entry-1 border-bottom">
+										<div class="box multiple-box-shadows">
+											<%
+											if (info != null) {
+												String grade = info.getGrade();
+
+												if (grade.equals("A")) {
+													grade = "VIP";
+												} else if (grade.equals("B")) {
+													grade = "GOLD";
+												} else if (grade.equals("C")) {
+													grade = "SILVER";
+												} else {
+													grade = "IRON";
+												}
+											%>
+											<div class="post-meta author"></div>
+											<div class="photo">
+												<img src="https://www.gsef2021.org/images/Comite/Ampliado/User-light.png" alt class="img-fluid">
+											</div>
+											<!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
+											<h2 class="mb-2">
+												<a href="Profile.jsp"><%=info.getId()%></a>
+											</h2>
+											<h3 class="mb-2"><%=grade%></h3>
+											
+											<button class="custom-btn btn-10">
+												<a href="MyBlog.jsp">내 게시물</a>
+											</button>
+											<button class="custom-btn btn-10">
+												<a href="LogoutService">로그아웃</a>
+											</button>
+											<%
+											} else {
+											%>
+											<a href="Login.jsp"><div>로그인</div></a>
+											<%
+											}
+											%>
+										</div>
+									</div>
+								</div>
+								<!-- End Popular -->
+
+
+							</div>
+						</div>
+
+						<div class="aside-block">
+							<h3 class="aside-title">내 위치</h3>
+							<div class="video-post">
+								<iframe src="UserLocation.jsp"
+									scrolling="no"></iframe>
+							</div>
+						</div>
+						<!-- End Video -->
+
+						<div class="aside-block">
+							<h3 class="aside-title">Tags</h3>
+							<ul class="aside-tags list-unstyled">
+								<li><a href="category.html">지진</a></li>
+								<li><a href="category.html">홍수</a></li>
+								<li><a href="category.html">침수</a></li>
+							</ul>
+						</div>
+						<!-- End Tags -->
+
 					</div>
-                  </div>
-                </div> <!-- End Popular -->
-
-
-              </div>
-            </div>
-
-            <div class="aside-block">
-              <h3 class="aside-title">내 위치</h3>
-              <div class="video-post">
-              	<iframe src="UserLocation.jsp" scrolling="no"></iframe>
-              </div>
-            </div><!-- End Video -->
-
-            <div class="aside-block">
-              <h3 class="aside-title">Tags</h3>
-              <ul class="aside-tags list-unstyled">
-                <li><a href="category.html">지진</a></li>
-                <li><a href="category.html">홍수</a></li>
-                <li><a href="category.html">침수</a></li>
-                <li><a href="category.html">Food</a></li>
-                <li><a href="category.html">Politics</a></li>
-                <li><a href="category.html">Celebrity</a></li>
-                <li><a href="category.html">Startups</a></li>
-                <li><a href="category.html">Travel</a></li>
-              </ul>
-            </div><!-- End Tags -->
-		
-          </div>
-			<div class="button_container">
-			 <a href="Postform.jsp"> <button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button></a>
+					<%if(info != null) {%>
+					<div class="button_container">
+						<a href="Postform.jsp">
+							<button class="btn"><span>글 작성 <i class="fa-regular fa-pen-to-square"></i></span></button></a>
+					</div>
+					<%} %>
+				</div>
 			</div>
-        </div>
-      </div>
-    </section>
-  
-  </main><!-- End #main -->
+		</section>
+
+	</main>
+	<!-- End #main -->
     
  
   <!-- ======= Footer ======= -->

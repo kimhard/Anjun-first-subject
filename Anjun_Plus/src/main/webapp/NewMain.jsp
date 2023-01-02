@@ -366,7 +366,7 @@
 							<ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab"
 								role="tablist">
 								<li class="nav-item" role="presentation">
-									<h3 class="aside-title">내 위치</h3>
+									<h3 class="aside-title">내 정보</h3>
 								</li>
 							</ul>
 							<div class="tab-content" id="pills-tabContent">
