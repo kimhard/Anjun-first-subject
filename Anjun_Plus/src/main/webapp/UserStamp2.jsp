@@ -196,12 +196,12 @@
           <div class="col-md-9" data-aos="fade-up">
           
             <h3 class="category-title"></h3>
-            	<img alt="" src="마일리지.jpg" style="max-width: 100%; height: auto;">
             <div class="d-md-flex post-entry-2 half">
               	<iframe src="UserStamp.jsp" frameborder="0" scrolling="no" style="overflow-x:hidden; overflow:auto; width:100%; min-height:850px;"></iframe>
               <div>
               </div>
             </div>
+            	<img alt="" src="마일리지.jpg" style="max-width: 100%; height: auto;">
 
             
           </div>

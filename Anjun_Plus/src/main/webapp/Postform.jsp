@@ -365,7 +365,7 @@
 											%>
 											<div class="post-meta author"></div>
 											<div class="photo">
-												<img src="assets/img/person-2.jpg" alt class="img-fluid">
+												<img src="https://www.gsef2021.org/images/Comite/Ampliado/User-light.png" alt class="img-fluid">
 											</div>
 											<!-- 내 이름을 누르면 바로 내 정보로 이동하도록 링크 수정 -->
 											<h2 class="mb-2">

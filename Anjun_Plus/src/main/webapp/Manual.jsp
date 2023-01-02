@@ -127,9 +127,11 @@
 		<div
 			class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
+
 			<a href="NewMain.jsp" class="logo d-flex align-items-center"> <!-- Uncomment the line below if you also wish to use an image logo -->
 				<img src="로고.png" alt="">
 			</a>
+
 
 			<nav id="navbar" class="navbar">
 				<ul>
