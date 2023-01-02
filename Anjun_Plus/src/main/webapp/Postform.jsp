@@ -286,9 +286,11 @@
 								</div>
 								<div class="post-entry-1 border-bottom">
 									<input class="tag" placeholder="hash tags" name="post_hashtag">
-
 								</div>
 								<div class="text-center">
+									<iframe src="UserMarker.jsp"
+									scrolling="no"></iframe>
+									</div>
 									<label for="image" class="fa-sharp fa-solid fa-camera fa-2x"
 										style="cursor: pointer;"></label> <input type="file"
 										name="post_file" id="image" style="display: none;"
@@ -298,10 +300,7 @@
 									<div id="cma_image"
 										style="width: 100%; max-width: 100%; border: 1px solid #000; display: none;"></div>
 
-
-									<i class="fa-sharp fa-solid fa-video fa-2x"></i> 
-									
-									
+									<div>
 									<input type="submit" value="글쓰기">
 								</div>
 							</form>

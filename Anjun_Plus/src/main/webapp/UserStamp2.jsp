@@ -1,3 +1,5 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="java.time.LocalDate"%>
 <%@page import="Model.AttendenceDTO"%>
 <%@page import="Model.AttendenceDAO"%>
 <%@page import="Model.UserDTO"%>
@@ -200,12 +202,7 @@
             <h3 class="category-title"></h3>
             	<a href="NewMain.jsp" class="logo d-flex align-items-center"> <!-- Uncomment the line below if you also wish to use an image logo -->
             	
-            	<%	AttendanceDAO dao = new AttendenceDAO();
-            		AttendenceDTO dto = new AttendenceDTO();
-            		dao.
             	
-            	%>
-				<img src="출석체크.png" alt="">
 			</a>
             
             <div class="d-md-flex post-entry-2 half">

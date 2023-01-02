@@ -86,5 +86,5 @@ SELECT * FROM (SELECT ROWNUM NUM, anjun_post.* FROM (SELECT * FROM anjun_post OR
 
 
 
-
+INSERT INTO anjun_attendence (at_time, user_id) values ('2023-01-31', 'smhrd')
 SELECT * FROM (SELECT ROWNUM NUM, anjun_post.* FROM (SELECT * FROM anjun_post ORDER BY post_dt DESC) anjun_post) WHERE post_hashtag like '지진' AND NUM BETWEEN 16 AND 30
